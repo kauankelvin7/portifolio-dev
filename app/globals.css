@@ -1,0 +1,61 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+
+canvas {
+  touch-action: pan-y;
+}
+
+@theme {
+  --color-brand-orange: #ff6b00;
+  --color-brand-red: #e63946;
+  --color-brand-cream: #faf9f6;
+  --color-brand-zinc-950: #0f0f0f;
+  --color-brand-black: #0a0a0a;
+  --color-brand-gray: #9ca3af;
+  
+  --font-display: "Archivo Black", sans-serif;
+  --font-accent: "Archivo Black", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "Courier New", monospace;
+
+  --animate-border-spin: border-spin 4s linear infinite;
+  
+  @keyframes border-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+}
+
+:root {
+  font-family: "Montreal", sans-serif;
+  background-color: var(--color-brand-black);
+  color: var(--color-brand-white);
+}
+
+body {
+  background-color: var(--color-brand-black);
+  color: var(--color-brand-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.background-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(
+      100rem circle at var(--x, 50%) var(--y, 50%),
+      rgba(255, 0, 0, 0.04),
+      transparent 80%
+    ),
+    rgb(10, 10, 10);
+}
+
+@media (pointer: fine) {
+  body, a, button, input, textarea { cursor: none !important; }
+}
