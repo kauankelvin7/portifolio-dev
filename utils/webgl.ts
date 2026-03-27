@@ -11,14 +11,14 @@ export const isWebGLAvailable = (): boolean => {
 
   try {
     const canvas = document.createElement("canvas");
-    const gl = 
-      canvas.getContext("webgl") || 
+    const gl =
+      canvas.getContext("webgl") ||
       canvas.getContext("experimental-webgl");
-    
+
     cachedResult = !!(gl && gl instanceof WebGLRenderingContext);
-    
+
     // Clean up
-    if (gl) {
+    if (gl instanceof WebGLRenderingContext) {
       const extension = gl.getExtension('WEBGL_lose_context');
       if (extension) extension.loseContext();
     }
@@ -34,7 +34,7 @@ export const isWebGLAvailable = (): boolean => {
  */
 export const getGLInfo = () => {
   if (typeof window === "undefined") return { renderer: "", vendor: "" };
-  
+
   try {
     const canvas = document.createElement("canvas");
     const gl = (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")) as WebGLRenderingContext;
