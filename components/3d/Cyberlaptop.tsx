@@ -4,8 +4,8 @@ import * as THREE from "three";
 import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useDeviceCapability } from "@/hooks/useDeviceCapability";
 import { GLTF } from "three-stdlib";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -33,29 +33,26 @@ type GLTFResult = GLTF & {
 type CyberlaptopProps = React.ComponentProps<"group"> & { 
   showScreen?: boolean; 
   isMobile: boolean;
+  isLowEnd?: boolean;
 };
 
-export function Cyberlaptop({ showScreen = true, isMobile, ...props }: CyberlaptopProps) {
+export function Cyberlaptop({ showScreen = true, isMobile, isLowEnd, ...props }: CyberlaptopProps) {
   const { nodes, materials } = useGLTF("/cyberlaptop-transformed.glb") as unknown as GLTFResult;
-  const { isLowEnd, isHigh, prefersReducedMotion } = useDeviceCapability();
   const groupRef = useRef<THREE.Group>(null);
   
-  const responsiveScale = isMobile ? 0.9 : 1.7; 
-  const responsivePosition: [number, number, number] = [0, isMobile ? -0.7 : -0.4, 0];
-
+  const responsiveScale = isMobile ? 0.8 : 1.5; 
+  const responsivePosition: [number, number, number] = [0, isMobile ? -0.5 : -0.2, 0];
   const screenPosition: [number, number, number] = isMobile
     ? [0, -0.100, -0.460]
     : [0, 0.120, -0.517];
   const responsiveDistanceFactor = isMobile ? 1.1 : 1.1;
 
+  // Simplified materials for low end
+  const matPantalla = isLowEnd ? new THREE.MeshStandardMaterial({ color: materials.Pantalla.color }) : materials.Pantalla;
+
   const [logs, setLogs] = useState<string[]>([]);
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      setLogs(["CONNECTION ESTABLISHED."]);
-      return;
-    }
-
     const commands = [
       "INITIALIZING NEURAL NET...",
       "BYPASSING SECURITY NODE [443]",
@@ -68,53 +65,18 @@ export function Cyberlaptop({ showScreen = true, isMobile, ...props }: Cyberlapt
     
     let i = 0;
     const interval = setInterval(() => {
-      setLogs((prev: string[]) => [...prev.slice(-8), commands[i % commands.length]]);
+      setLogs(prev => [...prev.slice(-8), commands[i % commands.length]]);
       i++;
-      if (i >= commands.length && !isHigh) clearInterval(interval); // Stop loop if not high end
     }, 500);
 
     return () => clearInterval(interval);
-  }, [prefersReducedMotion, isHigh]);
-
-  const scrollY = useRef(0);
-  const initialScroll = useRef(0);
-
-  useEffect(() => {
-    initialScroll.current = window.scrollY;
-    scrollY.current = 0;
-    
-    const handleScroll = () => {
-      scrollY.current = window.scrollY - initialScroll.current;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isFirstFrame = useRef(true);
-
-  const matPantalla = isLowEnd ? new THREE.MeshStandardMaterial({ color: materials.Pantalla.color }) : materials.Pantalla;
+  const { prefersReduced } = useReducedMotion();
 
   useFrame((state) => {
-    if (!groupRef.current || prefersReducedMotion) return;
-
-    if (isFirstFrame.current) {
-        groupRef.current.rotation.y = 0;
-        isFirstFrame.current = false;
-    }
-
-    const t = state.clock.getElapsedTime();
-    const mouseX = state.pointer.x;
-    const mouseY = state.pointer.y;
-    const scrollFactor = scrollY.current * 0.0004;
-
-    // Smooth follow + Scroll Offset
-    const lerpFactor = isLowEnd ? 0.03 : 0.08;
-    groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, (mouseX * 0.25) + scrollFactor, lerpFactor);
-    groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, -mouseY * 0.15, lerpFactor);
-
-    // Floating
-    if (!isLowEnd) {
-      groupRef.current.position.y = responsivePosition[1] + Math.sin(t) * 0.06;
+    if (groupRef.current && !prefersReduced) {
+      groupRef.current.position.y = responsivePosition[1] + Math.sin(state.clock.elapsedTime) * 0.05;
     }
   });
 
@@ -144,9 +106,9 @@ export function Cyberlaptop({ showScreen = true, isMobile, ...props }: Cyberlapt
             transform 
             occlude={!isLowEnd} 
             distanceFactor={responsiveDistanceFactor} 
-            position={[0, 0, 0.01]} // Slightly forward
+            position={[0, 0, 0]}
             style={{
-              width: '486px', // Adjusted
+              width: '490px',
               height: '370px',
               background: '#050505',
               border: isLowEnd ? '1px solid rgba(34, 197, 94, 0.3)' : '2px solid rgba(34, 197, 94, 0.5)', 
@@ -157,30 +119,20 @@ export function Cyberlaptop({ showScreen = true, isMobile, ...props }: Cyberlapt
             }}
           >
             <div className="w-full h-full p-6 text-green-500 text-xs md:text-sm font-mono flex flex-col relative select-none pointer-events-none tracking-wider">
-              <style>{`
-                @keyframes flicker {
-                  0% { opacity: 0.97; }
-                  5% { opacity: 0.95; }
-                  10% { opacity: 0.97; }
-                  15% { opacity: 0.9; }
-                  20% { opacity: 0.97; }
-                  100% { opacity: 0.98; }
-                }
-              `}</style>
               
-              <div className="flex justify-between border-b border-green-900/50 pb-2 mb-4 opacity-80" style={{ animation: 'flicker 0.15s infinite' }}>
+              <div className="flex justify-between border-b border-green-900/50 pb-2 mb-4 opacity-80">
                  <span>root@cyberdeck:~# ./init_sequence.sh</span>
                  <span className="animate-pulse text-green-400">● LIVE</span>
               </div>
 
               <div className="flex-1 overflow-hidden flex flex-col justify-end space-y-1">
-                 {logs.map((log: string, index: number) => (
-                   <div key={index} className="opacity-90 flex" style={{ animation: `flicker ${0.1 + Math.random() * 0.2}s infinite` }}>
+                 {logs.map((log, index) => (
+                   <div key={index} className="opacity-90 flex">
                      <span className="text-green-700 mr-3">[{new Date().toLocaleTimeString()}]</span>
                      <span className="text-green-400 font-bold">{log}</span>
                    </div>
                  ))}
-                 <div className="mt-2 animate-pulse text-green-300">_</div>
+                 {!prefersReduced && <div className="mt-2 animate-pulse text-green-300">_</div>}
               </div>
 
               <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(0,255,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 pointer-events-none bg-size[:100%_4px,6px_100%] opacity-40"></div>

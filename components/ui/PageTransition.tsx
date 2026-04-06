@@ -13,7 +13,8 @@ export default function PageTransition() {
       {isTransitioning && (
         <>
           <motion.div
-            className="fixed inset-0 z-9999 bg-brand-black origin-bottom"
+            className="fixed inset-0 z-9999 origin-bottom"
+            style={{ background: '#0c0b09' }}
             initial={prefersReduced ? { opacity: 0 } : { scaleY: 0 }}
             animate={prefersReduced ? { opacity: 1 } : { scaleY: 1 }}
             exit={prefersReduced ? { opacity: 0 } : { scaleY: 0 }}
@@ -21,7 +22,8 @@ export default function PageTransition() {
           />
           
           <motion.div
-            className="fixed inset-0 z-9998 bg-brand-red origin-bottom"
+            className="fixed inset-0 z-9998 origin-bottom"
+            style={{ background: '#1a1815' }}
             initial={prefersReduced ? { opacity: 0 } : { scaleY: 0 }}
             animate={prefersReduced ? { opacity: 1 } : { scaleY: 1 }}
             exit={prefersReduced ? { opacity: 0 } : { scaleY: 0 }}
@@ -31,4 +33,4 @@ export default function PageTransition() {
       )}
     </AnimatePresence>
   )
-}
+}

@@ -1,37 +1,64 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useDeviceCapability } from "@/hooks/useDeviceCapability";
+import { useTranslations } from "next-intl";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export function Marquee() {
-    const { tier, prefersReducedMotion, isLowEnd } = useDeviceCapability();
+    const { prefersReduced } = useReducedMotion();
+    const t = useTranslations('Ticker');
+
+    // Get the items from translation and split them
+    const itemsString = t('items');
+    const items = itemsString.split(' · ');
 
     return (
-        <div className="w-full overflow-hidden bg-brand-red py-6 border-y-4 border-brand-black relative z-20">
-            <motion.div
-                className="flex whitespace-nowrap"
-                animate={{ x: [0, -1000] }}
-                transition={{
-                    repeat: Infinity,
-                    ease: "linear",
-                    duration: tier === 'high' ? 12 : 20, // Faster marquee
+        <div 
+            className="w-full overflow-hidden relative z-20"
+            style={{ 
+                background: '#e5591d',
+                padding: '12px 0',
+                border: 'none'
+            }}
+        >
+            <div
+                className="flex items-center animate-marquee whitespace-nowrap"
+                style={{
+                  width: 'max-content',
+                  animation: 'marquee 30s linear infinite',
+                  willChange: 'transform'
                 }}
             >
-                {Array.from({ length: 12 }).map((_, i) => (
-                    <span
-                        key={i}
-                        className="font-display font-light text-[5rem]  inline-block uppercase text-brand-black mr-12 leading-none select-none"
-                        style={{
-                            WebkitTextStroke: "2px white",
-                            color: "transparent"
-                        }}
-                    >
-                        WORK
-                    </span>
+                {Array.from({ length: 10 }).map((_, i) => (
+                    <div key={i} className="flex items-center pr-6">
+                        {items.map((item, index) => (
+                            <div key={index} className="flex items-center">
+                                <span
+                                    className="inline-block uppercase select-none px-4"
+                                    style={{
+                                        fontSize: '10px',
+                                        fontWeight: 900,
+                                        letterSpacing: '0.14em',
+                                        color: '#0c0b09',
+                                        fontFamily: 'var(--font-display)'
+                                    }}
+                                >
+                                    {item}
+                                </span>
+                                <span 
+                                    className="mx-2 select-none"
+                                    style={{
+                                        fontSize: '7px',
+                                        color: 'rgba(0,0,0,0.3)'
+                                    }}
+                                >
+                                    ◆
+                                </span>
+                            </div>
+                        ))}
+                    </div>
                 ))}
-            </motion.div>
+            </div>
         </div>
     )
 }
-
-

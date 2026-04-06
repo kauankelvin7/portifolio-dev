@@ -1,31 +1,111 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { skillCategories, certificates } from "@/data/skills";
 import FadeIn from "@/components/ui/FadeIn";
 
 export function Skills() {
+  const t = useTranslations('Skills');
+
   return (
-    <section id="stack" className="bg-brand-black text-brand-cream py-32 border-t-4 border-brand-orange/20 relative z-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row gap-16">
+    <section 
+      id="stack" 
+      className="relative z-20 overflow-hidden"
+      style={{
+        background: '#0c0b09',
+        padding: '100px 28px', // Increased padding for impact
+        borderBottom: '1px solid #1a1815'
+      }}
+    >
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Eyebrow */}
+        <FadeIn>
+          <div className="flex items-center gap-3 mb-16">
+            <div style={{ width: '24px', height: '1px', background: '#e5591d' }}></div>
+            <span 
+              style={{
+                fontSize: '11px',
+                color: '#666666',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                fontFamily: 'sans-serif'
+              }}
+            >
+              TECNOLOGIAS & CERTIFICAÇÕES
+            </span>
+          </div>
+        </FadeIn>
+
+        {/* Title */}
+        <FadeIn delay={0.1}>
+          <h2 
+            className="uppercase text-white mb-24"
+            style={{
+              fontSize: 'clamp(48px, 8vw, 84px)',
+              fontWeight: 900,
+              lineHeight: 0.9,
+              letterSpacing: '-0.03em',
+              fontFamily: 'var(--font-display)'
+            }}
+          >
+            {t('title')} <br />
+            <em style={{ fontStyle: 'normal', color: '#e5591d' }}>{t('subtitle')}</em>
+          </h2>
+        </FadeIn>
+
+        <div className="grid lg:grid-cols-2 gap-20 lg:gap-32">
           
-          <div className="flex-1">
-            <FadeIn>
-                <h2 className="font-display font-extrabold text-5xl md:text-7xl mb-16 uppercase leading-none tracking-tighter">
-                Minha <br /><span className="text-brand-orange">Stack</span>
-                </h2>
-            </FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Skills Grid */}
+          <div className="w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                {skillCategories.map((category, index) => (
                  <FadeIn key={category.title} delay={index * 0.1}>
-                   <div className="border-4 border-brand-orange/20 p-8 hover:border-brand-orange transition-all hover:shadow-[8px_8px_0px_0px_rgba(255,107,0,1)] bg-brand-black group">
-                     <h3 className="font-display text-brand-orange mb-6 uppercase tracking-widest text-sm border-b-2 border-brand-orange pb-2 inline-block">{category.title}</h3>
-                     <ul className="font-display space-y-3 font-bold text-xl uppercase">
+                   <div 
+                     className="transition-all duration-300 group"
+                     style={{
+                       background: '#131210',
+                       border: '1px solid #1e1c19',
+                       padding: '40px',
+                       borderRadius: '12px'
+                     }}
+                     onMouseEnter={(e) => {
+                       e.currentTarget.style.borderColor = '#e5591d';
+                       e.currentTarget.style.transform = 'translateY(-4px)';
+                     }}
+                     onMouseLeave={(e) => {
+                       e.currentTarget.style.borderColor = '#1e1c19';
+                       e.currentTarget.style.transform = 'translateY(0px)';
+                     }}
+                   >
+                     <h3 
+                       className="uppercase mb-8 inline-block"
+                       style={{
+                         fontSize: '13px',
+                         fontWeight: 900,
+                         color: '#e5591d',
+                         letterSpacing: '0.1em',
+                         borderBottom: '2px solid #e5591d',
+                         paddingBottom: '6px'
+                       }}
+                     >
+                       {category.title === "// stack" ? "// STACK" : "// RESUMO"}
+                     </h3>
+                     <ul 
+                       className="space-y-5"
+                       style={{
+                         fontSize: '16px',
+                         fontWeight: 500,
+                         color: '#999999',
+                         fontFamily: 'var(--font-display)',
+                         textTransform: 'uppercase'
+                       }}
+                     >
                         {category.skills.map(skill => (
-                          <li key={skill} className="hover:text-brand-orange transition-colors cursor-pointer flex items-center gap-2">
-                            <span className="w-2 h-2 bg-brand-orange/30 group-hover:bg-brand-orange transition-colors" />
-                            {skill}
+                          <li key={skill} className="flex items-center gap-4 transition-colors hover:text-white cursor-default">
+                             <div className="transition-all group-hover:scale-125" style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#e5591d', opacity: 0.6 }} />
+                             {skill}
                           </li>
                         ))}
                      </ul>
@@ -35,25 +115,61 @@ export function Skills() {
             </div>
           </div>
 
-          <div className="flex-1">
+          {/* Certificates Column */}
+          <div className="w-full">
             <FadeIn delay={0.2}>
-                <div className="flex items-end justify-between mb-12 border-b border-white/20 pb-4">
-                  <h3 className="font-body font-bold tracking-wide text-3xl uppercase text-brand-orange">Certificados</h3>
-                  <span className="font-body uppercase text-[10px] text-brand-orange animate-pulse">Sincronizando dados...</span>
+                <div 
+                  className="flex items-end justify-between mb-12 pb-6"
+                  style={{ borderBottom: '1px solid #1a1815' }}
+                >
+                  <h3 
+                    className="uppercase"
+                    style={{
+                      fontSize: '18px',
+                      fontWeight: 900,
+                      color: '#ffffff',
+                      letterSpacing: '0.05em'
+                    }}
+                  >
+                    {t('certificates_title')}
+                  </h3>
+                  <span 
+                    className="animate-pulse"
+                    style={{
+                      fontSize: '10px',
+                      color: '#e5591d',
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase'
+                    }}
+                  >
+                    {t('syncing')}
+                  </span>
                 </div>
             </FadeIn>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {certificates.map((cert, index) => (
                 <FadeIn key={`cert-${index}`} delay={0.3 + (index * 0.1)}>
                     <div
-                      className={`relative group aspect-video bg-zinc-950 overflow-hidden cursor-pointer transition-all duration-500 border-4 
-                        ${cert.status === 'locked' 
-                          ? 'border-brand-orange/10 opacity-50'
-                          : 'border-brand-orange/20 hover:border-brand-orange hover:shadow-[6px_6px_0px_0px_rgba(255,107,0,1)]' 
-                        }`}
+                      className="relative group aspect-video overflow-hidden cursor-pointer transition-all duration-300"
+                      style={{
+                        background: '#131210',
+                        border: '1px solid #1e1c19',
+                        borderRadius: '10px',
+                        opacity: cert.status === 'locked' ? 0.4 : 1
+                      }}
+                      onMouseEnter={(e) => {
+                        if (cert.status !== 'locked') {
+                          e.currentTarget.style.borderColor = '#e5591d';
+                          e.currentTarget.style.transform = 'translateY(-4px)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = '#1e1c19';
+                        e.currentTarget.style.transform = 'translateY(0px)';
+                      }}
                     >
-                      {cert.image ? (
+                      {cert.image && (
                         <div className="relative w-full h-full p-4">
                             <Image 
                               src={cert.image}
@@ -61,40 +177,71 @@ export function Skills() {
                               fill
                               className={`object-contain transition-all duration-700
                                 ${cert.status === 'locked' 
-                                  ? 'grayscale opacity-20 brightness-50 blur-[2px]'
-                                  : 'opacity-100 grayscale group-hover:grayscale-0 group-hover:scale-105'
+                                  ? 'grayscale blur-[2px]'
+                                  : 'grayscale group-hover:grayscale-0'
                                 }`}
-                              sizes="(max-width: 768px) 100vw, 50vw"
+                              sizes="(max-width: 768px) 50vw, 25vw"
                             />
                         </div>
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center bg-zinc-950">
-                           <span className="text-zinc-700 font-mono text-xs">[ NO_SIGNAL ]</span>
-                        </div>
                       )}
 
-                      {cert.status === 'locked' && (
-                        <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                            <div className="bg-black/50 p-3 rounded-none border-2 border-brand-orange/20 backdrop-blur-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-orange w-6 h-6"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                            </div>
-                        </div>
-                      )}
-
-                      <div className="absolute inset-0 bg-linear-to-t from-brand-black via-brand-black/80 to-transparent flex flex-col items-center justify-end pb-6 opacity-0 group-hover:opacity-100 transition-opacity p-4 text-center z-30">
-                          <p className="font-display text-sm uppercase text-brand-cream leading-tight mb-1">
+                      <div 
+                        className="absolute inset-0 flex flex-col items-center justify-end pb-6 opacity-0 group-hover:opacity-100 transition-opacity p-5 text-center z-30"
+                        style={{ background: 'linear-gradient(to top, #0c0b09, transparent)' }}
+                      >
+                          <p 
+                            className="uppercase leading-tight mb-2"
+                            style={{
+                              fontSize: '12px',
+                              fontWeight: 900,
+                              color: '#ffffff',
+                              fontFamily: 'var(--font-display)'
+                            }}
+                          >
                             {cert.status === 'locked' ? '???' : cert.name}
                           </p>
-                          <p className="font-display text-[10px] text-brand-orange font-bold uppercase tracking-widest">
-                            {cert.status === 'locked' ? 'RECURSO BLOQUEADO' : cert.issuer}
+                          <p 
+                            className="uppercase tracking-widest"
+                            style={{
+                              fontSize: '10px',
+                              color: '#e5591d',
+                              fontWeight: 700
+                            }}
+                          >
+                            {cert.status === 'locked' ? t('resource_locked') : cert.issuer}
                           </p>
                       </div>
 
-                      <div className="absolute top-2 right-2 z-30">
+                      <div className="absolute top-3 right-3 z-30">
                           {cert.status === 'locked' ? (
-                            <span className="text-[10px] font-display bg-brand-black px-2 py-1 text-zinc-600 border-2 border-zinc-800">LOCKED</span>
+                            <span 
+                              style={{
+                                fontSize: '9px',
+                                background: '#0c0b09',
+                                padding: '3px 8px',
+                                color: '#444444',
+                                border: '1px solid #1a1815',
+                                borderRadius: '4px',
+                                textTransform: 'uppercase'
+                              }}
+                            >
+                              {t('locked')}
+                            </span>
                           ) : (
-                            <span className="text-[10px] font-display  bg-brand-black px-2 py-1 text-brand-orange border-2 border-brand-orange font-bold">VERIFICADO</span>
+                            <span 
+                              style={{
+                                fontSize: '9px',
+                                background: '#131210',
+                                padding: '3px 8px',
+                                color: '#e5591d',
+                                border: '1px solid #e5591d',
+                                borderRadius: '4px',
+                                fontWeight: 900,
+                                textTransform: 'uppercase'
+                              }}
+                            >
+                              {t('verified')}
+                            </span>
                           )}
                       </div>
                       

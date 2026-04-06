@@ -2,88 +2,176 @@
 
 import FadeIn from "@/components/ui/FadeIn"
 import Counter from "../ui/Counter";
-import { Download } from "lucide-react";
-import LiquidSpotlightButton from "../ui/LiquidSpotlightButton";
+import { useTranslations } from "next-intl";
 
 export function About() {
-  return (
-    <section id="about" className="bg-brand-black text-brand-cream relative z-20">
+  const t = useTranslations('About');
+  const tSection = useTranslations('AboutSection');
 
-      <div className="min-h-screen flex flex-col items-center justify-center py-24 px-6 relative z-10">
+  return (
+    <section 
+      id="about" 
+      className="relative z-20 overflow-hidden"
+      style={{
+        background: '#0c0b09',
+        padding: '64px 28px',
+        borderBottom: '1px solid #1a1815'
+      }}
+    >
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Eyebrow */}
         <FadeIn>
-          <h1 className="font-display font-extrabold leading-none text-center mb-16 mt-20 md:mb-24 uppercase">
-            <span className="text-6xl md:text-[12rem] inline-block tracking-tighter">QUEM SOU EU ?</span>
-          </h1>
+          <div className="flex items-center gap-3 mb-12">
+            <div style={{ width: '20px', height: '1px', background: '#ffffff', opacity: 0.3 }}></div>
+            <span 
+              style={{
+                fontSize: '10px',
+                color: '#444444',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                fontFamily: 'sans-serif'
+              }}
+            >
+              {tSection('eyebrow')}
+            </span>
+          </div>
         </FadeIn>
 
-        <div className="max-w-5xl w-full grid md:grid-cols-2 gap-12 text-sm md:text-base border-t border-brand-orange/20 pt-12">
+        {/* Title */}
+        <FadeIn delay={0.1}>
+          <h2 
+            className="uppercase text-white mb-16"
+            style={{
+              fontSize: 'clamp(40px, 7vw, 72px)',
+              fontWeight: 900,
+              lineHeight: 0.92,
+              letterSpacing: '-0.02em',
+              fontFamily: 'var(--font-display)'
+            }}
+          >
+            {t('title').split('?')[0]} <em style={{ fontStyle: 'normal', color: '#e5591d' }}>?</em>
+          </h2>
+        </FadeIn>
 
-          <div className="space-y-6 text-brand-gray">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-32">
+          
+          {/* Left Column: Body Text */}
+          <div className="space-y-8">
             <FadeIn delay={0.2}>
-              <p className="">
-                <strong className="text-brand-orange font-display block mb-2 tracking-tighter uppercase">DESENVOLVEDOR FULLSTACK & APAIXONADO POR TECNOLOGIA</strong>
-                Me chamo Kauan Kelvin, tenho 20 anos e sou apaixonado por aprender novas tecnologias. Atualmente sou estudante de Engenharia de Software na Unicesumar, com foco em Desenvolvimento Back-end.
+              <p 
+                style={{
+                  fontSize: '14px',
+                  lineHeight: 1.65,
+                  color: '#555555',
+                  fontFamily: 'sans-serif'
+                }}
+              >
+                <strong style={{ color: '#ffffff', fontWeight: 900, textTransform: 'uppercase', fontSize: '11px', display: 'block', marginBottom: '8px', letterSpacing: '0.05em' }}>
+                  {t('badge')}
+                </strong>
+                {t('p1')}
               </p>
             </FadeIn>
 
             <FadeIn delay={0.3}>
-              <p>
-                Tenho experiência prática com Java, React, TypeScript, Python e Node.js, além de conhecimentos em front-end. Meu objetivo é transformar desafios em soluções escaláveis e seguras, entregando código limpo focado em performance e manutenção de sistemas robustos.
+              <p 
+                style={{
+                  fontSize: '14px',
+                  lineHeight: 1.65,
+                  color: '#555555',
+                  fontFamily: 'sans-serif'
+                }}
+              >
+                {t('p2')}
               </p>
+            </FadeIn>
+
+            <FadeIn delay={0.4}>
+              <div 
+                className="pl-6"
+                style={{ borderLeft: '1px solid #e5591d' }}
+              >
+                <p 
+                  style={{
+                    fontSize: '13px',
+                    fontWeight: 400,
+                    lineHeight: 1.6,
+                    color: '#888888',
+                    fontFamily: 'sans-serif',
+                    fontStyle: 'italic'
+                  }}
+                >
+                  "{t('quote')}"
+                </p>
+              </div>
             </FadeIn>
           </div>
 
-          <div className="font-body flex flex-col justify-between">
-            <FadeIn delay={0.4}>
-              <p className="text-brand-orange italic border-l-4 border-brand-orange pl-4 bg-brand-orange/5 py-4">
-                "Não é apenas sobre código, é sobre resolver problemas de forma elegante e eficiente."
-              </p>
-            </FadeIn>
-
-            <div className="font-display mt-10 grid grid-cols-2 gap-8">
-              <FadeIn delay={0.5}>
-                <div className="border-2 border-brand-orange p-6 shadow-[8px_8px_0px_0px_rgba(255,107,0,1)] bg-brand-black">
-                  <h3 className="text-6xl font-extrabold text-brand-orange">
-                    <Counter value={5} suffix="º" />
-                  </h3>
-                  <span className="font-display text-[10px] text-brand-cream uppercase tracking-widest mt-2 block">Semestre</span>
-                </div>
-              </FadeIn>
-
-              <FadeIn delay={0.6}>
-                <div className="border-2 border-brand-orange p-6 shadow-[8px_8px_0px_0px_rgba(255,107,0,1)] bg-brand-black">
-                  <h3 className="text-6xl font-extrabold text-brand-orange">
-                    <Counter value={20} suffix="" />
-                  </h3>
-                  <span className="font-display text-[10px] text-brand-cream uppercase tracking-widest mt-2 block">Anos de Idade</span>
-                </div>
-              </FadeIn>
-
-              <FadeIn delay={0.7}>
-                <div className="border-2 border-brand-orange p-6 shadow-[8px_8px_0px_0px_rgba(255,107,0,1)] bg-brand-black">
-                  <h3 className="text-6xl font-extrabold text-brand-orange">
-                    <Counter value={3} suffix="+" />
-                  </h3>
-                  <span className="font-display text-[10px] text-brand-cream uppercase tracking-widest mt-2 block">Anos de Código</span>
-                </div>
-              </FadeIn>
-
-              <FadeIn delay={0.8}>
-                <div className="border-2 border-brand-orange p-6 shadow-[8px_8px_0px_0px_rgba(255,107,0,1)] bg-brand-black">
-                  <div className="flex flex-col items-center gap-2">
-                    <span className="text-brand-orange font-display text-4xl leading-none">∞</span>
-                    <span className="text-[10px] uppercase font-display tracking-widest text-brand-gray">Curiosidade</span>
+          {/* Right Column: Stats Grid */}
+          <div className="flex flex-col justify-center">
+            <FadeIn delay={0.5}>
+              <div 
+                className="grid grid-cols-3 w-full"
+                style={{ border: '1px solid #1a1815' }}
+              >
+                <div 
+                  className="flex flex-col items-center justify-center text-center"
+                  style={{
+                    background: '#0f0e0c',
+                    padding: '24px 16px',
+                    borderRight: '1px solid #1a1815'
+                  }}
+                >
+                  <div style={{ fontSize: '32px', fontWeight: 900, color: '#ffffff', fontFamily: 'var(--font-display)' }}>
+                    5<span style={{ color: '#e5591d' }}>º</span>
+                  </div>
+                  <div style={{ fontSize: '9px', color: '#444444', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '4px' }}>
+                    {t('stats.semester')}
                   </div>
                 </div>
 
-                <div className="mt-12 flex justify-center md:justify-start col-span-2"> {/* Added col-span-2 to center button */}
-                  <LiquidSpotlightButton href="/curriculum/resume.pdf" className="!rounded-none !px-8 border-4 border-brand-orange hover:shadow-[6px_6px_0px_0px_rgba(255,107,0,1)]">
-                    <Download size={20} />
-                    <span>Download CV</span>
-                  </LiquidSpotlightButton>
+                <div 
+                  className="flex flex-col items-center justify-center text-center"
+                  style={{
+                    background: '#0f0e0c',
+                    padding: '24px 16px',
+                    borderRight: '1px solid #1a1815'
+                  }}
+                >
+                  <div style={{ fontSize: '32px', fontWeight: 900, color: '#ffffff', fontFamily: 'var(--font-display)' }}>
+                    20<span style={{ color: '#e5591d' }}>+</span>
+                  </div>
+                  <div style={{ fontSize: '9px', color: '#444444', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '4px' }}>
+                    Projetos
+                  </div>
                 </div>
-              </FadeIn>
-            </div>
+
+                <div 
+                  className="flex flex-col items-center justify-center text-center"
+                  style={{
+                    background: '#0f0e0c',
+                    padding: '24px 16px'
+                  }}
+                >
+                  <div style={{ fontSize: '32px', fontWeight: 900, color: '#ffffff', fontFamily: 'var(--font-display)' }}>
+                    3<span style={{ color: '#e5591d' }}>+</span>
+                  </div>
+                  <div style={{ fontSize: '9px', color: '#444444', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '4px' }}>
+                    {t('stats.code')}
+                  </div>
+                </div>
+              </div>
+
+              {/* Extra badge below the grid */}
+              <div 
+                className="mt-4 flex items-center justify-between"
+                style={{ background: '#0f0e0c', border: '1px solid #1a1815', padding: '12px 20px', borderRadius: '4px' }}
+              >
+                <div style={{ fontSize: '10px', color: '#444444', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Curiosidade</div>
+                <div style={{ fontSize: '14px', fontWeight: 900, color: '#e5591d' }}>∞</div>
+              </div>
+            </FadeIn>
           </div>
 
         </div>

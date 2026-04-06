@@ -1,0 +1,180 @@
+{
+  "Metadata": {
+    "title": "Kauan Kelvin — 前端开发工程师",
+    "description": "具有交互式 3D、Lighthouse 100 分性能和大胆设计的个人作品集。旨在让人铭记。"
+  },
+  "Nav": {
+    "home": "首页",
+    "about": "关于",
+    "projects": "项目",
+    "contact": "联系"
+  },
+  "Hero": {
+    "role1": "软件工程师",
+    "role2": "全栈开发",
+    "design": "设计 &",
+    "performance": "性能.",
+    "name1": "KAUAN",
+    "name2": "KELVIN",
+    "status": "诚寻机会",
+    "availability": "软件工程师 · 随时待命",
+    "cta_primary": "查看项目",
+    "cta_secondary": "下载简历"
+  },
+  "About": {
+    "title": "我是谁 ?",
+    "badge": "全栈开发工程师 & 技术爱好者",
+    "p1": "我叫 Kauan Kelvin，今年 20 岁，热衷于学习新技术。目前我是 Unicesumar 的软件工程在读学生，专注于后端开发。",
+    "p2": "我在 Java、React、TypeScript、Python 和 Node.js 方面拥有实践经验。我的目标是将挑战转化为可扩展且安全的解决方案，交付专注于性能和维护稳健系统的整洁代码。",
+    "quote": "代码不仅仅是逻辑，更是优雅且高效地解决问题。",
+    "stats": {
+      "semester": "学期",
+      "age": "年龄",
+      "code": "编程经验",
+      "curiosity": "好奇心"
+    },
+    "download": "下载简历"
+  },
+  "AboutModern": {
+    "title1": "工程",
+    "title2": "& 代码",
+    "present": "现状",
+    "p1": "我的软件工程学术之旅为构建稳健系统奠定了理论基础。现在，我专注于利用 Java 和 JavaScript 生态系统将这些理论转化为可扩展的应用。",
+    "p2": "我是一名全栈开发自由职业者，处理从 SQL 数据库建模到在 React 中创建高性能仪表板的真实业务挑战。",
+    "bullet1": "系统架构 & 后端开发",
+    "bullet2": "Java / Spring Boot & Node.js",
+    "bullet3": "React, Vite & Tailwind CSS",
+    "philosophy_label": "代码哲学",
+    "philosophy_text": "通过整洁、安全、高效的代码交付价值。"
+  },
+  "AboutCyber": {
+    "title1": "可扩展",
+    "title2": "方案",
+    "backend_title": "稳健后端",
+    "backend_p1": "我的重点是开发不仅能运行而且能抗压的系统。我使用 Java 和 Spring Boot 创建安全高效的 API，始终考虑可扩展性。",
+    "backend_p2": "你看到的终端象征着我对自动化和效率的不断渴望。从 Python 脚本到 Linux 部署，我始终寻求对代码运行环境的完全控制。",
+    "bullet1": "RESTful APIs & 使用 Java 的微服务",
+    "bullet2": "SQL 建模 & 非关系型数据库",
+    "bullet3": "使用 Python 的流程自动化",
+    "system_status_label": "系统状态",
+    "system_status_text": "系统在线且安全"
+  },
+  "Projects": {
+    "title": "项目",
+    "subtitle": "精选展示",
+    "description": "一系列专注于性能和可扩展性的数字体验和稳健系统集合。",
+    "more": "想看更多？",
+    "github_button": "查看完整 GitHub"
+  },
+  "Process": {
+    "item1": {
+      "title": "2023 — 至今",
+      "description": "软件工程 · Unicesumar。目前就读第 5 学期，专注于系统架构、后端和软件工程最佳实践。",
+      "detail1": "架构",
+      "detail2": "后端",
+      "detail3": "软件工程"
+    },
+    "item2": {
+      "title": "2024 — 至今",
+      "description": "全栈开发自由职业者。使用 React、Node.js 和关系型数据库开发预约系统、仪表板和 REST API。",
+      "detail1": "React",
+      "detail2": "Node.js",
+      "detail3": "SQL"
+    },
+    "item3": {
+      "title": "2022",
+      "description": "编程启蒙。从 HTML、CSS 和 JavaScript 开始，学习从未止步。",
+      "detail1": "HTML",
+      "detail2": "CSS",
+      "detail3": "JavaScript"
+    }
+  },
+  "Skills": {
+    "title": "我的",
+    "subtitle": "核心技术",
+    "certificates_title": "证书奖项",
+    "syncing": "正在同步数据...",
+    "verified": "已验证",
+    "locked": "已锁定",
+    "resource_locked": "资源已锁定"
+  },
+  "Companies": {
+    "stat1": "编程经验",
+    "stat2": "项目数量",
+    "stat3": "当前学期"
+  },
+  "Contact": {
+    "title1": "让我们",
+    "title2": "开始聊聊？",
+    "description": "寻找实习、兼职和协作项目。24小时内回复。",
+    "location": "巴西 / 随时待命",
+    "footer1": "由 KAUAN KELVIN 设计并编码",
+    "footer2": "©2026 — 保留所有权利"
+  },
+  "UI": {
+    "work": "工作",
+    "view_project": "查看项目",
+    "project_featured": "特色项目",
+    "project_case": "案例研究",
+    "loading_scene": "正在加载场景...",
+    "system_booting": "系统启动中...",
+    "interactivity_hint": "[ 鼠标驱动 ] 按住并旋转以探索",
+    "interactivity_mobile": "[ 触摸驱动 ] 拖动以探索",
+    "aria_view_project": "查看项目 {title}"
+  },
+  "Ticker": {
+    "items": "NEXT.JS · TYPESCRIPT · REACT THREE FIBER · TAILWIND CSS · FRAMER MOTION · PYTHON · SUPABASE · VERCEL · RAILWAY · GROQ"
+  },
+  "AboutSection": {
+    "eyebrow": "关于我"
+  },
+  "ProjectsSection": {
+    "eyebrow": "精选作品",
+    "syntax": {
+      "title": "SYNTAX",
+      "description": "为学习编程开发的教育系统。",
+      "category": "教育 · 网络应用"
+    },
+    "cinesia": {
+      "title": "CINESIA",
+      "description": "理疗诊所管理系统。",
+      "category": "医疗保健 · SAAS"
+    },
+    "omni": {
+      "title": "OMNI",
+      "description": "专注于简化业务管理的 B2B SaaS。",
+      "category": "B2B · 生态系统"
+    },
+    "medsync": {
+      "title": "MEDSYNC",
+      "description": "使用 AI API 的智能医疗记录和聊天。",
+      "category": "人工智能 · 医疗科技"
+    },
+    "gastos": {
+      "title": "开支控制",
+      "description": "带有可视化报告的个人财务应用。",
+      "category": "财务 · 网络应用"
+    },
+    "xadrez": {
+      "title": "国际象棋游戏",
+      "description": "使用 Java 开发的国际象棋模拟器，旨在巩固 OOP 概念。",
+      "category": "JAVA · 游戏引擎"
+    }
+  },
+  "ProcessSection": {
+    "eyebrow": "我的专长",
+    "item1": "高端前端 — Next.js、动画、3D、性能优化",
+    "item2": "稳健后端 — REST API、身份验证、数据库",
+    "item3": "部署与基础设施 — Vercel、Railway、Supabase、CI/CD",
+    "item4": "AI集成 — 大语言模型、智能体、自动化"
+  },
+  "ContactSection": {
+    "title": "合作吧.",
+    "subtitle": "欢迎国际远程项目合作。",
+    "cta": "发送消息",
+    "name_placeholder": "你的姓名？",
+    "email_placeholder": "常用的电子邮箱",
+    "project_placeholder": "请简要描述你的项目...",
+    "submit_button": "开始合作"
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "Metadata": {
+    "title": "Kauan Kelvin — Desarrollador Frontend",
+    "description": "Portafolio con 3D interactivo, rendimiento Lighthouse 100 y diseño audaz. Creado para ser recordado."
+  },
+  "Nav": {
+    "home": "INICIO",
+    "about": "SOBRE MÍ",
+    "projects": "PROYECTOS",
+    "contact": "CONTACTO"
+  },
+  "Hero": {
+    "role1": "SOFTWARE ENGINEER",
+    "role2": "FULLSTACK DEVELOPER",
+    "design": "DISEÑO &",
+    "performance": "RENDIMIENTO.",
+    "name1": "KAUAN",
+    "name2": "KELVIN",
+    "status": "Abierto a oportunidades",
+    "availability": "SOFTWARE ENGINEER · DISPONIBLE PARA TRABAJAR",
+    "cta_primary": "VER PROYECTOS",
+    "cta_secondary": "DESCARGAR CV"
+  },
+  "About": {
+    "title": "¿ QUIÉN SOY ?",
+    "badge": "DESARROLLADOR FULLSTACK & APASIONADO POR LA TECNOLOGÍA",
+    "p1": "Me llamo Kauan Kelvin, tengo 20 años y me apasiona aprender nuevas tecnologías. Actualmente soy estudiante de Ingeniería de Software en Unicesumar, con enfoque en Desarrollo Back-end.",
+    "p2": "Tengo experiencia práctica con Java, React, TypeScript, Python y Node.js, además de conocimientos en el front-end. Mi objetivo es transformar desafíos en soluciones escalables y seguras, entregando código limpio enfocado en el rendimiento y mantenimiento de sistemas robustos.",
+    "quote": "No se trata solo de código, se trata de resolver problemas de forma elegante y eficiente.",
+    "stats": {
+      "semester": "Semestre",
+      "age": "Años de Edad",
+      "code": "Años de Código",
+      "curiosity": "Curiosidad"
+    },
+    "download": "Descargar CV"
+  },
+  "AboutModern": {
+    "title1": "INGENIERÍA",
+    "title2": "& CÓDIGO",
+    "present": "EL PRESENTE",
+    "p1": "Mi trayectoria académica en Ingeniería de Software me dio la base teórica necesaria para construir sistemas robustos. Hoy, me enfoco en transformar esa teoría en aplicaciones escalables con Java y el ecosistema JavaScript.",
+    "p2": "Trabajo como Desarrollador FullStack Freelance, donde enfrento desafíos reales de negocios, desde el modelado de bases de datos SQL hasta la creación de paneles de control de alto rendimiento en React.",
+    "bullet1": "Arquitectura de Sistemas & Back-end",
+    "bullet2": "Java / Spring Boot & Node.js",
+    "bullet3": "React, Vite & Tailwind CSS",
+    "philosophy_label": "Filosofía de Código",
+    "philosophy_text": "Entregar valor a través de código limpio, seguro y eficiente."
+  },
+  "AboutCyber": {
+    "title1": "SOLUCIONES",
+    "title2": "ESCALABLES",
+    "backend_title": "BACK-END ROBUSTO",
+    "backend_p1": "Mi enfoque es desarrollar sistemas que no solo funcionen, sino que aguanten la carga. Utilizo Java y Spring Boot para crear APIs seguras y eficientes, siempre pensando en la escalabilidad.",
+    "backend_p2": "La terminal que viste simboliza mi búsqueda constante de automatización y eficiencia. Desde scripts en Python hasta despliegues en Linux, busco siempre el control total del ecosistema donde corre mi código.",
+    "bullet1": "APIs RESTful & Microservicios con Java",
+    "bullet2": "Modelado SQL & Bases de Datos NoSQL",
+    "bullet3": "Automatización de Procesos con Python",
+    "system_status_label": "Estado del Sistema",
+    "system_status_text": "SISTEMA ONLINE & SEGURO"
+  },
+  "Projects": {
+    "title": "Proyectos",
+    "subtitle": "Seleccionados",
+    "description": "Una colección de experiencias digitales y sistemas robustos desarrollados con enfoque en el rendimiento y la escalabilidad.",
+    "more": "¿Quieres ver más?",
+    "github_button": "Ver GitHub Completo"
+  },
+  "Process": {
+    "item1": {
+      "title": "2023 — presente",
+      "description": "Ingeniería de Software · Unicesumar. Cursando el 5º semestre, con enfoque en arquitectura de sistemas, back-end y buenas prácticas de ingeniería de software.",
+      "detail1": "Arquitectura",
+      "detail2": "Back-end",
+      "detail3": "Ingeniería de Software"
+    },
+    "item2": {
+      "title": "2024 — presente",
+      "description": "Desarrollador FullStack Freelance. Proyectos de agenda, tableros y APIs REST usando React, Node.js y bases de datos relacionales.",
+      "detail1": "React",
+      "detail2": "Node.js",
+      "detail3": "SQL"
+    },
+    "item3": {
+      "title": "2022",
+      "description": "Primeros pasos en el código. Comenzó con HTML, CSS y JavaScript — y nunca dejó de aprender.",
+      "detail1": "HTML",
+      "detail2": "CSS",
+      "detail3": "JavaScript"
+    }
+  },
+  "Skills": {
+    "title": "Mi",
+    "subtitle": "Stack",
+    "certificates_title": "Certificados",
+    "syncing": "Sincronizando datos...",
+    "verified": "VERIFICADO",
+    "locked": "BLOQUEADO",
+    "resource_locked": "RECURSO BLOQUEADO"
+  },
+  "Companies": {
+    "stat1": "Años de Código",
+    "stat2": "Proyectos",
+    "stat3": "Semestre"
+  },
+  "Contact": {
+    "title1": "VAMOS",
+    "title2": "¿HABLAMOS?",
+    "description": "Abierto a pasantías, trabajos freelance y proyectos colaborativos. Respondo en menos de 24h.",
+    "location": "BRASIL / DISPONIBLE",
+    "footer1": "DESIGN & CODE BY KAUAN KELVIN",
+    "footer2": "©2026 — TODOS LOS DERECHOS RESERVADOS"
+  },
+  "UI": {
+    "work": "TRABAJO",
+    "view_project": "Ver Proyecto",
+    "project_featured": "PROYECTO DESTACADO",
+    "project_case": "CASO DE ESTUDIO",
+    "loading_scene": "cargando escena...",
+    "system_booting": "INICIALIZANDO SISTEMA...",
+    "interactivity_hint": "[ MOUSE DRIVE ] MANTÉN Y GIRA PARA EXPLORAR",
+    "interactivity_mobile": "[ TOUCH DRIVE ] ARRASTRA PARA EXPLORAR",
+    "aria_view_project": "Ver proyecto {title}"
+  },
+  "Ticker": {
+    "items": "NEXT.JS · TYPESCRIPT · REACT THREE FIBER · TAILWIND CSS · FRAMER MOTION · PYTHON · SUPABASE · VERCEL · RAILWAY · GROQ"
+  },
+  "AboutSection": {
+    "eyebrow": "SOBRE MÍ"
+  },
+  "ProjectsSection": {
+    "eyebrow": "TRABAJOS SELECCIONADOS",
+    "syntax": {
+      "title": "SYNTAX",
+      "description": "Sistema educativo desarrollado para estudiar programación.",
+      "category": "EDUCATION · WEB APP"
+    },
+    "cinesia": {
+      "title": "CINESIA",
+      "description": "Sistema completo para la gestión de clínicas de fisioterapia.",
+      "category": "HEALTHCARE · SAAS"
+    },
+    "omni": {
+      "title": "OMNI",
+      "description": "SaaS B2B enfocado en la gestión empresarial simplificada.",
+      "category": "B2B · ECOSYSTEM"
+    },
+    "medsync": {
+      "title": "MEDSYNC",
+      "description": "Expediente médico y chat inteligente que utiliza APIs de IA.",
+      "category": "AI · HEALTH TECH"
+    },
+    "gastos": {
+      "title": "CONTROL DE GASTOS",
+      "description": "Aplicación de finanzas personales con informes visuales.",
+      "category": "FINANCE · WEB APP"
+    },
+    "xadrez": {
+      "title": "JUEGO DE AJEDREZ",
+      "description": "Simulador de ajedrez en Java para consolidar POO.",
+      "category": "JAVA · GAME ENGINE"
+    }
+  },
+  "ProcessSection": {
+    "eyebrow": "LO QUE HAGO",
+    "item1": "Frontend premium — Next.js, animaciones, 3D, rendimiento",
+    "item2": "Backend sólido — APIs REST, autenticación, base de datos",
+    "item3": "Deploy e infra — Vercel, Railway, Supabase, CI/CD",
+    "item4": "Integraciones AI — LLMs, agentes, automatizaciones"
+  },
+  "ContactSection": {
+    "title": "TRABAJEMOS.",
+    "subtitle": "Disponible para proyectos remotos internacionales.",
+    "cta": "ENVIAR UN MENSAJE",
+    "name_placeholder": "¿Tu nombre?",
+    "email_placeholder": "Tu mejor correo",
+    "project_placeholder": "Cuéntame sobre tu proyecto...",
+    "submit_button": "INICIAR PROYECTO"
+  }
+}

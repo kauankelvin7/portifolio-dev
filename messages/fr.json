@@ -1,0 +1,180 @@
+{
+  "Metadata": {
+    "title": "Kauan Kelvin — Développeur Frontend",
+    "description": "Portfolio avec 3D interactive, performance Lighthouse 100 et design audacieux. Fait pour être mémorisé."
+  },
+  "Nav": {
+    "home": "ACCUEIL",
+    "about": "À PROPOS",
+    "projects": "PROJETS",
+    "contact": "CONTACT"
+  },
+  "Hero": {
+    "role1": "SOFTWARE ENGINEER",
+    "role2": "FULLSTACK DEVELOPER",
+    "design": "DESIGN &",
+    "performance": "PERFORMANCE.",
+    "name1": "KAUAN",
+    "name2": "KELVIN",
+    "status": "Ouvert aux opportunités",
+    "availability": "INGÉNIEUR LOGICIEL · DISPONIBLE POUR LE TRAVAIL",
+    "cta_primary": "VOIR PROJETS",
+    "cta_secondary": "TÉLÉCHARGER CV"
+  },
+  "About": {
+    "title": "QUI SUIS-JE ?",
+    "badge": "DÉVELOPPEUR FULLSTACK & PASSIONNÉ POR TECHNOLOGIE",
+    "p1": "Je m'appelle Kauan Kelvin, j'ai 20 ans et je suis passionné par l'apprentissage de nouvelles technologies. Actuellement, je suis étudiant en Génie Logiciel à l'Unicesumar, avec un focus sur le développement Back-end.",
+    "p2": "J'ai une expérience pratique avec Java, React, TypeScript, Python et Node.js, ainsi que des connaissances en front-end. Mon objectif est de transformer les défis en solutions évolutives et sécurisées, en livrant un code propre axé sur la performance et la maintenance de systèmes robustes.",
+    "quote": "Il ne s'agit pas seulement de code, il s'agit de résoudre les problèmes de manière élégante et efficace.",
+    "stats": {
+      "semester": "Semestre",
+      "age": "Années d'Âge",
+      "code": "Années de Code",
+      "curiosity": "Curiosité"
+    },
+    "download": "Télécharger CV"
+  },
+  "AboutModern": {
+    "title1": "GÉNIE",
+    "title2": "& CODE",
+    "present": "LE PRÉSENT",
+    "p1": "Mon parcours académique en Génie Logiciel m'a donné la base théorique nécessaire pour construire des systèmes robustes. Aujourd'hui, je me concentre sur la transformation de cette théorie en applications évolutives avec Java et l'écosystème JavaScript.",
+    "p2": "Je travaille en tant que Développeur FullStack Freelance, où je relève des défis commerciaux réels, de la modélisation de bases de données SQL à la création de tableaux de bord performants avec React.",
+    "bullet1": "Architecture de Systèmes & Back-end",
+    "bullet2": "Java / Spring Boot & Node.js",
+    "bullet3": "React, Vite & Tailwind CSS",
+    "philosophy_label": "Philosophie de Code",
+    "philosophy_text": "Délivrer de la valeur grâce à un code propre, sûr et performant."
+  },
+  "AboutCyber": {
+    "title1": "SOLUTIONS",
+    "title2": "ÉVOLUTIVES",
+    "backend_title": "BACK-END ROBUSTE",
+    "backend_p1": "Mon focus est de développer des systèmes qui ne se contentent pas de fonctionner, mais qui tiennent le coup. J'utilise Java et Spring Boot pour créer des API sécurisées et efficaces, en pensant toujours à l'évolutivité.",
+    "backend_p2": "Le terminal que vous avez vu symbolise ma quête constante d'automatisation et d'efficacité. Des scripts Python aux déploiements Linux, je recherche toujours le contrôle total de l'écosystème où tourne mon code.",
+    "bullet1": "API RESTful & Microservices avec Java",
+    "bullet2": "Modélisation SQL & Bases de données NoSQL",
+    "bullet3": "Automatisation des processus avec Python",
+    "system_status_label": "Statut du Système",
+    "system_status_text": "SYSTÈME EN LIGNE & SÉCURISÉ"
+  },
+  "Projects": {
+    "title": "Projets",
+    "subtitle": "Sélectionnés",
+    "description": "Une collection d'expériences numériques et de systèmes robustes développés avec un focus sur la performance et l'évolutivité.",
+    "more": "Voulez-vous en voir plus ?",
+    "github_button": "Voir GitHub Complet"
+  },
+  "Process": {
+    "item1": {
+      "title": "2023 — présent",
+      "description": "Génie Logiciel · Unicesumar. En 5ème semestre, avec un focus sur l'architecture des systèmes, le back-end et les bonnes pratiques du génie logiciel.",
+      "detail1": "Architecture",
+      "detail2": "Back-end",
+      "detail3": "Génie Logiciel"
+    },
+    "item2": {
+      "title": "2024 — présent",
+      "description": "Développeur FullStack Freelance. Projets de planification, tableaux de bord et API REST utilisant React, Node.js et des bases de données relationnelles.",
+      "detail1": "React",
+      "detail2": "Node.js",
+      "detail3": "SQL"
+    },
+    "item3": {
+      "title": "2022",
+      "description": "Premiers pas dans le code. A commencé avec HTML, CSS et JavaScript — et n'a jamais cessé d'apprendre.",
+      "detail1": "HTML",
+      "detail2": "CSS",
+      "detail3": "JavaScript"
+    }
+  },
+  "Skills": {
+    "title": "Ma",
+    "subtitle": "Stack",
+    "certificates_title": "Certificats",
+    "syncing": "Synchronisation des données...",
+    "verified": "VÉRIFIÉ",
+    "locked": "VERROUILLÉ",
+    "resource_locked": "RESSOURCE VERROUILLÉE"
+  },
+  "Companies": {
+    "stat1": "Années de Code",
+    "stat2": "Projets",
+    "stat3": "Semestre"
+  },
+  "Contact": {
+    "title1": "ON",
+    "title2": "DISCUTE ?",
+    "description": "Ouvert aux stages, missions freelance et projets collaboratifs. Réponse sous 24h.",
+    "location": "BRÉSIL / DISPONIBLE",
+    "footer1": "DESIGN & CODE PAR KAUAN KELVIN",
+    "footer2": "©2026 — TOUS DROITS RÉSERVÉS"
+  },
+  "UI": {
+    "work": "TRAVAIL",
+    "view_project": "Voir le projet",
+    "project_featured": "PROJET EN VEDETTE",
+    "project_case": "ÉTUDE DE CAS",
+    "loading_scene": "chargement de la scène...",
+    "system_booting": "INITIALISATION DU SYSTÈME...",
+    "interactivity_hint": "[ MOUSE DRIVE ] MAINTENEZ ET TOURNEZ POUR EXPLORER",
+    "interactivity_mobile": "[ TOUCH DRIVE ] FAITES GLISSER POUR EXPLORER",
+    "aria_view_project": "Voir le projet {title}"
+  },
+  "Ticker": {
+    "items": "NEXT.JS · TYPESCRIPT · REACT THREE FIBER · TAILWIND CSS · FRAMER MOTION · PYTHON · SUPABASE · VERCEL · RAILWAY · GROQ"
+  },
+  "AboutSection": {
+    "eyebrow": "À PROPOS"
+  },
+  "ProjectsSection": {
+    "eyebrow": "TRAVAUX SÉLECTIONNÉS",
+    "syntax": {
+      "title": "SYNTAX",
+      "description": "Système éducatif développé para l'étude de la programmation.",
+      "category": "EDUCATION · WEB APP"
+    },
+    "cinesia": {
+      "title": "CINESIA",
+      "description": "Système complet de gestion de cliniques de kinésithérapie.",
+      "category": "HEALTHCARE · SAAS"
+    },
+    "omni": {
+      "title": "OMNI",
+      "description": "SaaS B2B axé sur la gestion d'entreprise simplifiée.",
+      "category": "B2B · ECOSYSTEM"
+    },
+    "medsync": {
+      "title": "MEDSYNC",
+      "description": "Dossier médical et chat intelligent utilisant les API d'IA.",
+      "category": "AI · HEALTH TECH"
+    },
+    "gastos": {
+      "title": "CONTRÔLE DES DÉPENSES",
+      "description": "Application de finances personnelles avec rapports visuels.",
+      "category": "FINANCE · WEB APP"
+    },
+    "xadrez": {
+      "title": "JEU D'ÉCHECS",
+      "description": "Simulateur d'échecs en Java pour consolider la POO.",
+      "category": "JAVA · GAME ENGINE"
+    }
+  },
+  "ProcessSection": {
+    "eyebrow": "CE QUE JE FAIS",
+    "item1": "Frontend premium — Next.js, animations, 3D, performance",
+    "item2": "Backend solide — APIs REST, authentification, bases de données",
+    "item3": "Déploiement & infra — Vercel, Railway, Supabase, CI/CD",
+    "item4": "Intégrations IA — LLMs, agents, automatisations"
+  },
+  "ContactSection": {
+    "title": "TRAVAILLONS.",
+    "subtitle": "Disponible pour des projets distants internationaux.",
+    "cta": "ENVOYER UN MESSAGE",
+    "name_placeholder": "Votre nom",
+    "email_placeholder": "Votre meilleur e-mail",
+    "project_placeholder": "Parlez-moi de votre projet...",
+    "submit_button": "DÉMARRER LE PROJET"
+  }
+}

@@ -2,66 +2,110 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { companies, stats } from "@/data/companies";
 import FadeIn from "@/components/ui/FadeIn";
 import Counter from "../ui/Counter";
-import { useDeviceCapability } from "@/hooks/useDeviceCapability";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export function Companies() {
-  const { tier, prefersReducedMotion, isLowEnd } = useDeviceCapability();
-  const isReduced = prefersReducedMotion || isLowEnd;
+  const { prefersReduced } = useReducedMotion();
+  const t = useTranslations('Companies');
+
+  const localizedStats = stats.map((stat, index) => ({
+    ...stat,
+    label: t(`stat${index + 1}`)
+  }));
 
   return (
-    <section id="statistics" className="bg-brand-black py-24 border-t-4 border-brand-orange/20 relative z-20">
-
-      <FadeIn>
-        <div className="w-full overflow-hidden mb-32 relative">
-          <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-linear-to-r from-brand-black to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-linear-to-l from-brand-black to-transparent pointer-events-none" />
-
-          <div className="flex">
-            <motion.div
-              className="flex gap-16 md:gap-20 items-center pr-16 md:pr-32"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                repeat: Infinity,
-                ease: "linear",
-                duration: tier === 'high' ? 18 : 35, // Faster carousel
+    <section 
+      id="statistics" 
+      className="relative z-20 overflow-hidden"
+      style={{
+        background: '#0c0b09',
+        padding: '64px 28px',
+        borderBottom: '1px solid #1a1815'
+      }}
+    >
+      {/* Logos Marquee */}
+        <div className="w-full overflow-hidden mb-24 relative">
+          <div 
+            className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" 
+            style={{ background: 'linear-gradient(to right, #0c0b09, transparent)' }}
+          />
+          <div 
+            className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" 
+            style={{ background: 'linear-gradient(to left, #0c0b09, transparent)' }}
+          />
+          
+          <div className="flex w-full overflow-hidden">
+            <div 
+              className="flex gap-16 md:gap-24 items-center animate-marquee-slow whitespace-nowrap pr-16 md:pr-32"
+              style={{
+                width: 'max-content',
+                animation: 'marquee 50s linear infinite',
+                willChange: 'transform'
               }}
             >
               {[...Array(10)].flatMap(() => companies).map((company, index) => (
-                <div key={index} className=" relative w-32 h-16 md:w-48 md:h-24 grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-                  <Image
-                    src={company.logo}
-                    alt={company.name}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 20vw"
-                    className="object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                  />
+                <div key={index} className="relative w-32 h-16 md:w-48 md:h-24 grayscale opacity-20 hover:opacity-100 transition-all duration-500 flex-none px-4">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 150px, 200px"
+                    />
+                  </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
-      </FadeIn>
 
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {stats.map((stat, index) => {
-            
+      <div className="max-w-7xl mx-auto">
+        <div 
+          className="grid grid-cols-1 md:grid-cols-3 w-full"
+          style={{ borderTop: '1px solid #1a1815', borderLeft: '1px solid #1a1815' }}
+        >
+          {localizedStats.map((stat, index) => {
             const numericValue = parseInt(stat.value.replace(/\D/g, '')) || 0
             const suffix = stat.value.replace(/[0-9]/g, '')
 
             return (
               <FadeIn key={index} delay={0.2 + (index * 0.1)} className="h-full">
                 <div 
-                  className="bg-brand-black border-4 border-brand-orange/20 p-8 md:p-12 hover:border-brand-orange transition-all duration-300 group h-full hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_rgba(255,107,0,1)]"
+                  className="flex flex-col items-center justify-center text-center transition-all duration-300"
+                  style={{
+                    background: '#0f0e0c',
+                    padding: '48px 24px',
+                    borderRight: '1px solid #1a1815',
+                    borderBottom: '1px solid #1a1815'
+                  }}
                 >
-                  <h3 className="font-display text-6xl md:text-[7rem] font-bold text-brand-cream mb-4 group-hover:text-brand-orange transition-colors flex items-center leading-none">
-                    <Counter value={numericValue} suffix={suffix} />
+                  <h3 
+                    className="leading-none mb-4 flex items-baseline justify-center"
+                    style={{
+                      fontSize: 'clamp(48px, 8vw, 80px)',
+                      fontWeight: 900,
+                      color: '#ffffff',
+                      fontFamily: 'var(--font-display)'
+                    }}
+                  >
+                    <Counter value={numericValue} suffix="" />
+                    <span style={{ color: '#e5591d' }}>{suffix}</span>
                   </h3>
                   
-                  <p className="font-display text-brand-orange uppercase tracking-widest text-sm md:text-base border-t-2 border-brand-orange/20 pt-4 group-hover:border-brand-orange group-hover:text-brand-orange transition-colors">
+                  <p 
+                    style={{
+                      fontSize: '11px',
+                      color: '#444444',
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
+                      fontFamily: 'sans-serif'
+                    }}
+                  >
                     {stat.label}
                   </p>
                 </div>
@@ -73,4 +117,4 @@ export function Companies() {
 
     </section>
   );
-}
+}

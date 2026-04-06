@@ -3,7 +3,11 @@
 import React from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-export default function CanvasLoader() {
+interface CanvasLoaderProps {
+  label?: string;
+}
+
+export default function CanvasLoader({ label = "Loading..." }: CanvasLoaderProps) {
   const { prefersReduced } = useReducedMotion();
 
   return (
@@ -13,21 +17,24 @@ export default function CanvasLoader() {
           className={`w-32 h-1 bg-brand-orange shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
             prefersReduced ? "" : "animate-pulse"
           }`} 
+          role="presentation"
         />
         <div 
           className={`w-24 h-1 bg-brand-orange shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
             prefersReduced ? "" : "animate-pulse [animation-delay:75ms]"
           }`} 
+          role="presentation"
         />
         <div 
           className={`w-16 h-1 bg-brand-orange shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
             prefersReduced ? "" : "animate-pulse [animation-delay:150ms]"
           }`} 
+          role="presentation"
         />
       </div>
       
       <span className="font-display text-xs font-black tracking-[0.2em] uppercase text-brand-cream mt-4">
-        carregando cena...
+        {label}
       </span>
     </div>
   );

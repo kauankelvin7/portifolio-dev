@@ -1,11 +1,11 @@
 "use client";
 
 import * as THREE from "three";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useDeviceCapability } from "@/hooks/useDeviceCapability";
 import { GLTF } from "three-stdlib";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -18,55 +18,26 @@ type GLTFResult = GLTF & {
 
 type ComputerProps = React.JSX.IntrinsicElements["group"] & {
   isMobile: boolean;
+  isLowEnd?: boolean;
 };
 
-export function Computer({ isMobile, ...props }: ComputerProps) {
+export function Computer({ isMobile, isLowEnd, ...props }: ComputerProps) {
   const { nodes, materials } = useGLTF("/computer-transformed.glb") as unknown as GLTFResult;
-  const { isLowEnd, isHigh, prefersReducedMotion } = useDeviceCapability();
   const groupRef = useRef<THREE.Group>(null);
-  const scrollY = useRef(0);
-  const initialScroll = useRef(0);
 
-  useEffect(() => {
-    initialScroll.current = window.scrollY;
-    scrollY.current = 0; // Relative to start
-    
-    const handleScroll = () => {
-      scrollY.current = window.scrollY - initialScroll.current;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const responsiveScale = isMobile ? 0.12 : 0.15;
+  const responsivePosition: [number, number, number] = [0, isMobile ? -1 : -3, 0];
 
-  const responsiveScale = isMobile ? 0.13 : 0.16;
-  const responsivePosition: [number, number, number] = [0, isMobile ? -1.2 : -3.5, 0];
-
-  const isFirstFrame = useRef(true);
+  const { prefersReduced } = useReducedMotion();
 
   useFrame((state) => {
-    if (!groupRef.current || prefersReducedMotion) return;
+    if (!groupRef.current || prefersReduced) return;
 
-    if (isFirstFrame.current) {
-        groupRef.current.rotation.y = 0;
-        isFirstFrame.current = false;
-    }
-
-    const t = state.clock.getElapsedTime();
     const mouseX = state.pointer.x;
     const mouseY = state.pointer.y;
-    const scrollFactor = scrollY.current * 0.0005;
-    
-    // Smooth follow + Scroll Offset
-    const lerpFactor = isLowEnd ? 0.03 : 0.08;
-    groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, (mouseX * 0.4) + scrollFactor, lerpFactor);
-    groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, -mouseY * 0.3, lerpFactor);
-    
-    // Constant slow rotation + Floating + Extra depth
-    if (!isLowEnd) {
-        groupRef.current.rotation.y += Math.sin(t * 0.3) * 0.008;
-        groupRef.current.rotation.z = THREE.MathUtils.lerp(groupRef.current.rotation.z, mouseX * 0.1, lerpFactor);
-        groupRef.current.position.y = responsivePosition[1] + Math.sin(t) * 0.15;
-    }
+    groupRef.current.rotation.y = mouseX * 0.10;
+    groupRef.current.rotation.x = -mouseY * 0.10;
+    groupRef.current.position.y = responsivePosition[1] + Math.sin(state.clock.elapsedTime) * 0.05;
   });
 
   return (

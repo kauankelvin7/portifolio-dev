@@ -1,11 +1,11 @@
 "use client";
 
 import * as THREE from "three";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { useGLTF, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useDeviceCapability } from "@/hooks/useDeviceCapability";
 import { GLTF } from "three-stdlib";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -41,59 +41,30 @@ type GLTFResult = GLTF & {
 type MacbookProps = React.ComponentProps<"group"> & { 
   showScreen?: boolean; 
   isMobile: boolean;
+  isLowEnd?: boolean;
 };
 
-export function Macbook({ showScreen = true, isMobile, ...props }: MacbookProps) {
+export function Macbook({ showScreen = true, isMobile, isLowEnd, ...props }: MacbookProps) {
   const { nodes, materials } = useGLTF("/macbook-transformed.glb") as unknown as GLTFResult;
-  const { isLowEnd, isHigh, prefersReducedMotion } = useDeviceCapability();
-  const scrollY = useRef(0);
   const groupRef = useRef<THREE.Group>(null);
-  const initialScroll = useRef(0);
 
-  useEffect(() => {
-    initialScroll.current = window.scrollY;
-    scrollY.current = 0;
-    
-    const handleScroll = () => {
-      scrollY.current = window.scrollY - initialScroll.current;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const responsiveScale = isMobile ? 5.2 : 11;
-  const responsivePosition: [number, number, number] = [0, isMobile ? -0.8 : -1.5, 0];
+  const responsiveScale = isMobile ? 5.0 : 10;
+  const responsivePosition: [number, number, number] = [0, isMobile ? -0.5 : -1, 0];
+  
   const screenPosition: [number, number, number] = isMobile
-    ? [-0.003, 0.103, -0.150] // Nudged left
-    : [-0.003, 0.1, -0.149];
+    ? [0, 0.103, -0.150]
+    : [0, 0.1, -0.149];
 
   // Simplified materials for low end
   const mat003 = isLowEnd ? new THREE.MeshStandardMaterial({ color: materials.PaletteMaterial003.color }) : materials.PaletteMaterial003;
   const matHlQw = isLowEnd ? new THREE.MeshStandardMaterial({ color: materials.HlQwFCAPWzetDQy.color }) : materials.HlQwFCAPWzetDQy;
 
-  const isFirstFrame = useRef(true);
+  const { prefersReduced } = useReducedMotion();
 
+  // 3. Floating Animation
   useFrame((state) => {
-    if (!groupRef.current || prefersReducedMotion) return;
-
-    if (isFirstFrame.current) {
-        groupRef.current.rotation.y = 0;
-        isFirstFrame.current = false;
-    }
-
-    const t = state.clock.getElapsedTime();
-    const mouseX = state.pointer.x;
-    const mouseY = state.pointer.y;
-    const scrollFactor = scrollY.current * 0.0003;
-
-    // Smooth follow + Scroll Offset
-    const lerpFactor = isLowEnd ? 0.03 : 0.08;
-    groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, (mouseX * 0.2) + scrollFactor, lerpFactor);
-    groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, -mouseY * 0.1, lerpFactor);
-
-    // Floating + Breathing
-    if (!isLowEnd) {
-      groupRef.current.position.y = responsivePosition[1] + Math.sin(t) * 0.08;
+    if (groupRef.current && !prefersReduced) {
+      groupRef.current.position.y = responsivePosition[1] + Math.sin(state.clock.elapsedTime) * 0.05;
     }
   });
 
@@ -120,32 +91,22 @@ export function Macbook({ showScreen = true, isMobile, ...props }: MacbookProps)
         <mesh geometry={nodes.Object_107.geometry} material={matHlQw} rotation={[Math.PI / 2, 0, 0]} scale={0.01} />
       </group>
 
-      <group position={[0, isMobile ? 0.105 : 0.1, isMobile ? -0.150 : -0.149]} rotation={[-0.35, 0, 0]}>
+      <group position={screenPosition} rotation={[-0.35, 0, 0]}>
         {showScreen && (
           <Html
             transform
             occlude={!isLowEnd}
             distanceFactor={0.25}
-            position={[0, 0, 0.01]} // Slightly forward
+            position={[0, 0, 0]}
             style={{
-              width: '480px',
+              width: '481px',
               height: '300px',
-              background: '#1a1a1a',
+              background: '#1e1e1e',
               borderRadius: '2px 2px 0 0',
               overflow: 'hidden',
-              display: 'flex',
-              justifyContent: 'center',
-              boxShadow: isLowEnd ? 'none' : '0 0 20px rgba(0,0,0,0.5), inset 0 0 50px rgba(255,107,0,0.05)',
-              border: '1px solid rgba(255,255,255,0.05)',
-              animation: isLowEnd ? 'none' : 'pulse 4s ease-in-out infinite'
+              boxShadow: isLowEnd ? 'none' : '0 0 10px rgba(0,0,0,0.5)'
             }}
           >
-            <style>{`
-              @keyframes pulse {
-                0%, 100% { opacity: 0.95; filter: brightness(1); }
-                50% { opacity: 1; filter: brightness(1.1); }
-              }
-            `}</style>
             <div className="flex flex-col h-full w-full font-mono text-[10px] text-gray-300 selection:bg-white/15 selection:text-white">
 
               <div className="bg-[#2d2d2d] h-6 flex items-center px-3 space-x-2 w-full border-b border-black/20">

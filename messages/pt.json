@@ -1,0 +1,180 @@
+{
+  "Metadata": {
+    "title": "Kauan Kelvin — Dev Frontend",
+    "description": "Portfólio com 3D interativo, performance Lighthouse 100 e design bold. Feito para ser lembrado."
+  },
+  "Nav": {
+    "home": "INÍCIO",
+    "about": "SOBRE",
+    "projects": "PROJETOS",
+    "contact": "CONTATO"
+  },
+  "Hero": {
+    "role1": "SOFTWARE ENGINEER",
+    "role2": "FULLSTACK DEVELOPER",
+    "design": "DESIGN &",
+    "performance": "PERFORMANCE.",
+    "name1": "KAUAN",
+    "name2": "KELVIN",
+    "status": "Aberto a oportunidades",
+    "availability": "SOFTWARE ENGINEER · DISPONÍVEL PARA TRABALHO",
+    "cta_primary": "VER PROJETOS",
+    "cta_secondary": "BAIXAR CV"
+  },
+  "About": {
+    "title": "QUEM SOU EU ?",
+    "badge": "DESENVOLVEDOR FULLSTACK & APAIXONADO POR TECNOLOGIA",
+    "p1": "Me chamo Kauan Kelvin, tenho 20 anos e sou apaixonado por aprender novas tecnologias. Atualmente sou estudante de Engenharia de Software na Unicesumar, com foco em Desenvolvimento Back-end.",
+    "p2": "Tenho experiência prática com Java, React, TypeScript, Python e Node.js, além de conhecimentos em front-end. Meu objetivo é transformar desafios em soluções escaláveis e seguras, entregando código limpo focado em performance e manutenção de sistemas robustos.",
+    "quote": "Não é apenas sobre código, é sobre resolver problemas de forma elegante e eficiente.",
+    "stats": {
+      "semester": "Semestre",
+      "age": "Anos de Idade",
+      "code": "Anos de Código",
+      "curiosity": "Curiosidade"
+    },
+    "download": "Download CV"
+  },
+  "AboutModern": {
+    "title1": "ENGENHARIA",
+    "title2": "& CÓDIGO",
+    "present": "O PRESENTE",
+    "p1": "Minha jornada acadêmica em Engenharia de Software me deu a base teórica necessária para construir sistemas robustos. Hoje, foco em transformar essa teoria em aplicações escaláveis com Java e o ecossistema JavaScript.",
+    "p2": "Trabalho como Desenvolvedor FullStack Freelancer, onde enfrento desafios reais de negócios, desde a modelagem de bancos de dados SQL até a criação de dashboards performáticos no React.",
+    "bullet1": "Arquitetura de Sistemas & Back-end",
+    "bullet2": "Java / Spring Boot & Node.js",
+    "bullet3": "React, Vite & Tailwind CSS",
+    "philosophy_label": "Filosofia de Código",
+    "philosophy_text": "Entregar valor através de código limpo, seguro e performático."
+  },
+  "AboutCyber": {
+    "title1": "SOLUÇÕES",
+    "title2": "ESCALÁVEIS",
+    "backend_title": "BACK-END ROBUSTO",
+    "backend_p1": "Meu foco é desenvolver sistemas que não apenas funcionam, mas que aguentam o tranco. Utilizo Java e Spring Boot para criar APIs seguras e eficientes, sempre pensando na escalabilidade.",
+    "backend_p2": "O terminal que você viu simboliza minha busca constante por automação e eficiência. De scripts em Python a deploys em Linux, busco sempre o controle total do ecossistema onde meu código roda.",
+    "bullet1": "APIs RESTful & Microserviços com Java",
+    "bullet2": "Modelagem SQL & Bancos Não Relacionais",
+    "bullet3": "Automação de Processos com Python",
+    "system_status_label": "Status do Sistema",
+    "system_status_text": "SISTEMA ONLINE & SEGURO"
+  },
+  "Projects": {
+    "title": "Projetos",
+    "subtitle": "Selecionados",
+    "description": "Uma coleção de experiências digitais e sistemas robustos desenvolvidos com foco em performance e escalabilidade.",
+    "more": "Quer ver mais?",
+    "github_button": "Ver GitHub Completo"
+  },
+  "Process": {
+    "item1": {
+      "title": "2023 — presente",
+      "description": "Engenharia de Software · Unicesumar. Cursando o 5º semestre, com foco em arquitetura de sistemas, back-end e boas práticas de engenharia de software.",
+      "detail1": "Arquitetura",
+      "detail2": "Back-end",
+      "detail3": "Engenharia de Software"
+    },
+    "item2": {
+      "title": "2024 — presente",
+      "description": "Desenvolvedor FullStack Freelancer. Projetos de agendamento, dashboards e APIs REST usando React, Node.js e bancos relacionais.",
+      "detail1": "React",
+      "detail2": "Node.js",
+      "detail3": "SQL"
+    },
+    "item3": {
+      "title": "2022",
+      "description": "Primeiros passos no código. Começou com HTML, CSS e JavaScript — e nunca mais parou de aprender.",
+      "detail1": "HTML",
+      "detail2": "CSS",
+      "detail3": "JavaScript"
+    }
+  },
+  "Skills": {
+    "title": "Minha",
+    "subtitle": "Stack",
+    "certificates_title": "Certificados",
+    "syncing": "Sincronizando dados...",
+    "verified": "VERIFICADO",
+    "locked": "LOCKED",
+    "resource_locked": "RECURSO BLOQUEADO"
+  },
+  "Companies": {
+    "stat1": "Anos de Código",
+    "stat2": "Projetos",
+    "stat3": "Semestre"
+  },
+  "Contact": {
+    "title1": "VAMOS",
+    "title2": "CONVERSAR?",
+    "description": "Aberto a estágios, freelas e projetos colaborativos. Respondo em até 24h.",
+    "location": "BRASIL / DISPONÍVEL",
+    "footer1": "DESIGN & CODE BY KAUAN KELVIN",
+    "footer2": "©2026 — TODOS OS DIREITOS RESERVADOS"
+  },
+  "UI": {
+    "work": "WORK",
+    "view_project": "Ver Projeto",
+    "project_featured": "PROJETO DESTAQUE",
+    "project_case": "CASE STUDY",
+    "loading_scene": "carregando cena...",
+    "system_booting": "INICIALIZANDO SISTEMA...",
+    "interactivity_hint": "[ MOUSE DRIVE ] SEGURE E GIRE PARA EXPLORAR",
+    "interactivity_mobile": "[ TOUCH DRIVE ] ARRASTE PARA EXPLORAR",
+    "aria_view_project": "Ver projeto {title}"
+  },
+  "Ticker": {
+    "items": "NEXT.JS · TYPESCRIPT · REACT THREE FIBER · TAILWIND CSS · FRAMER MOTION · PYTHON · SUPABASE · VERCEL · RAILWAY · GROQ"
+  },
+  "AboutSection": {
+    "eyebrow": "SOBRE MIM"
+  },
+  "ProjectsSection": {
+    "eyebrow": "TRABALHOS SELECIONADOS",
+    "syntax": {
+      "title": "SYNTAX",
+      "description": "Sistema educacional desenvolvido para estudar programação.",
+      "category": "EDUCATION · WEB APP"
+    },
+    "cinesia": {
+      "title": "CINESIA",
+      "description": "Sistema completo para gestão de clínicas de fisioterapia.",
+      "category": "HEALTHCARE · SAAS"
+    },
+    "omni": {
+      "title": "OMNI",
+      "description": "SaaS focado no mercado B2B para gestão empresarial.",
+      "category": "B2B · ECOSYSTEM"
+    },
+    "medsync": {
+      "title": "MEDSYNC",
+      "description": "Prontuário e chat médico inteligente com IA.",
+      "category": "AI · HEALTH TECH"
+    },
+    "gastos": {
+      "title": "CONTROLE DE GASTOS",
+      "description": "Aplicação voltada para finanças pessoais com relatórios visuais.",
+      "category": "FINANCE · WEB APP"
+    },
+    "xadrez": {
+      "title": "JOGO DE XADREZ",
+      "description": "Simulador de xadrez desenvolvido em Java para consolidar POO.",
+      "category": "JAVA · GAME ENGINE"
+    }
+  },
+  "ProcessSection": {
+    "eyebrow": "O QUE FAÇO",
+    "item1": "Frontend premium — Next.js, animações, 3D, performance",
+    "item2": "Backend sólido — APIs REST, autenticação, banco de dados",
+    "item3": "Deploy e infra — Vercel, Railway, Supabase, CI/CD",
+    "item4": "AI integrations — LLMs, agentes, automações"
+  },
+  "ContactSection": {
+    "title": "VAMOS TRABALHAR.",
+    "subtitle": "Disponível para projetos remotos internacionais.",
+    "cta": "ENVIAR UMA MENSAGEM",
+    "name_placeholder": "Qual seu nome?",
+    "email_placeholder": "Seu melhor e-mail",
+    "project_placeholder": "Conte-me sobre seu projeto...",
+    "submit_button": "INICIAR PROJETO"
+  }
+}

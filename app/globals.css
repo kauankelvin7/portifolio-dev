@@ -7,28 +7,41 @@ canvas {
 }
 
 @theme {
-  --color-brand-orange: #ff6b00;
-  --color-brand-red: #e63946;
-  --color-brand-cream: #faf9f6;
-  --color-brand-zinc-950: #0f0f0f;
-  --color-brand-black: #0a0a0a;
-  --color-brand-gray: #9ca3af;
+  --color-brand-orange: #e5591d;
+  --color-brand-black: #0c0b09;
+  --color-brand-surface: #0f0e0c;
+  --color-brand-elevated: #131210;
+  --color-brand-border: #2a2825;
+  --color-brand-gray: #555555;
+  --color-brand-white: #ffffff;
   
   --font-display: "Archivo Black", sans-serif;
   --font-accent: "Archivo Black", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "Courier New", monospace;
 
-  --animate-border-spin: border-spin 4s linear infinite;
-  
   @keyframes border-spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
 }
 
+/* Explicit Marquee Classes for maximum reliability */
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee 50s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 :root {
-  font-family: "Montreal", sans-serif;
+  font-family: var(--font-body);
   background-color: var(--color-brand-black);
   color: var(--color-brand-white);
 }
@@ -39,8 +52,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Premium Noise Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
+
 .background-spotlight {
   position: fixed;
   top: 0;
@@ -50,10 +78,10 @@ html.lenis, html.lenis body { height: auto; }
   z-index: -1;
   background: radial-gradient(
       100rem circle at var(--x, 50%) var(--y, 50%),
-      rgba(255, 0, 0, 0.04),
+      rgba(229, 89, 29, 0.04),
       transparent 80%
     ),
-    rgb(10, 10, 10);
+    rgb(12, 11, 9);
 }
 
 @media (pointer: fine) {

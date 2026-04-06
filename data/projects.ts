@@ -1,6 +1,7 @@
 export const projects = [
   {
     id: 1,
+    translateKey: "syntax",
     title: "Syntax",
     description: "Sistema educacional desenvolvido para estudar programação e lógica computacional.",
     tags: ["React", "Vite", "Java", "JavaScript", "PWA", "Tailwind", "Gemini AI"],
@@ -10,6 +11,7 @@ export const projects = [
   },
   {
     id: 2,
+    translateKey: "cinesia",
     title: "Cinesia",
     description: "Sistema completo para gestão de clínicas de fisioterapia, permitindo controle de pacientes, prontuários eletrônicos e agendamentos.",
     tags: ["React", "TypeScript", "Node.js", "MySQL"],
@@ -19,6 +21,7 @@ export const projects = [
   },
   {
     id: 3,
+    translateKey: "omni",
     title: "Omni",
     description: "SaaS focado no mercado B2B para gestão empresarial simplificada, integrando controle de estoque, financeiro e vendas.",
     tags: ["React", "NestJS", "PostgreSQL", "Tailwind"],
@@ -28,6 +31,7 @@ export const projects = [
   },
   {
     id: 4,
+    translateKey: "medsync",
     title: "MedSync",
     description: "Prontuário e chat médico inteligente que utiliza APIs de IA para auxiliar profissionais de saúde em diagnósticos e triagem.",
     tags: ["Next.js", "Python", "OpenAI API", "Firebase"],
@@ -37,6 +41,7 @@ export const projects = [
   },
   {
     id: 5,
+    translateKey: "gastos",
     title: "Controle de Gastos",
     description: "Aplicação voltada para finanças pessoais, com relatórios visuais de despesas, metas de economia e histórico de transações.",
     tags: ["React", "Firebase", "Styled Components"],
@@ -46,6 +51,7 @@ export const projects = [
   },
   {
     id: 6,
+    translateKey: "xadrez",
     title: "Jogo de Xadrez",
     description: "Simulador de xadrez desenvolvido em Java puro para consolidar conceitos de Programação Orientada a Objetos e Lógica de Programação.",
     tags: ["Java", "POO", "Desktop"],

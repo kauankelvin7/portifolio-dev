@@ -9,9 +9,10 @@ interface LiquidSpotlightButtonProps {
   children: React.ReactNode;
   href: string;
   className?: string;
+  ariaLabel?: string;
 }
 
-export default function LiquidSpotlightButton({ children, href, className = "" }: LiquidSpotlightButtonProps) {
+export default function LiquidSpotlightButton({ children, href, className = "", ariaLabel }: LiquidSpotlightButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null);
   const { prefersReduced } = useReducedMotion();
   
@@ -53,6 +54,7 @@ export default function LiquidSpotlightButton({ children, href, className = "" }
         ref={ref}
         onMouseMove={handleMouseMove}
         target={href.startsWith("http") ? "_blank" : "_self"}
+        aria-label={ariaLabel}
         className={`relative flex items-center justify-center overflow-hidden rounded-3xl bg-brand-black px-10 py-3 text-brand-cream shadow-2xl transition-colors duration-300 border-2 border-brand-orange/20 hover:border-brand-orange ${className}`}
       >
         

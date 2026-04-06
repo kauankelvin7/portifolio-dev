@@ -1,8 +1,9 @@
 "use client";
 
 import { Suspense, useState, useMemo } from "react";
-import SafeCanvas from "./SafeCanvas";
+import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, Preload, PerformanceMonitor, Html } from "@react-three/drei";
+import { useTranslations } from "next-intl";
 import { useIsMobile } from "@/app/hooks/useIsMobile";
 import { useDeviceCapability } from "@/hooks/useDeviceCapability";
 import { Cyberlaptop } from "./Cyberlaptop";
@@ -13,21 +14,22 @@ import CanvasLoader from "@/components/ui/CanvasLoader";
 
 export default function SceneCyber() {
   const isMobile = useIsMobile();
-  const { tier, isLowEnd, isHigh, prefersReducedMotion, webglSupported } = useDeviceCapability();
+  const { isLowEnd } = useDeviceCapability();
   const [showModel, setShowModel] = useState(false);  
-  const [performanceCrashed, setPerformanceCrashed] = useState(false);
+  const [crashed, setCrashed] = useState(false);
+  const t = useTranslations('UI');
 
   const SceneCompleta = useMemo(() => (
     <>
-      {isHigh && !isMobile && <Effects />}
+      {!isMobile && <Effects />}
       <ambientLight intensity={0.2} />
       <directionalLight position={[5, 5, 5]} intensity={1} color="#ff0000" />
       <pointLight position={[-5, 2, -5]} intensity={2} color="#00ffff" />
-      <Suspense fallback={<Html center><CanvasLoader /></Html>}>
+      <Suspense fallback={<Html center><CanvasLoader label={t('loading_scene')} /></Html>}>
         <Environment preset="night" />
       </Suspense>
     </>
-  ), [isHigh, isMobile]);
+  ), [isMobile, t]);
 
   const SceneSimples = useMemo(() => (
     <>
@@ -36,34 +38,30 @@ export default function SceneCyber() {
     </>
   ), []);
 
-  const FallbackContent = (
-    <div className="w-full h-full absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
-      <div className="relative w-[85%] h-[85%] md:w-[60%] md:h-[60%] flex items-center justify-center">
-          <Image 
-              src="/models/preview-cyber5.png"
-              alt="Cyber Setup Preview" 
-              fill 
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 40vw"
-              className="object-contain"
-              priority
-          />
-      </div>
+  if (crashed) {
+    return (
+      <div className="w-full h-full absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
+        <div className="relative w-[85%] h-[85%] md:w-[60%] md:h-[60%] flex items-center justify-center">
+            <Image 
+                src="/models/preview-cyber5.png"
+                alt="Cyber Setup Preview" 
+                fill 
+                className="object-contain"
+                priority
+            />
+        </div>
 
-      <div className="absolute bottom-6 right-6 text-[10px] font-mono text-red-200/50 bg-red-900/20 px-2 py-1 rounded backdrop-blur-sm border border-red-500/10">
-          [ {performanceCrashed ? 'LOW POWER MODE' : 'OFFLINE (WEBGL OFF)'} ]
+        <div className="absolute bottom-6 right-6 text-[10px] font-mono text-red-200/50 bg-red-900/20 px-2 py-1 rounded backdrop-blur-sm border border-red-500/10">
+            [ LOW POWER MODE ]
+        </div>
       </div>
-    </div>
-  );
-
-  if (performanceCrashed || isLowEnd) {
-    return FallbackContent;
+    )
   }
 
   return (
     <div className="w-full h-full absolute inset-0 z-0 pointer-events-auto">
-      <SafeCanvas 
-        fallback={FallbackContent}
-        dpr={isHigh ? [1, 2] : [1, 1.5]} 
+      <Canvas 
+        dpr={isLowEnd ? 1 : [1, 1.5]} 
         gl={{ 
             powerPreference: "high-performance", 
             antialias: false,
@@ -71,23 +69,49 @@ export default function SceneCyber() {
             stencil: false,
             depth: true
         }}
-        camera={{ position: [0, 2, 10], fov: 40 }}
+        camera={{ position: [0, 2, 8], fov: 40 }}
         className="w-full h-full"
         style={{ touchAction: 'pan-y' }}
       >
         <PerformanceMonitor 
-            onFallback={() => isMobile && setPerformanceCrashed(true)} 
-            threshold={0.4}
-            flipflops={5}
+            onFallback={() => setCrashed(true)} 
+            flipflops={3}
+            onDecline={() => {
+                if (isMobile) setCrashed(true);
+            }}
         />
 
         <BootLoader onReady={() => setTimeout(() => setShowModel(true), 500)} />
 
-        {!isHigh ? SceneSimples : SceneCompleta}
+        {isLowEnd ? SceneSimples : SceneCompleta}
 
-        <Suspense fallback={<Html center><CanvasLoader /></Html>}>
+        <Suspense fallback={<Html center><CanvasLoader label={t('loading_scene')} /></Html>}>
             <group visible={showModel}>
-               <Cyberlaptop showScreen={showModel} isMobile={isMobile} />
+               <Cyberlaptop showScreen={showModel} isMobile={isMobile} isLowEnd={isLowEnd}/>
+               
+               {/* Interaction Hint */}
+               <Html
+                 position={[0, -3.5, 0]}
+                 center
+                 distanceFactor={6}
+                 style={{
+                   transition: 'all 0.5s',
+                   opacity: showModel ? 0.6 : 0,
+                   pointerEvents: 'none',
+                   width: '250px',
+                   textAlign: 'center'
+                 }}
+               >
+                 <div className="flex flex-col items-center gap-2">
+                    <div className="w-px h-6 bg-linear-to-b from-transparent to-[#00ffff]/40" />
+                    <span 
+                      className="font-mono text-[8px] tracking-[0.3em] text-[#00ffff] uppercase animate-pulse"
+                      style={{ textShadow: '0 0 10px rgba(0,255,255,0.5)' }}
+                    >
+                      {isMobile ? t('interactivity_mobile') : t('interactivity_hint')}
+                    </span>
+                 </div>
+               </Html>
             </group>
 
             <Preload all />
@@ -97,11 +121,12 @@ export default function SceneCyber() {
             <OrbitControls 
             enableZoom={false}
             enablePan={false}
-            enableRotate={false}
-            target={[0, 0, 0]}
+            enableRotate={true}
+            minPolarAngle={Math.PI / 3} 
+            maxPolarAngle={Math.PI / 2}
             />
         )}
-      </SafeCanvas>
+      </Canvas>
     </div>
   );
-};
+};
