@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Kauan Kelvin — Dev Fullstack';
+export const alt = 'Kauan Kelvin — Dev Frontend';
 export const size = {
   width: 1200,
   height: 630,

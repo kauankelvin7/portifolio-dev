@@ -1,13 +1,25 @@
 "use client";
 
-import { useDeviceCapability } from './useDeviceCapability';
+import { useState, useEffect } from 'react';
 
 export const useReducedMotion = () => {
-  const { prefersReducedMotion, isLowEnd } = useDeviceCapability();
-  
-  // Treat 'low' tier as 'prefers reduced motion' to simplify existing components
-  return { 
-    prefersReduced: prefersReducedMotion || isLowEnd,
-    isLowEnd 
-  };
+  const [prefersReduced, setPrefersReduced] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    // Set initial value
+    setPrefersReduced(mediaQuery.matches);
+
+    // Listen for changes
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReduced(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  return { prefersReduced };
 };

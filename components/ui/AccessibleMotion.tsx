@@ -2,17 +2,17 @@
 
 import React from 'react';
 import { MotionConfig } from 'framer-motion';
-import { useDeviceCapability } from '@/hooks/useDeviceCapability';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 interface AccessibleMotionProps {
   children: React.ReactNode;
 }
 
 export const AccessibleMotion: React.FC<AccessibleMotionProps> = ({ children }) => {
-  const { prefersReducedMotion, isLowEnd } = useDeviceCapability();
+  const { prefersReduced } = useReducedMotion();
 
   return (
-    <MotionConfig reducedMotion={prefersReducedMotion || isLowEnd ? "always" : "never"}>
+    <MotionConfig reducedMotion={prefersReduced ? "always" : "never"}>
       {children}
     </MotionConfig>
   );

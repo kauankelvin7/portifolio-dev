@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useDeviceCapability } from '@/hooks/useDeviceCapability'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 interface FadeInProps {
   children: React.ReactNode
@@ -16,7 +16,7 @@ export default function FadeIn({
   className = "",
   direction = 'up' 
 }: FadeInProps) {
-  const { tier, isLowEnd, prefersReducedMotion } = useDeviceCapability();
+  const { prefersReduced } = useReducedMotion();
   
   const directions = {
     up: { y: 40, x: 0 },
@@ -25,23 +25,17 @@ export default function FadeIn({
     right: { x: -40, y: 0 },
   }
 
-  const isMotionDisabled = isLowEnd || prefersReducedMotion;
-
-  const initial = isMotionDisabled 
+  const initial = prefersReduced 
     ? { opacity: 0 } 
     : { opacity: 0, ...directions[direction] };
 
-  const animate = isMotionDisabled 
+  const animate = prefersReduced 
     ? { opacity: 1 } 
     : { opacity: 1, x: 0, y: 0 };
 
-  const transition = isMotionDisabled 
+  const transition = prefersReduced 
     ? { duration: 0.15, delay: delay } 
-    : { 
-        duration: tier === 'high' ? 0.8 : 0.5, 
-        delay: delay, 
-        ease: [0.21, 0.47, 0.32, 0.98] as any 
-      };
+    : { duration: 0.7, delay: delay, ease: [0.21, 0.47, 0.32, 0.98] as any };
 
   return (
     <motion.div
