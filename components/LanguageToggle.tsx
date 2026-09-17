@@ -20,6 +20,7 @@ const languages: readonly Language[] = [
 
 export function LanguageToggle() {
   const [isOpen, setIsOpen] = useState(false);
+  const [requestedLocale, setRequestedLocale] = useState<Locale | null>(null);
   const locale = useLocale() as Locale;
   const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -35,12 +36,17 @@ export function LanguageToggle() {
     return () => document.removeEventListener("mousedown", closeOnOutsideClick);
   }, []);
 
+  useEffect(() => {
+    if (!requestedLocale || requestedLocale === locale) return;
+
+    document.cookie = `NEXT_LOCALE=${requestedLocale};path=/;max-age=31536000;samesite=lax`;
+    setRequestedLocale(null);
+    router.refresh();
+  }, [locale, requestedLocale, router]);
+
   const selectLanguage = (nextLocale: Locale) => {
     setIsOpen(false);
-    if (nextLocale === locale) return;
-
-    document.cookie = `NEXT_LOCALE=${nextLocale};path=/;max-age=31536000;samesite=lax`;
-    router.refresh();
+    if (nextLocale !== locale) setRequestedLocale(nextLocale);
   };
 
   const currentLanguage = languages.find((language) => language.locale === locale) ?? languages[0];
