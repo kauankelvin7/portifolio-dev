@@ -2,13 +2,14 @@
 
 import { useActionState, useEffect, useRef } from "react";
 import { CheckCircle2, Github, Linkedin, Mail } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { sendEmail } from "@/actions/send-email";
 import FadeIn from "@/components/ui/FadeIn";
 
 export default function ContactFooter() {
   const t = useTranslations("Contact");
   const tSection = useTranslations("ContactSection");
+  const locale = useLocale();
   const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction, isPending] = useActionState(sendEmail, null);
 
@@ -45,7 +46,7 @@ export default function ContactFooter() {
                   <a className="flex h-11 w-11 items-center justify-center rounded-full bg-[#0c0b09] text-white" href="https://www.linkedin.com/in/kauan-kelvin/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <Linkedin size={18} />
                   </a>
-                  <a className="flex h-11 w-11 items-center justify-center rounded-full bg-[#0c0b09] text-white" href="mailto:kelvinkauan722@gmail.com" aria-label="E-mail">
+                  <a className="flex h-11 w-11 items-center justify-center rounded-full bg-[#0c0b09] text-white" href="mailto:kelvinkauan722@gmail.com" aria-label={tSection('email_link_label')}>
                     <Mail size={18} />
                   </a>
                 </div>
@@ -58,21 +59,23 @@ export default function ContactFooter() {
 
             <FadeIn delay={0.1}>
               <form ref={formRef} action={formAction} className="rounded-[var(--radius-lg)] border border-black/10 bg-black/[0.07] p-5 md:p-7">
+                <input type="hidden" name="locale" value={locale} />
+
                 <div className="grid gap-4 md:grid-cols-2">
                   <label className="grid gap-2">
-                    <span className="text-xs font-semibold text-black/60">Nome</span>
+                    <span className="text-xs font-semibold text-black/60">{tSection('name_label')}</span>
                     <input name="name" required placeholder={tSection('name_placeholder')} className="min-h-12 rounded-xl border border-black/15 bg-white/25 px-4 text-sm text-[#140d09] outline-none placeholder:text-black/35 focus:border-black/40" disabled={isPending} />
                     {state?.errors?.name?.[0] && <span className="text-xs font-semibold text-black/70">{state.errors.name[0]}</span>}
                   </label>
                   <label className="grid gap-2">
-                    <span className="text-xs font-semibold text-black/60">E-mail</span>
+                    <span className="text-xs font-semibold text-black/60">{tSection('email_label')}</span>
                     <input name="email" type="email" required placeholder={tSection('email_placeholder')} className="min-h-12 rounded-xl border border-black/15 bg-white/25 px-4 text-sm text-[#140d09] outline-none placeholder:text-black/35 focus:border-black/40" disabled={isPending} />
                     {state?.errors?.email?.[0] && <span className="text-xs font-semibold text-black/70">{state.errors.email[0]}</span>}
                   </label>
                 </div>
 
                 <label className="mt-4 grid gap-2">
-                  <span className="text-xs font-semibold text-black/60">Mensagem</span>
+                  <span className="text-xs font-semibold text-black/60">{tSection('message_label')}</span>
                   <textarea name="message" rows={6} required placeholder={tSection('project_placeholder')} className="rounded-xl border border-black/15 bg-white/25 px-4 py-4 text-sm leading-6 text-[#140d09] outline-none placeholder:text-black/35 focus:border-black/40" disabled={isPending} />
                   {state?.errors?.message?.[0] && <span className="text-xs font-semibold text-black/70">{state.errors.message[0]}</span>}
                 </label>
