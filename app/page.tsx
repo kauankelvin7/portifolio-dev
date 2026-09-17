@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import ContactSection from "@/features/contact/ContactSection";
+import { GitHubSyncSection } from "@/features/github-sync/GitHubSyncSection";
 import { AboutSection } from "@/features/portfolio/sections/AboutSection";
 import { HeroSection } from "@/features/portfolio/sections/HeroSection";
 import { JourneySection } from "@/features/portfolio/sections/JourneySection";
@@ -13,6 +14,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
+      <GitHubSyncSection />
       <JourneySection />
       <SkillsSection />
       <ContactSection />
