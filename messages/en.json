@@ -1,180 +1,19 @@
 {
-  "Metadata": {
-    "title": "Kauan Kelvin — Frontend Developer",
-    "description": "Portfolio with interactive 3D, 100 Lighthouse performance and bold design. Built to be remembered."
-  },
-  "Nav": {
-    "home": "HOME",
-    "about": "ABOUT",
-    "projects": "PROJECTS",
-    "contact": "CONTACT"
-  },
-  "Hero": {
-    "role1": "SOFTWARE ENGINEER",
-    "role2": "FULLSTACK DEVELOPER",
-    "design": "DESIGN &",
-    "performance": "PERFORMANCE.",
-    "name1": "KAUAN",
-    "name2": "KELVIN",
-    "status": "Open to opportunities",
-    "availability": "SOFTWARE ENGINEER · AVAILABLE FOR WORK",
-    "cta_primary": "VIEW PROJECTS",
-    "cta_secondary": "DOWNLOAD CV"
-  },
-  "About": {
-    "title": "WHO AM I ?",
-    "badge": "FULLSTACK DEVELOPER & TECH ENTHUSIAST",
-    "p1": "My name is Kauan Kelvin, I'm 20 years old and I'm passionate about learning new technologies. Currently, I'm a Software Engineering student at Unicesumar, focusing on Back-end Development.",
-    "p2": "I have practical experience with Java, React, TypeScript, Python and Node.js, as well as front-end knowledge. My goal is to transform challenges into scalable and secure solutions, delivering clean code focused on performance and maintaining robust systems.",
-    "quote": "It's not just about code, it's about solving problems elegantly and efficiently.",
-    "stats": {
-      "semester": "Semester",
-      "age": "Years Old",
-      "code": "Years of Coding",
-      "curiosity": "Curiosity"
-    },
-    "download": "Download CV"
-  },
-  "AboutModern": {
-    "title1": "ENGINEERING",
-    "title2": "& CODE",
-    "present": "THE PRESENT",
-    "p1": "My academic journey in Software Engineering provided the theoretical foundation needed to build robust systems. Today, I focus on transforming this theory into scalable applications using Java and the JavaScript ecosystem.",
-    "p2": "I work as a Freelance FullStack Developer, tackling real business challenges from SQL database modeling to creating high-performance React dashboards.",
-    "bullet1": "Systems Architecture & Back-end",
-    "bullet2": "Java / Spring Boot & Node.js",
-    "bullet3": "React, Vite & Tailwind CSS",
-    "philosophy_label": "Coding Philosophy",
-    "philosophy_text": "Delivering value through clean, secure, and performant code."
-  },
-  "AboutCyber": {
-    "title1": "SCALABLE",
-    "title2": "SOLUTIONS",
-    "backend_title": "ROBUST BACK-END",
-    "backend_p1": "My focus is on developing systems that don't just work, but can handle the load. I use Java and Spring Boot to create secure and efficient APIs, always thinking about scalability.",
-    "backend_p2": "The terminal you saw symbolizes my constant quest for automation and efficiency. From Python scripts to Linux deployments, I always seek total control over the ecosystem where my code runs.",
-    "bullet1": "RESTful APIs & Microservices with Java",
-    "bullet2": "SQL Modeling & NoSQL Databases",
-    "bullet3": "Process Automation with Python",
-    "system_status_label": "System Status",
-    "system_status_text": "SYSTEM ONLINE & SECURE"
-  },
-  "Projects": {
-    "title": "Projects",
-    "subtitle": "Selected",
-    "description": "A collection of digital experiences and robust systems developed with a focus on performance and scalability.",
-    "more": "Want to see more?",
-    "github_button": "View Full GitHub"
-  },
-  "Process": {
-    "item1": {
-      "title": "2023 — present",
-      "description": "Software Engineering · Unicesumar. Currently in the 5th semester, focusing on systems architecture, back-end and best software engineering practices.",
-      "detail1": "Architecture",
-      "detail2": "Back-end",
-      "detail3": "Software Engineering"
-    },
-    "item2": {
-      "title": "2024 — present",
-      "description": "Freelance FullStack Developer. Scheduling projects, dashboards and REST APIs using React, Node.js and relational databases.",
-      "detail1": "React",
-      "detail2": "Node.js",
-      "detail3": "SQL"
-    },
-    "item3": {
-      "title": "2022",
-      "description": "First steps in code. Started with HTML, CSS and JavaScript — and never stopped learning.",
-      "detail1": "HTML",
-      "detail2": "CSS",
-      "detail3": "JavaScript"
-    }
-  },
-  "Skills": {
-    "title": "My",
-    "subtitle": "Stack",
-    "certificates_title": "Certificates",
-    "syncing": "Syncing data...",
-    "verified": "VERIFIED",
-    "locked": "LOCKED",
-    "resource_locked": "RESOURCE LOCKED"
-  },
-  "Companies": {
-    "stat1": "Years of Code",
-    "stat2": "Projects",
-    "stat3": "Semester"
-  },
-  "Contact": {
-    "title1": "LET'S",
-    "title2": "TALK?",
-    "description": "Open to internships, freelance work, and collaborative projects. Responsive within 24h.",
-    "location": "BRAZIL / AVAILABLE",
-    "footer1": "DESIGN & CODE BY KAUAN KELVIN",
-    "footer2": "©2026 — ALL RIGHTS RESERVED"
-  },
-  "UI": {
-    "work": "WORK",
-    "view_project": "View Project",
-    "project_featured": "FEATURED PROJECT",
-    "project_case": "CASE STUDY",
-    "loading_scene": "loading scene...",
-    "system_booting": "SYSTEM BOOTING...",
-    "interactivity_hint": "[ MOUSE DRIVE ] HOLD AND ROTATE TO EXPLORE",
-    "interactivity_mobile": "[ TOUCH DRIVE ] DRAG AND ROTATE TO EXPLORE",
-    "aria_view_project": "View project {title}"
-  },
-  "Ticker": {
-    "items": "NEXT.JS · TYPESCRIPT · REACT THREE FIBER · TAILWIND CSS · FRAMER MOTION · PYTHON · SUPABASE · VERCEL · RAILWAY · GROQ"
-  },
-  "AboutSection": {
-    "eyebrow": "ABOUT ME"
-  },
-  "ProjectsSection": {
-    "eyebrow": "SELECTED WORK",
-    "syntax": {
-      "title": "SYNTAX",
-      "description": "Educational system developed for studying programming.",
-      "category": "EDUCATION · WEB APP"
-    },
-    "cinesia": {
-      "title": "CINESIA",
-      "description": "Complete system for physical therapy clinic management.",
-      "category": "HEALTHCARE · SAAS"
-    },
-    "omni": {
-      "title": "OMNI",
-      "description": "B2B SaaS focused on simplified business management.",
-      "category": "B2B · ECOSYSTEM"
-    },
-    "medsync": {
-      "title": "MEDSYNC",
-      "description": "Intelligent medical record and chat using AI APIs.",
-      "category": "AI · HEALTH TECH"
-    },
-    "gastos": {
-      "title": "EXPENSE CONTROL",
-      "description": "Personal finance application with visual reports and goals.",
-      "category": "FINANCE · WEB APP"
-    },
-    "xadrez": {
-      "title": "CHESS GAME",
-      "description": "Chess simulator developed in Java to consolidate OOP concepts.",
-      "category": "JAVA · GAME ENGINE"
-    }
-  },
-  "ProcessSection": {
-    "eyebrow": "WHAT I DO",
-    "item1": "Premium frontend — Next.js, animations, 3D, performance",
-    "item2": "Solid backend — REST APIs, authentication, databases",
-    "item3": "Deploy & infra — Vercel, Railway, Supabase, CI/CD",
-    "item4": "AI integrations — LLMs, agents, automations"
-  },
-  "ContactSection": {
-    "title": "LET'S WORK.",
-    "subtitle": "Available for international remote projects.",
-    "cta": "SEND A MESSAGE",
-    "name_placeholder": "Your name",
-    "email_placeholder": "Your best e-mail",
-    "project_placeholder": "Tell me about your project...",
-    "submit_button": "START PROJECT"
-  }
+  "Metadata": {"title":"Kauan Kelvin — Software Engineering, Back-end & Automation","description":"Kauan Kelvin's portfolio: Software Engineering student building projects with Java, Spring Boot, React, Python, automation and web applications."},
+  "Nav": {"home":"Home","about":"About","projects":"Projects","contact":"Contact"},
+  "Hero": {"role1":"Software Engineering","role2":"Back-end · Automation · Web","design":"ENGINEERING &","performance":"PRODUCT.","name1":"KAUAN","name2":"KELVIN","status":"Looking for an internship or junior opportunity in technology","availability":"Software Engineering student · open to opportunities","cta_primary":"View projects","cta_secondary":"View résumé"},
+  "About": {"title":"About me","badge":"Software Engineering student with hands-on technology experience","p1":"I'm a Software Engineering student and currently work in an administrative role where I also support IT systems, equipment and process improvements. Working close to real operational problems led me to build automations and applications for everyday tasks.","p2":"My current focus is back-end development, APIs, Java and Spring Boot, while React, TypeScript and Python are part of my toolkit when the problem calls for a complete solution.","quote":"I like to understand the problem first and use technology to make what used to be difficult simpler.","stats":{"semester":"Education","age":"Experience","code":"Projects","curiosity":"Learning"},"download":"View résumé"},
+  "AboutModern": {"title1":"ENGINEERING","title2":"IN PRACTICE","present":"Today","p1":"My Software Engineering studies are backed by projects where I have worked on architecture, persistence, authentication, APIs, testing and user experience — not just screens.","p2":"I also bring what I learn from administrative processes and IT support into software: observe the real workflow, find friction and automate what makes sense.","bullet1":"Java, Spring Boot and REST APIs","bullet2":"Python and process automation","bullet3":"React, TypeScript and web applications","philosophy_label":"How I work","philosophy_text":"Understand the problem, build something maintainable and prove that it works."},
+  "AboutCyber": {"title1":"BACK-END","title2":"& AUTOMATION","backend_title":"TECHNICAL FOCUS","backend_p1":"I have been focusing my studies on Java, Spring Boot, APIs and data modeling.","backend_p2":"Python is also part of my work when automation is the right answer.","bullet1":"REST APIs with Java / Spring Boot","bullet2":"SQL, PostgreSQL, Firebase and data modeling","bullet3":"RPA and automation with Python","system_status_label":"Current direction","system_status_text":"BACK-END · AUTOMATION · SOFTWARE ENGINEERING"},
+  "Projects": {"title":"Projects","subtitle":"that show my work","description":"A selection of projects where I had to make architecture decisions, implement real features and document what was built.","more":"Want to see more?","github_button":"Open my GitHub"},
+  "Process": {"item1":{"title":"2024 — present","description":"Software Engineering degree at UniCesumar.","detail1":"Architecture","detail2":"Back-end","detail3":"Software Engineering"},"item2":{"title":"2024 — present","description":"Administrative Assistant at NOVA Medicina e Segurança do Trabalho, also supporting systems, equipment and technology-driven process improvements.","detail1":"Processes","detail2":"IT support","detail3":"Automation"},"item3":{"title":"Personal projects and real client work","description":"Web apps, automation and back-end projects used to turn software engineering study into practice.","detail1":"Java","detail2":"Python","detail3":"React"}},
+  "Skills": {"title":"Technologies","subtitle":"I use","certificates_title":"Additional education","syncing":"Still learning","verified":"Completed","locked":"In progress","resource_locked":"In progress"},
+  "Companies": {"stat1":"Software Engineering","stat2":"Public code projects","stat3":"Open-source contribution"},
+  "Contact": {"title1":"LET'S","title2":"TALK?","description":"I'm interested in internships, junior roles and projects where I can contribute with development, automation or process improvement.","location":"Brasília / GO · remote or on-site","footer1":"Kauan Kelvin portfolio","footer2":"©2026"},
+  "UI": {"work":"Projects","view_project":"Open project","project_featured":"Featured project","project_case":"Project details","loading_scene":"Loading visual...","system_booting":"Loading experience...","interactivity_hint":"Hold and move to explore","interactivity_mobile":"Drag to explore","aria_view_project":"Open project {title}"},
+  "Ticker": {"items":"JAVA · SPRING BOOT · TYPESCRIPT · REACT · PYTHON · SELENIUM · FIREBASE · POSTGRESQL · GIT · LINUX"},
+  "AboutSection": {"eyebrow":"About"},
+  "ProjectsSection": {"eyebrow":"Selected projects","leve":{"title":"LEVE","description":"Personal planner PWA with authentication, command API, revision control, explicit conflicts and offline outbox support.","category":"React · TypeScript · Firebase · Express"},"dental":{"title":"DENTAL AUTOMATION","description":"Python and Selenium RPA for filling forms, attaching files and generating execution logs in a real clinic workflow.","category":"Python · Selenium · Openpyxl"},"omni":{"title":"OMNI","description":"Clinic management system with Java/Spring Boot API, PostgreSQL, React/TypeScript frontend and Python automations.","category":"Java · Spring Boot · PostgreSQL · React"},"cinesia":{"title":"CINESIA","description":"Physical Therapy study platform with PWA, Firebase, spaced repetition, quizzes and AI-assisted features.","category":"React · Firebase · PWA · Gemini"},"rustdesk":{"title":"RUSTDESK — OPEN-SOURCE CONTRIBUTION","description":"Accepted contribution adding Brazilian Portuguese Android Fastlane metadata to RustDesk.","category":"Open Source · GitHub · Localization"},"xadrez":{"title":"CHESS GAME","description":"Java project used to practice object-oriented programming, domain rules and code organization.","category":"Java · OOP"}},
+  "ProcessSection": {"eyebrow":"How I have been growing","title1":"LEARNING","title2":"BY BUILDING","description":"I use personal projects, real demands and open-source contribution to turn study into practice.","item1":"Architecture and back-end — Java, Spring Boot, APIs, authentication and data","item2":"Automation — Python, Selenium, file processing and integrations","item3":"Web product — React, TypeScript, Firebase, PWA and accessibility","item4":"Quality — Git, documentation, testing, review and open source"},
+  "ContactSection": {"title":"GET IN TOUCH.","subtitle":"If you're looking for someone early in their career who already puts engineering into practice, tell me about the opportunity.","cta":"Send a message","name_placeholder":"Your name","email_placeholder":"Your email","project_placeholder":"Tell me about the opportunity or project","submit_button":"Send message","sending":"Sending...","success":"Message sent. Thanks for reaching out — I'll reply as soon as I can.","send_another":"Send another message","social":"Find me online","availability":"Open to internships and junior roles","back_to_top":"Back to top"}
 }
