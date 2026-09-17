@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Kauan Kelvin</title>
+  <rect width="64" height="64" rx="18" fill="#0f150f"/>
+  <rect x="1" y="1" width="62" height="62" rx="17" fill="none" stroke="#2b382b" stroke-width="2"/>
+  <path d="M20 16v32M21 32l22-16M21 32l23 17" fill="none" stroke="#8baa7d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

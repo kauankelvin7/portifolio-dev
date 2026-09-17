@@ -1,6 +1,8 @@
 export const siteConfig = {
   name: "Kauan Kelvin",
   shortName: "Kauan",
+  githubUsername: "kauankelvin7",
+  profileImage: "https://avatars.githubusercontent.com/u/159865016?v=4",
   email: "kelvinkauan722@gmail.com",
   links: {
     github: "https://github.com/kauankelvin7",
