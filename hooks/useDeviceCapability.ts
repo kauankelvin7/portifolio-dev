@@ -1,41 +1,56 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
 
-export const useDeviceCapability = () => {
-  const [isLowEnd, setIsLowEnd] = useState(false);
+type NavigatorWithDeviceMemory = Navigator & {
+  deviceMemory?: number;
+};
+
+type DeviceCapability = {
+  isLowEnd: boolean;
+  webglSupported: boolean;
+  isReady: boolean;
+};
+
+function supportsWebGL(): boolean {
+  try {
+    const canvas = document.createElement("canvas");
+    return Boolean(
+      window.WebGLRenderingContext &&
+        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")),
+    );
+  } catch {
+    return false;
+  }
+}
+
+export const useDeviceCapability = (): DeviceCapability => {
+  const [capability, setCapability] = useState<DeviceCapability>({
+    isLowEnd: false,
+    webglSupported: true,
+    isReady: false,
+  });
 
   useEffect(() => {
     const checkCapability = () => {
-      // hardwareConcurrency: number of logical processor cores
       const cores = navigator.hardwareConcurrency || 4;
-      
-      // deviceMemory: approximate amount of device memory in gigabytes
-      // Type assertion for deviceMemory as it's not in all lib.dom versions
-      const memory = (navigator as any).deviceMemory || 4;
-      
-      // Screen width check
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const memory = (navigator as NavigatorWithDeviceMemory).deviceMemory || 4;
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-      // Low end criteria:
-      // - 4 cores or less
-      // - 2GB RAM or less
-      // - Mobile screen
-      const lowEnd = cores <= 4 || memory <= 2 || isMobile;
-      
-      setIsLowEnd(lowEnd);
+      setCapability({
+        isLowEnd: cores <= 4 || memory <= 2 || isMobile,
+        webglSupported: supportsWebGL(),
+        isReady: true,
+      });
     };
 
     checkCapability();
-    
-    // Optional: add listener for resize if we want to update dynamically
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
-    const handleResize = () => checkCapability();
-    
-    mediaQuery.addEventListener('change', handleResize);
-    
-    return () => mediaQuery.removeEventListener('change', handleResize);
+
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    mediaQuery.addEventListener("change", checkCapability);
+
+    return () => mediaQuery.removeEventListener("change", checkCapability);
   }, []);
 
-  return { isLowEnd };
+  return capability;
 };
