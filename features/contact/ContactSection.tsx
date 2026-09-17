@@ -1,8 +1,8 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
 import { CheckCircle2, Github, Linkedin, Mail } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { useActionState, useEffect, useRef } from "react";
 import { sendEmail } from "@/actions/send-email";
 import { siteConfig } from "@/config/site";
 
@@ -47,30 +47,35 @@ export default function ContactSection() {
               <p className="mt-8 text-sm font-semibold text-black/65">{tSection("availability")}</p>
             </div>
 
-            <form ref={formRef} action={formAction} className="rounded-[var(--radius-lg)] border border-black/10 bg-black/[0.07] p-5 md:p-7">
+            <form ref={formRef} action={formAction} className="relative rounded-[var(--radius-lg)] border border-black/10 bg-black/[0.07] p-5 md:p-7">
               <input type="hidden" name="locale" value={locale} />
+
+              <label className="pointer-events-none absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                Website
+                <input name="website" tabIndex={-1} autoComplete="off" />
+              </label>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <label className="grid gap-2">
                   <span className="text-xs font-semibold text-black/60">{tSection("name_label")}</span>
-                  <input name="name" required placeholder={tSection("name_placeholder")} className="contact-field" disabled={isPending} />
+                  <input name="name" required minLength={2} maxLength={80} autoComplete="name" placeholder={tSection("name_placeholder")} className="contact-field" disabled={isPending} />
                   {state?.errors?.name?.[0] && <span className="text-xs font-semibold text-black/70">{state.errors.name[0]}</span>}
                 </label>
                 <label className="grid gap-2">
                   <span className="text-xs font-semibold text-black/60">{tSection("email_label")}</span>
-                  <input name="email" type="email" required placeholder={tSection("email_placeholder")} className="contact-field" disabled={isPending} />
+                  <input name="email" type="email" required maxLength={254} autoComplete="email" placeholder={tSection("email_placeholder")} className="contact-field" disabled={isPending} />
                   {state?.errors?.email?.[0] && <span className="text-xs font-semibold text-black/70">{state.errors.email[0]}</span>}
                 </label>
               </div>
 
               <label className="mt-4 grid gap-2">
                 <span className="text-xs font-semibold text-black/60">{tSection("message_label")}</span>
-                <textarea name="message" rows={6} required placeholder={tSection("project_placeholder")} className="contact-field py-4" disabled={isPending} />
+                <textarea name="message" rows={6} required minLength={10} maxLength={3000} placeholder={tSection("project_placeholder")} className="contact-field py-4" disabled={isPending} />
                 {state?.errors?.message?.[0] && <span className="text-xs font-semibold text-black/70">{state.errors.message[0]}</span>}
               </label>
 
               {state?.message && (
-                <div className="mt-4 flex items-start gap-3 rounded-xl border border-black/10 bg-white/20 p-4 text-sm leading-6 text-black/75">
+                <div className="mt-4 flex items-start gap-3 rounded-xl border border-black/10 bg-white/20 p-4 text-sm leading-6 text-black/75" role="status" aria-live="polite">
                   {state.success && <CheckCircle2 className="mt-0.5 shrink-0" size={18} aria-hidden="true" />}
                   <span>{state.message}</span>
                 </div>
