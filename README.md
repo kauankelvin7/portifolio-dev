@@ -1,140 +1,90 @@
-<div align="center">
+# Portfólio — Kauan Kelvin
 
-```
-██████╗  ██████╗ ██████╗ ████████╗███████╗ ██████╗ ██╗     ██╗ ██████╗
-██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██╔═══██╗██║     ██║██╔═══██╗
-██████╔╝██║   ██║██████╔╝   ██║   █████╗  ██║   ██║██║     ██║██║   ██║
-██╔═══╝ ██║   ██║██╔══██╗   ██║   ██╔══╝  ██║   ██║██║     ██║██║   ██║
-██║     ╚██████╔╝██║  ██║   ██║   ██║     ╚██████╔╝███████╗██║╚██████╔╝
-╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝      ╚═════╝ ╚══════╝╚═╝ ╚═════╝
-```
+Portfólio pessoal desenvolvido para apresentar minha formação em Engenharia de Software, projetos, experiências práticas com tecnologia e contribuições open source.
 
-### ─────── NEO-BRUTALIST · 3D INTERACTIVE · PERFORMANCE-FIRST ───────
+A interface usa 3D como elemento de identidade, mas o foco do projeto é simples: deixar claro o que eu estudo, o que já construí e quais problemas técnicos consigo enfrentar hoje.
 
-<br />
+## Sobre mim
 
-[![Lighthouse](https://img.shields.io/badge/Lighthouse-100%2F100-brightgreen)](https://pagespeed.web.dev/analysis/https-kauankelvindev-vercel-app/ofskc5x1t0?form_factor=desktop)
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-000000?logo=vercel&logoColor=white)](https://kauankelvindev.vercel.app/)
-[![Licença MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+Sou estudante de Engenharia de Software e atualmente trabalho na área administrativa, onde também atuo com suporte de TI, sistemas e melhoria de processos. Tenho direcionado meus estudos para back-end, APIs, Java e Spring Boot, além de usar Python para automação e React/TypeScript em aplicações web.
 
-<br />
+Busco oportunidades de estágio ou nível júnior em tecnologia.
 
-**"Feito para ser lembrado."**
+## Projetos em destaque
 
-<br />
+- **Leve** — agenda pessoal PWA com React, TypeScript, Firebase, API de comandos, controle de revisão, conflitos explícitos e suporte offline.
+- **Automação Odontológica** — RPA em Python e Selenium criado para automatizar um fluxo real de faturamento odontológico.
+- **Omni** — sistema para clínicas com Java 17, Spring Boot 3, PostgreSQL, React/TypeScript e automações em Python.
+- **Cinesia** — plataforma de estudos para Fisioterapia com React, Firebase, PWA, revisão espaçada e recursos assistidos por IA.
+- **RustDesk** — contribuição open source aceita no projeto oficial, adicionando metadados pt-BR para Android via Fastlane.
 
-[![🚀 Ver ao Vivo](https://img.shields.io/badge/▶_VER_AO_VIVO-000000?style=for-the-badge&logoColor=white)](https://kauankelvindev.vercel.app/)
+## Stack do portfólio
 
-<br />
+| Área | Tecnologias |
+| --- | --- |
+| Framework | Next.js 16 + React 19 |
+| Linguagem | TypeScript |
+| Interface | Tailwind CSS 4 |
+| 3D | React Three Fiber + Three.js |
+| Animação | Framer Motion |
+| Internacionalização | next-intl |
+| Formulário | Server Actions + Resend + Zod |
+| Deploy | Vercel |
 
-</div>
+## Direção de design
 
----
+A identidade visual usa fundo escuro, tipografia de alto contraste e laranja como cor de destaque. Na refatoração atual, o design system passou a usar tokens semânticos para superfície, borda, texto, destaque, espaçamento e raios.
 
-## 📸 PREVIEW
+O 3D foi mantido no hero como assinatura visual. Elementos que competiam com o conteúdo — múltiplas cenas 3D, contadores promocionais, cursor customizado e excesso de efeitos — foram removidos para dar mais espaço aos projetos e à trajetória técnica.
 
-<div align="center">
-  <table>
-    <tr>
-      <td width="60%">
-        <img src="./public/screenshots/desktop.png" alt="Desktop Preview" width="100%">
-      </td>
-      <td width="40%">
-        <img src="./public/screenshots/mobile.png" alt="Mobile Preview" width="100%">
-      </td>
-    </tr>
-  </table>
+## Internacionalização
 
-  <!-- substitua pelo seu GIF aqui: <img src="./public/screenshots/hero-animation.gif" alt="Animação 3D" width="800"> -->
-</div>
+O portfólio mantém três idiomas:
 
----
+- Português
+- Inglês
+- Espanhol
 
-## ◼ O QUE É ISSO?
+São os idiomas relevantes para minha apresentação profissional atual e, por isso, concentram a manutenção de conteúdo.
 
-Um portfólio construído contra o padrão. Enquanto todo mundo utiliza templates minimalistas e gradientes suaves, este projeto abraça o **Neo-Brutalismo**: tipografia pesada, sombras duras, bordas marcadas e contrastes vibrantes — sem abrir mão de nenhum décimo de performance.
+## Acessibilidade
 
-A pergunta que guiou cada decisão de design foi simples: **"Quem vê vai lembrar?"**
+O projeto considera:
 
----
+- `prefers-reduced-motion`;
+- foco visível por teclado;
+- navegação sem depender de gestos;
+- labels acessíveis em links e botões;
+- contraste e hierarquia tipográfica;
+- experiência responsiva em desktop e mobile.
 
-## 🛠 TECH STACK
-
-| Camada | Tecnologia | Por Quê? |
-| :--- | :--- | :--- |
-| **Framework** | Next.js 16 (App Router) | SEO, Server Actions e performance SSR. |
-| **3D Engine** | React Three Fiber | Three.js com ergonomia React para cenas interativas. |
-| **Styling** | Tailwind CSS v4 | CSS-first, zero runtime e design tokens rápidos. |
-| **Animações** | Framer Motion | Transições fluidas e controle de Motion Accessibility. |
-| **Linguagem** | TypeScript Strict | Código auto-documentado e livre de bugs comuns. |
-| **Deploy** | Vercel Edge | Latência mínima e CI/CD robusto. |
-
----
-
-## ⚡ PERFORMANCE & ACESSIBILIDADE
-
-Ter 3D no browser e ainda assim carregar instantaneamente exige engenharia de ponta:
-
-- **Adaptive Rendering**: O sistema detecta hardware low-end e reduz automaticamente a carga do 3D (DPR, luzes e materiais).
-- **Motion Control**: Suporte nativo a `prefers-reduced-motion` para usuários sensíveis a movimento.
-- **Draco Compression**: Modelos `.glb` comprimidos em até 90% para download ultra-rápido.
-- **Zero CLS**: Fontes e assets carregados sem saltos de layout através de loaders customizados.
-
-### Lighthouse Scores
-| Métrica | Score |
-| :--- | :--- |
-| **Performance** | 🟢 100 |
-| **Acessibilidade** | 🟢 100 |
-| **Boas Práticas** | 🟢 100 |
-| **SEO** | 🟢 100 |
-
----
-
-## 🚀 RODANDO LOCALMENTE
+## Executando localmente
 
 ```bash
-# 1. Clone o repositório
-git clone https://github.com/kauankelvin7/portfolio-dev.git
-
-# 2. Acesse a pasta
-cd portfolio-dev
-
-# 3. Instale as dependências
+git clone https://github.com/kauankelvin7/portifolio-dev.git
+cd portifolio-dev
 npm install
-
-# 4. Rode o ambiente de desenvolvimento
 npm run dev
 ```
 
-Abra **[kauankelvindev.vercel.app](https://kauankelvindev.vercel.app/)** no seu navegador para ver a versão em produção.
-
----
-
-## 📂 ESTRUTURA
+Para validar uma build de produção:
 
 ```bash
-portfolio-neobrutalista/
-├── app/                # Rotas, layouts e metadados SEO
-├── components/
-│   ├── 3d/             # Cenas Three.js e BootLoaders
-│   ├── ui/             # Design System (Neobrutalist components)
-│   └── sections/       # Seções principais da Home
-├── public/
-│   ├── models/         # Assets 3D (.glb)
-│   └── screenshots/    # Assets visuais do README
-└── hooks/              # Lógica de Device Capability e Reduced Motion
+npm run lint
+npm run build
 ```
 
----
+## Links
 
-## 📩 CONTATO
+- Portfólio: https://kauankelvindev.vercel.app
+- GitHub: https://github.com/kauankelvin7
+- LinkedIn: https://www.linkedin.com/in/kauan-kelvin/
 
-- **LinkedIn**: [Kauan Kelvin](https://www.linkedin.com/in/kauan-kelvin)
-- **Email**: [kelvinkauan722@gmail.com](mailto:kelvinkauan722@gmail.com)
-- **GitHub**: [github.com/kauankelvin7](https://github.com/kauankelvin7)
+## Autor
 
----
+**Kauan Kelvin**  
+Estudante de Engenharia de Software · Back-end · Automação · Desenvolvimento Web
 
-<div align="center">
-  <p>Design & Code by <strong>Kauan Kelvin</strong> © 2026</p>
-</div>
+## Licença
+
+MIT — consulte [LICENSE](./LICENSE).
