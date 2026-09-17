@@ -6,7 +6,7 @@ export interface PortfolioProject {
   image?: string;
 }
 
-export const projects = [
+export const projects: readonly PortfolioProject[] = [
   {
     id: 1,
     translationKey: "leve",
@@ -46,4 +46,4 @@ export const projects = [
     image: "/images/projects/xadrez.png",
     link: "https://github.com/kauankelvin7/Jogo-de-Xadrez",
   },
-] satisfies readonly PortfolioProject[];
+];
