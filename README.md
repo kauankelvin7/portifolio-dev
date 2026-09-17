@@ -25,9 +25,10 @@ Busco oportunidades de estágio ou nível júnior em tecnologia.
 | --- | --- |
 | Framework | Next.js 16 + React 19 |
 | Linguagem | TypeScript |
-| Interface | Tailwind CSS 4 |
+| Interface | Tailwind CSS 4 + CSS nativo |
 | Internacionalização | next-intl |
 | Formulário | Server Actions + Resend + Zod |
+| Mídia | next/image + SVGs próprios |
 | Deploy | Vercel |
 | CI | GitHub Actions |
 
@@ -36,7 +37,7 @@ Busco oportunidades de estágio ou nível júnior em tecnologia.
 A organização segue uma abordagem por responsabilidade, inspirada nos princípios aplicados no projeto Leve, mas proporcional a um portfólio pessoal:
 
 ```text
-app/                     rotas, metadata e estilos globais
+app/                     rotas, metadata, ícone e estilos globais
 components/              componentes compartilhados
 config/                  identidade e links estáveis
 features/
@@ -47,7 +48,8 @@ features/
   contact/               formulário e fronteira client-side
 actions/                 integrações server-side
 i18n/ + messages/        localização pt/en/es
-docs/                    arquitetura e decisões técnicas
+public/brand/             marca vetorial própria
+docs/                    arquitetura e sistema visual
 ```
 
 A home apenas compõe as features. Seções de conteúdo são Server Components; o cliente fica restrito ao menu, seletor de idioma e formulário de contato.
@@ -56,9 +58,34 @@ Mais detalhes: [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md).
 
 ## Direção de design
 
-A identidade visual usa fundo quase preto, tipografia de alto contraste e laranja como cor de destaque. O hero é uma composição editorial em CSS, sem WebGL obrigatório, preservando personalidade sem transformar efeito visual em custo permanente de CPU/GPU.
+A identidade usa fundo quase preto com superfícies levemente esverdeadas e um verde musgo (`#8baa7d`) como destaque. O verde aparece em ações, foco, estados ativos e elementos de assinatura, evitando grandes blocos saturados.
 
-O design system usa tokens semânticos para superfície, borda, texto, destaque, espaçamento e raios. Abaixo da primeira dobra, `content-visibility` reduz trabalho de renderização em conteúdo ainda fora da viewport.
+A foto exibida na seção sobre é a imagem real do perfil do GitHub. Screenshots de projetos são mantidas como evidência do produto: o Leve usa uma captura versionada no próprio repositório e os projetos sem mídia pública adequada recebem um fallback editorial em vez de uma imagem inventada.
+
+A marca `K` e o ícone do site são SVGs próprios. Assets padrão do template Next.js, screenshots antigas do portfólio e mídia sem uso foram removidos.
+
+As regras completas estão em [`docs/VISUAL-SYSTEM.md`](./docs/VISUAL-SYSTEM.md).
+
+## Movimento, acessibilidade e performance
+
+O movimento é CSS-first e progressivo:
+
+- entrada curta do hero;
+- hover discreto em cards, avatar e botões;
+- reveal de conteúdo com `view-timeline` quando o navegador suporta;
+- feedback sutil de disponibilidade e do painel técnico;
+- `prefers-reduced-motion` desativa movimento não essencial.
+
+O projeto também considera:
+
+- foco visível por teclado;
+- navegação por âncoras sem delays artificiais;
+- labels acessíveis e localizados em português, inglês e espanhol;
+- contraste e hierarquia tipográfica;
+- imagens servidas com `next/image`;
+- fontes carregadas com `next/font`;
+- Server Components como padrão;
+- ausência de 3D, scroll hijacking e animação pesada no caminho crítico.
 
 ## Internacionalização
 
@@ -68,19 +95,7 @@ O portfólio mantém três idiomas:
 - Inglês
 - Espanhol
 
-## Acessibilidade e performance
-
-O projeto considera:
-
-- `prefers-reduced-motion`;
-- foco visível por teclado;
-- navegação por âncoras sem delays artificiais;
-- labels acessíveis em links e botões;
-- contraste e hierarquia tipográfica;
-- imagens servidas com `next/image`;
-- fontes carregadas com `next/font`;
-- Server Components como padrão;
-- ausência de 3D, scroll hijacking e animação pesada no caminho crítico.
+Textos de navegação, categorias de stack e labels de acessibilidade fazem parte do mesmo sistema de tradução.
 
 ## Executando localmente
 
@@ -100,7 +115,7 @@ npm run lint
 npm run build
 ```
 
-O mesmo fluxo é executado pelo GitHub Actions em pull requests.
+O mesmo fluxo é executado pelo GitHub Actions em pull requests, incluindo auditoria de vulnerabilidades críticas no runtime.
 
 ## Links
 
