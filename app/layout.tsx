@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
+import { Archivo_Black, Inter } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages, getTranslations } from 'next-intl/server';
 import "./globals.css";
-import SmoothScroll from "@/components/layout/SmoothScroll";
-import { TransitionProvider } from "@/app/context/TransitionContext";
-import PageTransition from "@/components/ui/PageTransition";
-import { AccessibleMotion } from "@/components/ui/AccessibleMotion";
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const archivoBlack = Archivo_Black({
+  subsets: ['latin'],
+  variable: '--font-archivo',
+  weight: '400',
+  display: 'swap',
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('Metadata');
@@ -42,19 +52,12 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${inter.variable} ${archivoBlack.variable}`}>
       <body className="font-body bg-[var(--background)] text-[var(--text)]">
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <AccessibleMotion>
-            <SmoothScroll>
-              <TransitionProvider>
-                <PageTransition />
-                <main className="min-h-screen w-full overflow-x-hidden bg-[var(--background)]">
-                  {children}
-                </main>
-              </TransitionProvider>
-            </SmoothScroll>
-          </AccessibleMotion>
+          <main className="min-h-screen w-full overflow-x-clip bg-[var(--background)]">
+            {children}
+          </main>
         </NextIntlClientProvider>
       </body>
     </html>
