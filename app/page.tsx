@@ -7,6 +7,7 @@ import { ArrowDownRight, Github } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { AboutModern } from '@/components/sections/AboutModern';
 import { Projects } from '@/components/sections/Projects';
+import { GitHubSync } from '@/components/sections/GitHubSync';
 import { Process } from '@/components/sections/Process';
 import { Skills } from '@/components/sections/Skills';
 import ContactFooter from '@/components/sections/ContactFooter';
@@ -100,6 +101,7 @@ export default function Home() {
 
       <AboutModern />
       <Projects />
+      <GitHubSync />
       <Process />
       <Skills />
       <ContactFooter />
