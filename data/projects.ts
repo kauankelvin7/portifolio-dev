@@ -1,62 +1,59 @@
 export const projects = [
   {
     id: 1,
-    translateKey: "syntax",
-    title: "Syntax",
-    description: "Sistema educacional desenvolvido para estudar programação e lógica computacional.",
-    tags: ["React", "Vite", "Java", "JavaScript", "PWA", "Tailwind", "Gemini AI"],
-    image: "/images/projects/syntax.png",
-    link: "https://github.com/kauankelvin7/Syntax",
-    status: "01 —"
+    translateKey: "leve",
+    title: "Leve",
+    description: "Agenda pessoal PWA com API de comandos, controle de revisão, conflitos explícitos e suporte offline.",
+    tags: ["React", "TypeScript", "Firebase", "Express", "PWA", "Playwright"],
+    link: "https://github.com/kauankelvin7/Leve",
+    status: "01"
   },
   {
     id: 2,
-    translateKey: "cinesia",
-    title: "Cinesia",
-    description: "Sistema completo para gestão de clínicas de fisioterapia, permitindo controle de pacientes, prontuários eletrônicos e agendamentos.",
-    tags: ["React", "TypeScript", "Node.js", "MySQL"],
-    image: "/images/projects/cinesia.png",
-    link: "https://github.com/kauankelvin7/Cinesia",
-    status: "02 —"
+    translateKey: "dental",
+    title: "Automação Odontológica",
+    description: "RPA em Python e Selenium criado para automatizar um fluxo real de faturamento odontológico.",
+    tags: ["Python", "Selenium", "Openpyxl", "RPA", "Automação"],
+    link: "https://github.com/kauankelvin7/Automacao-Clinica-Odontologica",
+    status: "02"
   },
   {
     id: 3,
     translateKey: "omni",
     title: "Omni",
-    description: "SaaS focado no mercado B2B para gestão empresarial simplificada, integrando controle de estoque, financeiro e vendas.",
-    tags: ["React", "NestJS", "PostgreSQL", "Tailwind"],
+    description: "Sistema de gestão para clínicas com API Java/Spring Boot, PostgreSQL e frontend React/TypeScript.",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "React", "TypeScript", "Python"],
     image: "/images/projects/omni.png",
     link: "https://github.com/kauankelvin7/Omni",
-    status: "03 —"
+    status: "03"
   },
   {
     id: 4,
-    translateKey: "medsync",
-    title: "MedSync",
-    description: "Prontuário e chat médico inteligente que utiliza APIs de IA para auxiliar profissionais de saúde em diagnósticos e triagem.",
-    tags: ["Next.js", "Python", "OpenAI API", "Firebase"],
-    image: "/images/projects/medsync.png",
-    link: "https://github.com/kauankelvin7/sistema-agenda-ocupacional",
-    status: "04 —"
+    translateKey: "cinesia",
+    title: "Cinesia",
+    description: "Plataforma de estudos para Fisioterapia com PWA, Firebase, revisão espaçada e recursos assistidos por IA.",
+    tags: ["React", "Vite", "Firebase", "PWA", "Gemini", "Vitest"],
+    image: "/images/projects/cinesia.png",
+    link: "https://github.com/kauankelvin7/Cinesia",
+    status: "04"
   },
   {
     id: 5,
-    translateKey: "gastos",
-    title: "Controle de Gastos",
-    description: "Aplicação voltada para finanças pessoais, com relatórios visuais de despesas, metas de economia e histórico de transações.",
-    tags: ["React", "Firebase", "Styled Components"],
-    image: "/images/projects/gastos.png",
-    link: "https://github.com/kauankelvin7/ControleDeGastos",
-    status: "05 —"
+    translateKey: "rustdesk",
+    title: "RustDesk — contribuição open source",
+    description: "Contribuição aceita adicionando metadados em português do Brasil para a distribuição Android do RustDesk.",
+    tags: ["Open Source", "GitHub", "Fastlane", "pt-BR"],
+    link: "https://github.com/rustdesk/rustdesk/pull/16135",
+    status: "05"
   },
   {
     id: 6,
     translateKey: "xadrez",
     title: "Jogo de Xadrez",
-    description: "Simulador de xadrez desenvolvido em Java puro para consolidar conceitos de Programação Orientada a Objetos e Lógica de Programação.",
-    tags: ["Java", "POO", "Desktop"],
+    description: "Projeto em Java usado para consolidar orientação a objetos, regras de domínio e organização de código.",
+    tags: ["Java", "POO", "Domain Modeling"],
     image: "/images/projects/xadrez.png",
     link: "https://github.com/kauankelvin7/Jogo-de-Xadrez",
-    status: "06 —"
+    status: "06"
   }
-];
+];

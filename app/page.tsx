@@ -3,36 +3,22 @@
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { Header } from "@/components/layout/Header";
-import { AboutModern } from "@/components/sections/AboutModern";
-import { AboutCyber } from "@/components/sections/AboutCyber";
-import { Projects } from "@/components/sections/Projects";
-import { Process } from "@/components/sections/Process";
-import { Companies } from "@/components/sections/Companies";
-import { Skills } from "@/components/sections/Skills";
-import ContactFooter from "@/components/sections/ContactFooter";
-import LazyLoad from "@/components/layout/LazyLoad";
-import { useTransition } from "@/app/context/TransitionContext";
+import { ArrowDownRight, Github } from 'lucide-react';
+import { Header } from '@/components/layout/Header';
+import { AboutModern } from '@/components/sections/AboutModern';
+import { Projects } from '@/components/sections/Projects';
+import { Process } from '@/components/sections/Process';
+import { Skills } from '@/components/sections/Skills';
+import ContactFooter from '@/components/sections/ContactFooter';
+import LazyLoad from '@/components/layout/LazyLoad';
+import { useTransition } from '@/app/context/TransitionContext';
 import CanvasLoader from '@/components/ui/CanvasLoader';
 
-// We wrap the dynamic imports with a loading fallback that passes the translated label
-// This ensures that the loader shows the correct language during the initial chunk loading
-const Scene = dynamic(() => import("@/components/3d/Scene"), {
+const Scene = dynamic(() => import('@/components/3d/Scene'), {
   ssr: false,
   loading: () => <CanvasLoaderTranslate />,
 });
 
-const SceneMacbook = dynamic(() => import("@/components/3d/SceneMacbook"), {
-  ssr: false,
-  loading: () => <CanvasLoaderTranslate />,
-});
-
-const SceneCyber = dynamic(() => import("@/components/3d/SceneCyber"), {
-  ssr: false,
-  loading: () => <CanvasLoaderTranslate />,
-});
-
-// Helper component for translated loader
 function CanvasLoaderTranslate() {
   const t = useTranslations('UI');
   return <CanvasLoader label={t('system_booting')} />;
@@ -40,129 +26,82 @@ function CanvasLoaderTranslate() {
 
 export default function Home() {
   const t = useTranslations('Hero');
-  const tUI = useTranslations('UI');
-  const tCompanies = useTranslations('Companies');
   const { startTransition } = useTransition();
 
-  const handleCtaClick = async (e: React.MouseEvent, href: string) => {
-    e.preventDefault();
+  const handleCtaClick = async (event: React.MouseEvent, href: string) => {
+    event.preventDefault();
     await startTransition(href);
   };
 
   return (
-    <div className="relative w-full bg-[#0c0b09] text-white font-body">
-      
+    <div className="relative min-h-full w-full bg-[var(--background)] text-[var(--text)]">
       <Header />
 
-      <section className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-[28px] py-[64px]" style={{ background: '#0c0b09', borderBottom: '1px solid #1a1815' }}>
-        <div id="home" className="absolute inset-0 z-10">
-           <LazyLoad>
+      <section id="home" className="relative min-h-[calc(100dvh-68px)] overflow-hidden border-b border-[var(--border-soft)]">
+        <div className="absolute inset-0 opacity-80" aria-hidden="true">
+          <LazyLoad>
             <Scene />
           </LazyLoad>
         </div>
 
-        {/* Top Left Layout Texts */}
-        <div className="absolute z-10 pointer-events-none w-full px-6 top-24 flex justify-between items-start md:top-12 md:left-12 md:right-12 md:px-0">
-          <div className="font-display p-0 md:p-4 text-xs md:text-sm font-bold tracking-wider uppercase flex flex-col min-w-[120px] md:min-w-[180px] text-white/50">
-            <p className="text-left whitespace-nowrap">{t('role1')}</p>
-            <p className="text-left whitespace-nowrap">{t('role2')}</p>
-          </div>
-        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,11,9,0.97)_0%,rgba(12,11,9,0.86)_45%,rgba(12,11,9,0.34)_75%,rgba(12,11,9,0.12)_100%)]" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,11,9,0.14),rgba(12,11,9,0.65))]" aria-hidden="true" />
 
-        <div className="relative z-20 mt-auto mb-12 text-center flex flex-col items-center justify-center w-full max-w-5xl px-4">
-           
-           {/* Availability Pill */}
-           <div 
-             className="mb-8 items-center gap-[7px]"
-             style={{ display: 'inline-flex', border: '1px solid #1e1c19', borderRadius: '999px', padding: '5px 14px' }}
-           >
-             <div className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e5591d] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#e5591d]"></span>
-             </div>
-             <span style={{ fontSize: '10px', color: '#888888', letterSpacing: '0.1em', fontFamily: 'sans-serif', textTransform: 'uppercase' }}>
-               {t('availability')}
-             </span>
-           </div>
+        <div className="container-shell relative z-10 flex min-h-[calc(100dvh-68px)] items-end py-16 md:items-center md:py-24">
+          <div className="max-w-4xl">
+            <div className="mb-8 flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.08em] text-[var(--text-muted)]">
+              <span className="rounded-full border border-[var(--border)] bg-black/20 px-3 py-2 backdrop-blur-sm">
+                {t('role1')}
+              </span>
+              <span className="hidden h-px w-8 bg-[var(--border)] sm:block" />
+              <span>{t('role2')}</span>
+            </div>
 
-           <h1 
-             className="uppercase text-white overflow-hidden text-balance" 
-             style={{ fontSize: 'clamp(72px, 15vw, 150px)', fontWeight: 900, lineHeight: 0.85, letterSpacing: '-0.04em', fontFamily: 'var(--font-display)' }}
-           >
-            {t('name1')} <em style={{ fontStyle: 'normal', color: '#e5591d' }}>{t('name2')}</em>
-          </h1>
-          <p className="mt-12 mb-12" style={{ fontSize: '13px', fontWeight: 400, color: '#555555', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-            {t('status')}
-          </p>
+            <h1 className="max-w-[11ch] font-display text-[clamp(4.2rem,13vw,10rem)] leading-[0.82] tracking-[-0.065em] text-white">
+              {t('name1')} <span className="text-[var(--accent)]">{t('name2')}</span>
+            </h1>
 
-          {/* CTAs */}
-          <div className="flex items-center justify-center gap-4 relative z-30 pointer-events-auto">
-             <Link 
-               href="#work"
-               onClick={(e) => handleCtaClick(e, '#work')}
-               style={{ background: '#e5591d', color: '#ffffff', padding: '14px 28px', borderRadius: '6px', fontSize: '12px', fontWeight: 900, letterSpacing: '0.08em', textTransform: 'uppercase', transition: 'all 0.3s' }}
-               className="hover:shadow-[0_0_20px_rgba(229,89,29,0.3)] hover:scale-105 active:scale-95"
-             >
-               {t('cta_primary')}
-             </Link>
-             <a 
-               href="/curriculum/resume.pdf"
-               target="_blank"
-               style={{ background: 'transparent', color: '#aaaaaa', border: '1px solid #2a2825', padding: '14px 28px', borderRadius: '6px', fontSize: '12px', fontWeight: 900, letterSpacing: '0.08em', textTransform: 'uppercase', transition: 'all 0.3s' }}
-               className="hover:border-[#aaaaaa] hover:text-[#ffffff] active:scale-95"
-             >
-               {t('cta_secondary')}
-             </a>
-          </div>
+            <p className="mt-8 max-w-2xl text-base leading-7 text-[var(--text-soft)] md:text-lg">
+              {t('status')}
+            </p>
 
-          {/* Stats Row */}
-          <div 
-             className="w-full relative z-30 hidden md:grid"
-             style={{ marginTop: '64px', paddingTop: '32px', borderTop: '1px solid #1a1815', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}
-          >
-             <div className="flex flex-col items-center">
-                <div style={{ fontSize: '32px', fontWeight: 900, fontFamily: 'var(--font-display)' }}>3<span style={{ color: '#e5591d' }}>+</span></div>
-                <div style={{ fontSize: '9px', color: '#888888', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{tCompanies('stat1')}</div>
-             </div>
-             <div className="flex flex-col items-center">
-                <div style={{ fontSize: '32px', fontWeight: 900, fontFamily: 'var(--font-display)' }}>20<span style={{ color: '#e5591d' }}>+</span></div>
-                <div style={{ fontSize: '9px', color: '#888888', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{tCompanies('stat2')}</div>
-             </div>
-             <div className="flex flex-col items-center">
-                <div style={{ fontSize: '32px', fontWeight: 900, fontFamily: 'var(--font-display)' }}>5<span style={{ color: '#e5591d' }}>º</span></div>
-                <div style={{ fontSize: '9px', color: '#888888', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{tCompanies('stat3')}</div>
-             </div>
-             <div className="flex flex-col items-center">
-                <div style={{ fontSize: '32px', fontWeight: 900, fontFamily: 'var(--font-display)' }}>100<span style={{ color: '#e5591d' }}>%</span></div>
-                <div style={{ fontSize: '9px', color: '#888888', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Lighthouse</div>
-             </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="#work"
+                onClick={(event) => handleCtaClick(event, '#work')}
+                className="button-primary"
+              >
+                {t('cta_primary')}
+                <ArrowDownRight size={17} aria-hidden="true" />
+              </Link>
+
+              <a href="/curriculum/resume.pdf" target="_blank" rel="noopener noreferrer" className="button-secondary">
+                {t('cta_secondary')}
+              </a>
+
+              <a
+                href="https://github.com/kauankelvin7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button-secondary"
+                aria-label="GitHub de Kauan Kelvin"
+              >
+                <Github size={17} aria-hidden="true" />
+                GitHub
+              </a>
+            </div>
+
+            <p className="mt-10 max-w-xl text-sm leading-6 text-[var(--text-muted)]">
+              {t('availability')}
+            </p>
           </div>
         </div>
       </section>
 
       <AboutModern />
-
-      {/* 3D Scene Section */}
-      <section className="relative w-full h-[60vh] md:h-screen flex items-center justify-center overflow-hidden" style={{ background: '#0f0e0c', borderBottom: '1px solid #1a1815' }}>
-        <LazyLoad>
-          <SceneMacbook />
-        </LazyLoad>
-      </section>
-      
-      {/* 3D Scene Section */}
-      <section className="relative w-full h-[60vh] md:h-screen flex items-center justify-center overflow-hidden" style={{ background: '#131210', borderBottom: '1px solid #1a1815' }}>
-        <LazyLoad>
-          <SceneCyber />
-        </LazyLoad> 
-      </section>
-
-      <AboutCyber />
-      
       <Projects />
       <Process />
-      <Companies />
       <Skills />
-      
       <ContactFooter />
     </div>
   );

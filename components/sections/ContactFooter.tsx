@@ -1,306 +1,105 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { Github, Linkedin, Mail, CheckCircle2, AlertCircle } from "lucide-react";
-import FadeIn from "@/components/ui/FadeIn";
-import LiquidSpotlightButton from "@/components/ui/LiquidSpotlightButton";
 import { useActionState, useEffect, useRef } from "react";
+import { CheckCircle2, Github, Linkedin, Mail } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { sendEmail } from "@/actions/send-email";
+import FadeIn from "@/components/ui/FadeIn";
 
 export default function ContactFooter() {
-  const t = useTranslations('Contact');
-  const tSection = useTranslations('ContactSection');
+  const t = useTranslations("Contact");
+  const tSection = useTranslations("ContactSection");
+  const locale = useLocale();
   const formRef = useRef<HTMLFormElement>(null);
-
   const [state, formAction, isPending] = useActionState(sendEmail, null);
 
   useEffect(() => {
-    if (state?.success) {
-      formRef.current?.reset();
-    }
+    if (state?.success) formRef.current?.reset();
   }, [state]);
 
   return (
     <div className="relative z-20 w-full overflow-hidden">
-      {/* Contact Section (Stacked Vertical Layout for Zero Overlap) */}
-      <section
-        id="contact"
-        className="w-full flex flex-col items-center justify-center font-body"
-        style={{
-          background: '#e5591d',
-          padding: '120px 28px',
-          borderBottom: '4px solid #0c0b09'
-        }}
-      >
-        <div className="max-w-6xl w-full mx-auto flex flex-col items-start gap-24">
-          
-          {/* Row 1: Header / Giant Title */}
-          <div className="w-full flex flex-col">
-            <FadeIn>
-              <div className="flex items-center gap-3 mb-6">
-                <div style={{ width: '24px', height: '1px', background: '#0c0b09' }}></div>
-                <span 
-                  style={{
-                    fontSize: '11px',
-                    color: '#0c0b09',
-                    letterSpacing: '0.2em',
-                    textTransform: 'uppercase',
-                    fontWeight: 900
-                  }}
-                >
-                  {t('location')}
-                </span>
-              </div>
-              
-              <h2 
-                className="uppercase text-[#0c0b09]"
-                style={{
-                  fontSize: 'clamp(62px, 15vw, 160px)', // Even bigger and more "Brutal"
-                  fontWeight: 900,
-                  lineHeight: 0.8,
-                  letterSpacing: '-0.06em',
-                  fontFamily: 'var(--font-display)'
-                }}
-              >
-                {tSection('title').split('.')[0]}<em style={{ fontStyle: 'normal', color: '#ffffff' }}>.</em>
-              </h2>
+      <section id="contact" className="section-shell bg-[var(--accent)] text-[#140d09]">
+        <div className="container-shell">
+          <FadeIn>
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-black/60">
+              {t('location')}
+            </span>
+          </FadeIn>
+
+          <div className="mt-8 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+            <div>
+              <FadeIn delay={0.05}>
+                <h2 className="max-w-[8ch] font-display text-[clamp(3.4rem,9vw,7.5rem)] leading-[0.86] tracking-[-0.055em]">
+                  {tSection('title')}
+                </h2>
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <p className="mt-8 max-w-md text-base leading-7 text-black/70">{tSection('subtitle')}</p>
+              </FadeIn>
+
+              <FadeIn delay={0.15}>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a className="flex h-11 w-11 items-center justify-center rounded-full bg-[#0c0b09] text-white" href="https://github.com/kauankelvin7" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <Github size={18} />
+                  </a>
+                  <a className="flex h-11 w-11 items-center justify-center rounded-full bg-[#0c0b09] text-white" href="https://www.linkedin.com/in/kauan-kelvin/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <Linkedin size={18} />
+                  </a>
+                  <a className="flex h-11 w-11 items-center justify-center rounded-full bg-[#0c0b09] text-white" href="mailto:kelvinkauan722@gmail.com" aria-label={tSection('email_link_label')}>
+                    <Mail size={18} />
+                  </a>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className="mt-8 text-sm font-semibold text-black/65">{tSection('availability')}</p>
+              </FadeIn>
+            </div>
+
+            <FadeIn delay={0.1}>
+              <form ref={formRef} action={formAction} className="rounded-[var(--radius-lg)] border border-black/10 bg-black/[0.07] p-5 md:p-7">
+                <input type="hidden" name="locale" value={locale} />
+
+                <div className="grid gap-4 md:grid-cols-2">
+                  <label className="grid gap-2">
+                    <span className="text-xs font-semibold text-black/60">{tSection('name_label')}</span>
+                    <input name="name" required placeholder={tSection('name_placeholder')} className="min-h-12 rounded-xl border border-black/15 bg-white/25 px-4 text-sm text-[#140d09] outline-none placeholder:text-black/35 focus:border-black/40" disabled={isPending} />
+                    {state?.errors?.name?.[0] && <span className="text-xs font-semibold text-black/70">{state.errors.name[0]}</span>}
+                  </label>
+                  <label className="grid gap-2">
+                    <span className="text-xs font-semibold text-black/60">{tSection('email_label')}</span>
+                    <input name="email" type="email" required placeholder={tSection('email_placeholder')} className="min-h-12 rounded-xl border border-black/15 bg-white/25 px-4 text-sm text-[#140d09] outline-none placeholder:text-black/35 focus:border-black/40" disabled={isPending} />
+                    {state?.errors?.email?.[0] && <span className="text-xs font-semibold text-black/70">{state.errors.email[0]}</span>}
+                  </label>
+                </div>
+
+                <label className="mt-4 grid gap-2">
+                  <span className="text-xs font-semibold text-black/60">{tSection('message_label')}</span>
+                  <textarea name="message" rows={6} required placeholder={tSection('project_placeholder')} className="rounded-xl border border-black/15 bg-white/25 px-4 py-4 text-sm leading-6 text-[#140d09] outline-none placeholder:text-black/35 focus:border-black/40" disabled={isPending} />
+                  {state?.errors?.message?.[0] && <span className="text-xs font-semibold text-black/70">{state.errors.message[0]}</span>}
+                </label>
+
+                {state?.message && (
+                  <div className="mt-4 flex items-start gap-3 rounded-xl border border-black/10 bg-white/20 p-4 text-sm leading-6 text-black/75">
+                    {state.success && <CheckCircle2 className="mt-0.5 shrink-0" size={18} />}
+                    <span>{state.message}</span>
+                  </div>
+                )}
+
+                <button type="submit" disabled={isPending} className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-[#0c0b09] px-5 text-sm font-bold text-white transition hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-70">
+                  {isPending ? tSection('sending') : tSection('submit_button')}
+                </button>
+              </form>
             </FadeIn>
           </div>
-
-          {/* Row 2: Form Column and Extra Details */}
-          <div className="w-full grid lg:grid-cols-5 gap-16 items-start">
-            
-            {/* Form Area (3/5 width on large screens) */}
-            <div className="lg:col-span-3">
-              <FadeIn delay={0.2}>
-                <form 
-                  ref={formRef}
-                  action={formAction}
-                  className="w-full space-y-6"
-                >
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <input 
-                        name="name"
-                        type="text" 
-                        required
-                        placeholder={tSection('name_placeholder')}
-                        style={{
-                          width: '100%',
-                          background: 'rgba(0,0,0,0.08)',
-                          border: '1px solid rgba(12, 11, 9, 0.15)',
-                          padding: '18px 24px',
-                          borderRadius: '12px',
-                          color: '#0c0b09',
-                          fontSize: '15px',
-                          outline: 'none',
-                          transition: 'all 0.3s'
-                        }}
-                        className="placeholder:text-[#0c0b09]/40 focus:border-[#0c0b09] focus:bg-transparent disabled:opacity-50"
-                        disabled={isPending}
-                      />
-                      {state?.errors?.name && (
-                        <p className="text-xs font-bold text-white bg-black/20 px-2 py-1 rounded inline-block">
-                          {state.errors.name[0]}
-                        </p>
-                      )}
-                    </div>
-                    <div className="space-y-2">
-                      <input 
-                        name="email"
-                        type="email" 
-                        required
-                        placeholder={tSection('email_placeholder')}
-                        style={{
-                          width: '100%',
-                          background: 'rgba(0,0,0,0.08)',
-                          border: '1px solid rgba(12, 11, 9, 0.15)',
-                          padding: '18px 24px',
-                          borderRadius: '12px',
-                          color: '#0c0b09',
-                          fontSize: '15px',
-                          outline: 'none',
-                          transition: 'all 0.3s'
-                        }}
-                        className="placeholder:text-[#0c0b09]/40 focus:border-[#0c0b09] focus:bg-transparent disabled:opacity-50"
-                        disabled={isPending}
-                      />
-                      {state?.errors?.email && (
-                        <p className="text-xs font-bold text-white bg-black/20 px-2 py-1 rounded inline-block">
-                          {state.errors.email[0]}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <textarea 
-                      name="message"
-                      rows={6}
-                      required
-                      placeholder={tSection('project_placeholder')}
-                      style={{
-                        width: '100%',
-                        background: 'rgba(0,0,0,0.08)',
-                        border: '1px solid rgba(12, 11, 9, 0.15)',
-                        padding: '18px 24px',
-                        borderRadius: '12px',
-                        color: '#0c0b09',
-                        fontSize: '15px',
-                        outline: 'none',
-                        resize: 'none',
-                        transition: 'all 0.3s'
-                      }}
-                      className="placeholder:text-[#0c0b09]/40 focus:border-[#0c0b09] focus:bg-transparent disabled:opacity-50"
-                      disabled={isPending}
-                    />
-                    {state?.errors?.message && (
-                      <p className="text-xs font-bold text-white bg-black/20 px-2 py-1 rounded inline-block">
-                        {state.errors.message[0]}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Feedback Messages */}
-                  {state?.message && !state.success && (
-                    <div className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-700 text-sm font-bold">
-                      <AlertCircle size={18} />
-                      {state.message}
-                    </div>
-                  )}
-
-                  {state?.success && (
-                    <div className="flex flex-col gap-6 animate-in slide-in-from-bottom-2 duration-500">
-                      <div className="flex items-center gap-3 p-6 bg-white/5 border border-[#e5591d]/30 rounded-xl text-white text-base font-bold backdrop-blur-sm">
-                        <CheckCircle2 size={24} className="text-[#e5591d]" />
-                        {state.message || "Mensagem enviada com sucesso!"}
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          formRef.current?.reset();
-                          // Force state reset by reloading or using a local state if needed
-                          window.location.reload(); // Simple way to reset useActionState for now
-                        }}
-                        className="text-[10px] uppercase tracking-widest text-[#666666] hover:text-[#e5591d] transition-colors font-black flex items-center gap-2 self-start"
-                      >
-                        ← Enviar outra mensagem
-                      </button>
-                    </div>
-                  )}
-
-                  {!state?.success && (
-                    <button 
-                      type="submit"
-                      disabled={isPending}
-                      className="group relative w-full overflow-hidden disabled:cursor-not-allowed"
-                      style={{
-                        background: isPending ? '#222' : '#0c0b09',
-                        color: '#ffffff',
-                        padding: '20px',
-                        borderRadius: '12px',
-                        fontSize: '13px',
-                        fontWeight: 900,
-                        letterSpacing: '0.2em',
-                        textTransform: 'uppercase',
-                        border: 'none',
-                        cursor: isPending ? 'wait' : 'pointer',
-                        transition: 'all 0.3s'
-                      }}
-                    >
-                      <div className="flex items-center justify-center gap-4 transition-transform group-hover:scale-[1.01]">
-                        {isPending ? 'Enviando...' : tSection('submit_button')}
-                        {!isPending && <span className="inline-block transition-transform group-hover:translate-x-1">→</span>}
-                      </div>
-                    </button>
-                  )}
-                </form>
-              </FadeIn>
-            </div>
-
-            {/* Side Info Area (2/5 width) */}
-            <div className="lg:col-span-2 space-y-12">
-              <FadeIn delay={0.4}>
-                <h4 className="text-[#0c0b09] font-black text-xs tracking-widest uppercase mb-8 opacity-60">SOCIAL CONNECT</h4>
-                <div className="flex flex-wrap gap-4">
-                   <LiquidSpotlightButton href="https://github.com/kauankelvin7" className="!px-6" ariaLabel="GitHub Profile">
-                      <Github size={20} color="#ffffff" />
-                   </LiquidSpotlightButton>
-                   <LiquidSpotlightButton href="https://www.linkedin.com/in/kauan-kelvin/" className="!px-6" ariaLabel="LinkedIn Profile">
-                      <Linkedin size={20} color="#ffffff" />
-                   </LiquidSpotlightButton>
-                   <LiquidSpotlightButton href="mailto:kelvinkauan722@gmail.com" className="!px-6" ariaLabel="Send Email">
-                      <Mail size={20} color="#ffffff" />
-                   </LiquidSpotlightButton>
-                </div>
-              </FadeIn>
-
-              <FadeIn delay={0.6}>
-                <div 
-                  className="p-8 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 flex flex-col gap-6"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
-                    </div>
-                    <span className="text-[#0c0b09] font-black text-[10px] tracking-widest uppercase">
-                      ACTIVE & AVAILABLE
-                    </span>
-                  </div>
-                  <p className="text-[#0c0b09] text-sm leading-relaxed font-medium">
-                    {t('description')}
-                  </p>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-          
         </div>
       </section>
 
-      {/* Footer Bar (Minimal Dark) */}
-      <footer 
-        className="w-full flex flex-col md:flex-row items-center justify-between"
-        style={{
-          background: '#0c0b09',
-          padding: '40px 28px',
-          borderTop: '1px solid #1a1815'
-        }}
-      >
-        <div 
-          style={{
-            fontSize: '10px',
-            color: '#444444',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            fontFamily: 'var(--font-mono)'
-          }}
-        >
-          {t('footer1')}
-        </div>
-
-        <div 
-          style={{
-            fontSize: '10px',
-            color: '#444444',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            fontFamily: 'var(--font-mono)',
-            marginTop: '16px'
-          }}
-          className="md:mt-0 flex items-center gap-6"
-        >
-          {t('footer2')}
-          
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2 group cursor-pointer hover:text-white transition-colors"
-          >
-            <span className="hidden md:inline">VOLTAR AO TOPO</span>
-            <div className="w-8 h-8 flex items-center justify-center border border-white/10 rounded-full group-hover:border-[#e5591d] transition-colors">
-              <span className="transform -rotate-45 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform">↑</span>
-            </div>
-          </button>
+      <footer className="bg-[var(--background)] py-7">
+        <div className="container-shell flex flex-col gap-3 text-xs text-[var(--text-muted)] sm:flex-row sm:items-center sm:justify-between">
+          <span>{t('footer1')}</span>
+          <span>{t('footer2')}</span>
         </div>
       </footer>
     </div>

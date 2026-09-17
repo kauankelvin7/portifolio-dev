@@ -1,11 +1,11 @@
 export const skillCategories = [
   {
-    title: "// stack",
-    skills: ["HTML5", "CSS3", "JavaScript ES6+", "TypeScript", "Java", "Python", "React", "Node.js", "MySQL", "Firebase", "Git", "Linux", "UI/UX Design"]
+    title: "Back-end e dados",
+    skills: ["Java", "Spring Boot", "REST APIs", "Node.js", "SQL", "PostgreSQL", "Firebase"]
   },
   {
-    title: "// resumo",
-    skills: ["React", "Python", "Java / Spring Boot", "Node.js", "JavaScript", "SQL", "HTML5", "CSS3", "Git", "Power BI", "Automação"]
+    title: "Web e automação",
+    skills: ["React", "TypeScript", "Vite", "Tailwind CSS", "Python", "Selenium", "Git", "Linux"]
   }
 ];
 
@@ -26,7 +26,7 @@ export const certificates = [
   },
   {
     id: 3,
-    name: "Imersão Dev Agentes de Ia do Google",
+    name: "Imersão Dev — Agentes de IA",
     issuer: "Alura + Google",
     image: "/certificates/imersao_dev_agentes_de_ia_alura.png",
     status: "unlocked"

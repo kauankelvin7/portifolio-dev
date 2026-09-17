@@ -1,180 +1,19 @@
 {
-  "Metadata": {
-    "title": "Kauan Kelvin — Dev Frontend",
-    "description": "Portfólio com 3D interativo, performance Lighthouse 100 e design bold. Feito para ser lembrado."
-  },
-  "Nav": {
-    "home": "INÍCIO",
-    "about": "SOBRE",
-    "projects": "PROJETOS",
-    "contact": "CONTATO"
-  },
-  "Hero": {
-    "role1": "SOFTWARE ENGINEER",
-    "role2": "FULLSTACK DEVELOPER",
-    "design": "DESIGN &",
-    "performance": "PERFORMANCE.",
-    "name1": "KAUAN",
-    "name2": "KELVIN",
-    "status": "Aberto a oportunidades",
-    "availability": "SOFTWARE ENGINEER · DISPONÍVEL PARA TRABALHO",
-    "cta_primary": "VER PROJETOS",
-    "cta_secondary": "BAIXAR CV"
-  },
-  "About": {
-    "title": "QUEM SOU EU ?",
-    "badge": "DESENVOLVEDOR FULLSTACK & APAIXONADO POR TECNOLOGIA",
-    "p1": "Me chamo Kauan Kelvin, tenho 20 anos e sou apaixonado por aprender novas tecnologias. Atualmente sou estudante de Engenharia de Software na Unicesumar, com foco em Desenvolvimento Back-end.",
-    "p2": "Tenho experiência prática com Java, React, TypeScript, Python e Node.js, além de conhecimentos em front-end. Meu objetivo é transformar desafios em soluções escaláveis e seguras, entregando código limpo focado em performance e manutenção de sistemas robustos.",
-    "quote": "Não é apenas sobre código, é sobre resolver problemas de forma elegante e eficiente.",
-    "stats": {
-      "semester": "Semestre",
-      "age": "Anos de Idade",
-      "code": "Anos de Código",
-      "curiosity": "Curiosidade"
-    },
-    "download": "Download CV"
-  },
-  "AboutModern": {
-    "title1": "ENGENHARIA",
-    "title2": "& CÓDIGO",
-    "present": "O PRESENTE",
-    "p1": "Minha jornada acadêmica em Engenharia de Software me deu a base teórica necessária para construir sistemas robustos. Hoje, foco em transformar essa teoria em aplicações escaláveis com Java e o ecossistema JavaScript.",
-    "p2": "Trabalho como Desenvolvedor FullStack Freelancer, onde enfrento desafios reais de negócios, desde a modelagem de bancos de dados SQL até a criação de dashboards performáticos no React.",
-    "bullet1": "Arquitetura de Sistemas & Back-end",
-    "bullet2": "Java / Spring Boot & Node.js",
-    "bullet3": "React, Vite & Tailwind CSS",
-    "philosophy_label": "Filosofia de Código",
-    "philosophy_text": "Entregar valor através de código limpo, seguro e performático."
-  },
-  "AboutCyber": {
-    "title1": "SOLUÇÕES",
-    "title2": "ESCALÁVEIS",
-    "backend_title": "BACK-END ROBUSTO",
-    "backend_p1": "Meu foco é desenvolver sistemas que não apenas funcionam, mas que aguentam o tranco. Utilizo Java e Spring Boot para criar APIs seguras e eficientes, sempre pensando na escalabilidade.",
-    "backend_p2": "O terminal que você viu simboliza minha busca constante por automação e eficiência. De scripts em Python a deploys em Linux, busco sempre o controle total do ecossistema onde meu código roda.",
-    "bullet1": "APIs RESTful & Microserviços com Java",
-    "bullet2": "Modelagem SQL & Bancos Não Relacionais",
-    "bullet3": "Automação de Processos com Python",
-    "system_status_label": "Status do Sistema",
-    "system_status_text": "SISTEMA ONLINE & SEGURO"
-  },
-  "Projects": {
-    "title": "Projetos",
-    "subtitle": "Selecionados",
-    "description": "Uma coleção de experiências digitais e sistemas robustos desenvolvidos com foco em performance e escalabilidade.",
-    "more": "Quer ver mais?",
-    "github_button": "Ver GitHub Completo"
-  },
-  "Process": {
-    "item1": {
-      "title": "2023 — presente",
-      "description": "Engenharia de Software · Unicesumar. Cursando o 5º semestre, com foco em arquitetura de sistemas, back-end e boas práticas de engenharia de software.",
-      "detail1": "Arquitetura",
-      "detail2": "Back-end",
-      "detail3": "Engenharia de Software"
-    },
-    "item2": {
-      "title": "2024 — presente",
-      "description": "Desenvolvedor FullStack Freelancer. Projetos de agendamento, dashboards e APIs REST usando React, Node.js e bancos relacionais.",
-      "detail1": "React",
-      "detail2": "Node.js",
-      "detail3": "SQL"
-    },
-    "item3": {
-      "title": "2022",
-      "description": "Primeiros passos no código. Começou com HTML, CSS e JavaScript — e nunca mais parou de aprender.",
-      "detail1": "HTML",
-      "detail2": "CSS",
-      "detail3": "JavaScript"
-    }
-  },
-  "Skills": {
-    "title": "Minha",
-    "subtitle": "Stack",
-    "certificates_title": "Certificados",
-    "syncing": "Sincronizando dados...",
-    "verified": "VERIFICADO",
-    "locked": "LOCKED",
-    "resource_locked": "RECURSO BLOQUEADO"
-  },
-  "Companies": {
-    "stat1": "Anos de Código",
-    "stat2": "Projetos",
-    "stat3": "Semestre"
-  },
-  "Contact": {
-    "title1": "VAMOS",
-    "title2": "CONVERSAR?",
-    "description": "Aberto a estágios, freelas e projetos colaborativos. Respondo em até 24h.",
-    "location": "BRASIL / DISPONÍVEL",
-    "footer1": "DESIGN & CODE BY KAUAN KELVIN",
-    "footer2": "©2026 — TODOS OS DIREITOS RESERVADOS"
-  },
-  "UI": {
-    "work": "WORK",
-    "view_project": "Ver Projeto",
-    "project_featured": "PROJETO DESTAQUE",
-    "project_case": "CASE STUDY",
-    "loading_scene": "carregando cena...",
-    "system_booting": "INICIALIZANDO SISTEMA...",
-    "interactivity_hint": "[ MOUSE DRIVE ] SEGURE E GIRE PARA EXPLORAR",
-    "interactivity_mobile": "[ TOUCH DRIVE ] ARRASTE PARA EXPLORAR",
-    "aria_view_project": "Ver projeto {title}"
-  },
-  "Ticker": {
-    "items": "NEXT.JS · TYPESCRIPT · REACT THREE FIBER · TAILWIND CSS · FRAMER MOTION · PYTHON · SUPABASE · VERCEL · RAILWAY · GROQ"
-  },
-  "AboutSection": {
-    "eyebrow": "SOBRE MIM"
-  },
-  "ProjectsSection": {
-    "eyebrow": "TRABALHOS SELECIONADOS",
-    "syntax": {
-      "title": "SYNTAX",
-      "description": "Sistema educacional desenvolvido para estudar programação.",
-      "category": "EDUCATION · WEB APP"
-    },
-    "cinesia": {
-      "title": "CINESIA",
-      "description": "Sistema completo para gestão de clínicas de fisioterapia.",
-      "category": "HEALTHCARE · SAAS"
-    },
-    "omni": {
-      "title": "OMNI",
-      "description": "SaaS focado no mercado B2B para gestão empresarial.",
-      "category": "B2B · ECOSYSTEM"
-    },
-    "medsync": {
-      "title": "MEDSYNC",
-      "description": "Prontuário e chat médico inteligente com IA.",
-      "category": "AI · HEALTH TECH"
-    },
-    "gastos": {
-      "title": "CONTROLE DE GASTOS",
-      "description": "Aplicação voltada para finanças pessoais com relatórios visuais.",
-      "category": "FINANCE · WEB APP"
-    },
-    "xadrez": {
-      "title": "JOGO DE XADREZ",
-      "description": "Simulador de xadrez desenvolvido em Java para consolidar POO.",
-      "category": "JAVA · GAME ENGINE"
-    }
-  },
-  "ProcessSection": {
-    "eyebrow": "O QUE FAÇO",
-    "item1": "Frontend premium — Next.js, animações, 3D, performance",
-    "item2": "Backend sólido — APIs REST, autenticação, banco de dados",
-    "item3": "Deploy e infra — Vercel, Railway, Supabase, CI/CD",
-    "item4": "AI integrations — LLMs, agentes, automações"
-  },
-  "ContactSection": {
-    "title": "VAMOS TRABALHAR.",
-    "subtitle": "Disponível para projetos remotos internacionais.",
-    "cta": "ENVIAR UMA MENSAGEM",
-    "name_placeholder": "Qual seu nome?",
-    "email_placeholder": "Seu melhor e-mail",
-    "project_placeholder": "Conte-me sobre seu projeto...",
-    "submit_button": "INICIAR PROJETO"
-  }
+  "Metadata": {"title":"Kauan Kelvin — Engenharia de Software, Back-end e Automação","description":"Portfólio de Kauan Kelvin: estudante de Engenharia de Software com projetos em Java, Spring Boot, React, Python, automação e aplicações web."},
+  "Nav": {"home":"Início","about":"Sobre","projects":"Projetos","contact":"Contato"},
+  "Hero": {"role1":"Engenharia de Software","role2":"Back-end · Automação · Web","design":"ENGENHARIA &","performance":"PRODUTO.","name1":"KAUAN","name2":"KELVIN","status":"Buscando estágio ou posição júnior em tecnologia","availability":"Estudante de Engenharia de Software · aberto a oportunidades","cta_primary":"Ver projetos","cta_secondary":"Ver currículo"},
+  "About": {"title":"Sobre mim","badge":"Estudante de Engenharia de Software com experiência prática em tecnologia","p1":"Sou estudante de Engenharia de Software e trabalho atualmente na área administrativa, onde também atuo com suporte de TI, sistemas e melhoria de rotinas. Foi desse contato com problemas reais que passei a desenvolver automações e aplicações para resolver tarefas do dia a dia.","p2":"Hoje concentro meus estudos em back-end, APIs, Java e Spring Boot, sem deixar de lado React, TypeScript e Python quando o problema pede uma solução completa. Procuro uma oportunidade de estágio ou nível júnior em que eu possa evoluir com engenharia de software aplicada a produto real.","quote":"Gosto de entender o problema primeiro e usar tecnologia para simplificar o que antes dava trabalho.","stats":{"semester":"Formação","age":"Experiência","code":"Projetos","curiosity":"Aprendizado"},"download":"Ver currículo"},
+  "AboutModern": {"title1":"ENGENHARIA","title2":"NA PRÁTICA","present":"Hoje","p1":"Minha formação em Engenharia de Software vem acompanhada de projetos em que precisei pensar em arquitetura, persistência, autenticação, APIs, testes e experiência de uso — não apenas em escrever telas.","p2":"Também levo para os projetos o que aprendi trabalhando com atendimento, processos administrativos e suporte de TI: observar o fluxo real, identificar atrito e automatizar o que faz sentido.","bullet1":"Java, Spring Boot e APIs REST","bullet2":"Python e automação de processos","bullet3":"React, TypeScript e aplicações web","philosophy_label":"Como eu trabalho","philosophy_text":"Problema bem entendido, solução simples de manter e evidência de que funciona."},
+  "AboutCyber": {"title1":"BACK-END","title2":"& AUTOMAÇÃO","backend_title":"FOCO TÉCNICO","backend_p1":"Tenho direcionado meus estudos para Java, Spring Boot, APIs e modelagem de dados. Em projetos maiores, procuro separar responsabilidades, validar regras de domínio e pensar em segurança, concorrência e manutenção desde cedo.","backend_p2":"Python também faz parte da minha rotina quando a melhor resposta é automatizar um processo. Um exemplo é uma automação odontológica em Selenium criada para reduzir o preenchimento manual de guias e organizar anexos e logs de execução.","bullet1":"APIs REST e serviços com Java / Spring Boot","bullet2":"SQL, PostgreSQL, Firebase e modelagem de dados","bullet3":"RPA e automações com Python","system_status_label":"Direção atual","system_status_text":"BACK-END · AUTOMAÇÃO · ENGENHARIA DE SOFTWARE"},
+  "Projects": {"title":"Projetos","subtitle":"que mostram meu trabalho","description":"Uma seleção de projetos em que precisei tomar decisões de arquitetura, implementar funcionalidades reais e documentar o que foi construído.","more":"Quer ver outros repositórios?","github_button":"Abrir meu GitHub"},
+  "Process": {"item1":{"title":"2024 — presente","description":"Bacharelado em Engenharia de Software na UniCesumar, com foco crescente em back-end, arquitetura, APIs e qualidade de software.","detail1":"Arquitetura","detail2":"Back-end","detail3":"Engenharia de Software"},"item2":{"title":"2024 — presente","description":"Auxiliar Administrativo na NOVA Medicina e Segurança do Trabalho, também apoiando sistemas, equipamentos e melhorias de processo com tecnologia.","detail1":"Processos","detail2":"Suporte de TI","detail3":"Automação"},"item3":{"title":"Projetos pessoais e cliente real","description":"Aplicações web, automações e back-ends usados para estudar engenharia de software resolvendo problemas concretos.","detail1":"Java","detail2":"Python","detail3":"React"}},
+  "Skills": {"title":"Tecnologias","subtitle":"que uso","certificates_title":"Formação complementar","syncing":"Em evolução","verified":"Concluído","locked":"Em andamento","resource_locked":"Em andamento"},
+  "Companies": {"stat1":"Engenharia de Software","stat2":"Projetos com código público","stat3":"Contribuição open source"},
+  "Contact": {"title1":"VAMOS","title2":"CONVERSAR?","description":"Tenho interesse em estágio, posição júnior e projetos em que eu possa contribuir com desenvolvimento, automação ou melhoria de processos.","location":"Brasília / GO · remoto ou presencial","footer1":"Portfólio de Kauan Kelvin","footer2":"©2026"},
+  "UI": {"work":"Projetos","view_project":"Abrir projeto","project_featured":"Projeto em destaque","project_case":"Detalhes do projeto","loading_scene":"Carregando visual...","system_booting":"Carregando experiência...","interactivity_hint":"Segure e mova para explorar","interactivity_mobile":"Arraste para explorar","aria_view_project":"Abrir projeto {title}"},
+  "Ticker": {"items":"JAVA · SPRING BOOT · TYPESCRIPT · REACT · PYTHON · SELENIUM · FIREBASE · POSTGRESQL · GIT · LINUX"},
+  "AboutSection": {"eyebrow":"Sobre"},
+  "ProjectsSection": {"eyebrow":"Projetos selecionados","leve":{"title":"LEVE","description":"Agenda pessoal PWA com autenticação, API de comandos, controle de revisão, conflitos explícitos e suporte offline com outbox.","category":"React · TypeScript · Firebase · Express"},"dental":{"title":"AUTOMAÇÃO ODONTOLÓGICA","description":"RPA em Python e Selenium para preencher guias, vincular anexos e gerar logs de execução em um fluxo usado por uma clínica real.","category":"Python · Selenium · Openpyxl"},"omni":{"title":"OMNI","description":"Sistema de gestão para clínicas com API Java/Spring Boot, PostgreSQL, frontend React/TypeScript e automações auxiliares em Python.","category":"Java · Spring Boot · PostgreSQL · React"},"cinesia":{"title":"CINESIA","description":"Plataforma de estudos para Fisioterapia com PWA, Firebase, revisão espaçada, simulados e recursos assistidos por IA.","category":"React · Firebase · PWA · Gemini"},"rustdesk":{"title":"RUSTDESK — CONTRIBUIÇÃO OPEN SOURCE","description":"Contribuição aceita no projeto RustDesk adicionando metadados pt-BR para a distribuição Android via Fastlane.","category":"Open Source · GitHub · Localização"},"xadrez":{"title":"JOGO DE XADREZ","description":"Projeto em Java usado para consolidar orientação a objetos, regras de domínio e organização de código.","category":"Java · POO"}},
+  "ProcessSection": {"eyebrow":"Como venho evoluindo","title1":"APRENDER","title2":"CONSTRUINDO","description":"Tenho usado projetos próprios, demandas reais e contribuição open source para transformar estudo em prática.","item1":"Arquitetura e back-end — Java, Spring Boot, APIs, autenticação e dados","item2":"Automação — Python, Selenium, tratamento de arquivos e integrações","item3":"Produto web — React, TypeScript, Firebase, PWA e acessibilidade","item4":"Qualidade — Git, documentação, testes, revisão e contribuição open source"},
+  "ContactSection": {"title":"FALE COMIGO.","subtitle":"Se você procura alguém em início de carreira que já coloca engenharia em prática, me conte sobre a oportunidade.","cta":"Enviar mensagem","name_label":"Nome","email_label":"E-mail","message_label":"Mensagem","email_link_label":"Enviar e-mail","name_placeholder":"Seu nome","email_placeholder":"Seu e-mail","project_placeholder":"Conte um pouco sobre a oportunidade ou projeto","submit_button":"Enviar mensagem","sending":"Enviando...","success":"Mensagem enviada. Obrigado pelo contato — respondo assim que puder.","send_another":"Enviar outra mensagem","social":"Onde me encontrar","availability":"Aberto a estágio e posições júnior","back_to_top":"Voltar ao topo"}
 }
