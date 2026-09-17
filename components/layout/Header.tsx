@@ -34,10 +34,15 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border-soft)] bg-[var(--header-bg)] backdrop-blur-xl">
-      <div className="container-shell flex min-h-[68px] items-center justify-between gap-5">
-        <Link href="#home" className="group inline-flex items-center gap-2.5 font-display text-sm tracking-[-0.02em] text-white">
-          <Image src="/brand/mark.svg" width={28} height={28} alt="" aria-hidden="true" priority />
-          <span>{siteConfig.name}<span className="text-[var(--accent)]">.</span></span>
+      <div className="container-shell flex min-h-[72px] items-center justify-between gap-5">
+        <Link href="#home" className="brand-lockup" aria-label={`${siteConfig.name} — início`}>
+          <span className="brand-mark-shell">
+            <Image src="/brand/mark.svg" width={36} height={36} alt="" aria-hidden="true" priority />
+          </span>
+          <span className="brand-lockup__copy">
+            <span className="brand-lockup__name">{siteConfig.name}</span>
+            <span className="brand-lockup__role">software engineering</span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label={tA11y("main_navigation")}>
@@ -74,7 +79,7 @@ export function Header() {
       </div>
 
       {isOpen && (
-        <div className="fixed inset-x-0 top-[68px] z-40 min-h-[calc(100svh-68px)] border-t border-[var(--border-soft)] bg-[var(--background)] px-5 py-10 md:hidden">
+        <div className="fixed inset-x-0 top-[72px] z-40 min-h-[calc(100svh-72px)] border-t border-[var(--border-soft)] bg-[var(--background)] px-5 py-10 md:hidden">
           <nav className="container-shell flex flex-col" aria-label={tA11y("mobile_navigation")}>
             {navLinks.map((link) => (
               <Link

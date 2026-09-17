@@ -13,7 +13,7 @@ export async function HeroSection() {
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-glow" aria-hidden="true" />
 
-      <div className="container-shell relative z-10 grid min-h-[calc(100svh-72px)] items-center gap-14 py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:py-20">
+      <div className="container-shell relative z-10 grid min-h-[calc(100svh-72px)] items-center gap-14 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:py-20">
         <div className="max-w-4xl">
           <div className="hero-enter mb-7 flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.08em] text-[var(--text-muted)]">
             <span className="status-pill">{t("role1")}</span>
@@ -25,7 +25,9 @@ export async function HeroSection() {
             {t("name1")} <span>{t("name2")}</span>
           </h1>
 
-          <p className="hero-enter hero-enter--3 mt-7 max-w-2xl text-base leading-7 text-[var(--text-soft)] md:text-lg md:leading-8">{t("status")}</p>
+          <p className="hero-enter hero-enter--3 mt-7 max-w-2xl text-base leading-7 text-[var(--text-soft)] md:text-lg md:leading-8">
+            {t("status")}
+          </p>
 
           <div className="hero-enter hero-enter--4 mt-8 flex flex-wrap gap-3">
             <Link href="#work" className="button-primary">
@@ -47,26 +49,28 @@ export async function HeroSection() {
           </div>
         </div>
 
-        <div className="hero-console hero-enter hero-enter--6" aria-label={tA11y("focus_technologies")}>
-          <div className="hero-console__topbar">
-            <div className="hero-console__identity">
-              <Image src="/brand/mark.svg" width={22} height={22} alt="" aria-hidden="true" />
-              <span>kauan.dev / focus</span>
-            </div>
-            <span>01—04</span>
-          </div>
-          <div className="hero-console__body">
-            <div className="hero-console__mark" aria-hidden="true">K</div>
-            <div className="relative z-10 space-y-2">
-              {siteConfig.focus.map(([index, stack]) => (
-                <div key={index} className="hero-console__row"><span>{index}</span><strong>{stack}</strong></div>
-              ))}
-            </div>
-            <div className="relative z-10 mt-10 grid grid-cols-3 gap-3 border-t border-[var(--border-soft)] pt-5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)] sm:text-xs">
-              <span>{t("focus_backend")}</span><span>{t("focus_automation")}</span><span>{t("focus_web")}</span>
-            </div>
+        <div className="hero-orbit-stage hero-enter hero-enter--6" aria-label={tA11y("focus_technologies")}>
+          <Image
+            src="/brand/orbit-symbol.svg"
+            width={520}
+            height={520}
+            alt=""
+            aria-hidden="true"
+            className="hero-orbit-symbol"
+            priority
+          />
+          <span className="hero-orbit-label hero-orbit-label--one">Java / Spring</span>
+          <span className="hero-orbit-label hero-orbit-label--two">Python / RPA</span>
+          <span className="hero-orbit-label hero-orbit-label--three">APIs / Dados</span>
+          <span className="hero-orbit-label hero-orbit-label--four">Open Source</span>
+          <div className="hero-orbit-caption" aria-hidden="true">
+            engineering · automation · product
           </div>
         </div>
+      </div>
+
+      <div className="container-shell pb-8" aria-hidden="true">
+        <div className="identity-divider" />
       </div>
     </section>
   );

@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Inter } from "next/font/google";
+import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import "./globals.css";
+import "./identity.css";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
-const archivoBlack = Archivo_Black({
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-archivo",
-  weight: "400",
+  variable: "--font-ibm-plex-mono",
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -45,7 +46,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${inter.variable} ${archivoBlack.variable}`}>
+    <html lang={locale} className={`${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
       <body className="font-body bg-[var(--background)] text-[var(--text)]">
         <NextIntlClientProvider messages={messages} locale={locale}>
           <main className="min-h-screen w-full overflow-x-clip bg-[var(--background)]">

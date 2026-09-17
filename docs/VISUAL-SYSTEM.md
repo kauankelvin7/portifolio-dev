@@ -1,66 +1,97 @@
 # Sistema visual
 
-A identidade do portfólio foi desenhada para parecer técnica, pessoal e sóbria sem recorrer ao visual genérico de dashboard, cyberpunk ou a efeitos pesados. O verde musgo funciona como assinatura, não como preenchimento indiscriminado.
-
-## Paleta
-
-Os componentes devem consumir os tokens de `app/globals.css` em vez de repetir hexadecimais.
-
-| Papel | Token | Referência |
-| --- | --- | --- |
-| Fundo | `--background` | `#090d09` |
-| Superfície | `--surface` | `#0f150f` |
-| Superfície elevada | `--surface-strong` | `#141c14` |
-| Borda | `--border` | `#2b382b` |
-| Texto | `--text` | `#f0f4ed` |
-| Texto secundário | `--text-soft` | `#bcc7b8` |
-| Texto discreto | `--text-muted` | `#8f9b8a` |
-| Destaque | `--accent` | `#8baa7d` |
-| Destaque hover | `--accent-hover` | `#9bbc8d` |
-
-O destaque deve aparecer em ações, linhas de orientação, estados ativos e pequenos pontos de identidade. Grandes áreas saturadas de verde devem ser evitadas.
+A identidade do portfólio combina engenharia de software com uma assinatura visual própria: verde musgo, fundo quase preto, monograma `K` e uma órbita que representa sistemas, integração e evolução contínua. A intenção é evitar o visual genérico de dashboard, cyberpunk e templates de portfólio baseados apenas em cards.
 
 ## Tipografia
 
-- `Archivo Black`: títulos de alto impacto e marca.
-- `Inter`: leitura, navegação e conteúdo.
-- stack monoespaçada do sistema: pequenos índices técnicos e labels de interface.
+- `Space Grotesk`: títulos, navegação, corpo e marca. A geometria mais técnica substitui `Archivo Black + Inter` e deixa o site mais coeso.
+- `IBM Plex Mono`: metadados, labels técnicos, microcopy e elementos de interface com caráter de engenharia.
+- as fontes são carregadas via `next/font`, sem `@import` externo.
 
-A hierarquia depende principalmente de escala, espaço e contraste; não de múltiplas famílias ou efeitos tipográficos.
+## Marca
 
-## Marca e SVG
+A marca usa três elementos recorrentes:
 
-`public/brand/mark.svg` é a marca principal. `app/icon.svg` usa a mesma geometria para o ícone do site. A marca é simples de propósito: deve funcionar em 16–32 px sem depender de efeitos ou texto minúsculo.
+1. monograma `K` geométrico;
+2. órbita inclinada, que funciona como assinatura visual;
+3. ponto orbital em verde claro, usado como detalhe de estado e continuidade.
 
-Não adicionar SVGs decorativos de bibliotecas ou do template quando não houver função clara na interface.
+Arquivos principais:
+
+- `public/brand/mark.svg`: marca compacta para header e contextos pequenos;
+- `public/brand/orbit-symbol.svg`: símbolo hero/decorativo em maior escala;
+- `app/icon.svg`: favicon e ícone do App Router seguindo a mesma geometria.
+
+A marca não deve ser substituída por símbolos genéricos de código como `</>`.
+
+## Paleta
+
+O verde continua funcionando como assinatura, mas a V2 amplia a faixa para permitir profundidade sem saturar a tela.
+
+| Papel | Referência |
+| --- | --- |
+| Fundo | `#081008` / `#090d09` |
+| Superfície | `#0f150f` |
+| Borda | `#2b382b` |
+| Texto principal | `#f0f4ed` |
+| Texto secundário | `#bcc7b8` |
+| Musgo | `#9fbe8e` |
+| Musgo claro | `#bdd8ae` |
+| Sage | `#d5e5cd` |
+
+Os tokens históricos continuam em `app/globals.css`; os ajustes de identidade V2 ficam concentrados em `app/identity.css` para facilitar manutenção e rollback.
+
+## Hero
+
+O hero não usa mais o painel "console" como protagonista visual. A composição passa a ter:
+
+- monograma orbital em escala grande;
+- quatro labels técnicos posicionados ao redor da órbita;
+- grid discreto e glow apenas como suporte;
+- nome com peso e espaçamento mais editorial;
+- divisor de identidade próprio antes da próxima seção.
+
+O símbolo não depende de WebGL, canvas ou bibliotecas de animação.
+
+## Header
+
+O header usa um lockup de marca com:
+
+- símbolo orbital compacto;
+- nome `Kauan Kelvin`;
+- descriptor `software engineering` em mono.
+
+Em telas pequenas o descriptor some para preservar espaço.
+
+## Stack
+
+A stack continua sincronizada com GitHub, mas deixa de mostrar apenas iniciais genéricas. Tecnologias reconhecidas recebem pequenas marcas vetoriais consistentes por meio de `StackMark.tsx`; tecnologias desconhecidas usam fallback tipográfico.
+
+As marcas não representam nível de domínio. O ranking continua sendo calculado por recorrência nos repositórios.
 
 ## Fotografia e screenshots
 
-- A foto de Kauan vem do perfil público real do GitHub.
-- Não gerar ou retocar artificialmente o rosto para o portfólio.
-- Screenshots de projetos devem representar versões reais dos sistemas.
-- Imagens são tratadas com enquadramento, contraste e overlay via CSS, preservando o arquivo original.
-- Quando não existe screenshot pública adequada, o card usa o fallback editorial do design system.
+- usar apenas foto real do perfil e screenshots reais dos projetos;
+- não gerar rosto artificial;
+- quando não houver mídia boa, usar fallback editorial da identidade;
+- não usar mockups que façam parecer que um produto existe quando não existe.
 
 ## Movimento
 
-O movimento deve comunicar estado ou hierarquia, não chamar atenção para si mesmo.
-
-- entrada inicial do hero: até ~620 ms;
-- hover de cards e botões: 180–450 ms;
-- reveal de seção: CSS `view-timeline` apenas quando suportado;
-- brilho do painel técnico: lento e discreto;
-- `prefers-reduced-motion: reduce` desativa o comportamento não essencial.
-
-Não usar scroll hijacking, loaders decorativos, WebGL ou bibliotecas de animação apenas para transições que CSS resolve.
+- entrada curta do hero;
+- flutuação lenta e sutil do símbolo orbital;
+- hover discreto em cards e ações;
+- slider de stack pausa no hover;
+- `prefers-reduced-motion: reduce` remove animações não essenciais.
 
 ## Critério de qualidade
 
-Uma nova peça visual deve responder a pelo menos uma destas perguntas:
+Uma nova peça visual deve reforçar pelo menos uma destas funções:
 
-1. ajuda a compreender quem é o profissional?
-2. comprova um projeto ou competência?
-3. melhora hierarquia, navegação ou feedback?
-4. reforça a identidade sem comprometer performance?
+1. identidade pessoal;
+2. entendimento do trabalho;
+3. prova de projeto ou competência;
+4. hierarquia e navegação;
+5. feedback de estado.
 
-Se a resposta for não para todas, o elemento provavelmente não precisa existir.
+Se for apenas decoração genérica, não entra.
