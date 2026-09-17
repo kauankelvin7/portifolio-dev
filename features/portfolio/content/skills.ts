@@ -1,5 +1,7 @@
+export type SkillCategoryKey = "backendData" | "webAutomation";
+
 export interface SkillCategory {
-  title: string;
+  key: SkillCategoryKey;
   skills: readonly string[];
 }
 
@@ -12,11 +14,11 @@ export interface Certificate {
 
 export const skillCategories = [
   {
-    title: "Back-end e dados",
+    key: "backendData",
     skills: ["Java", "Spring Boot", "REST APIs", "Node.js", "SQL", "PostgreSQL", "Firebase"],
   },
   {
-    title: "Web e automação",
+    key: "webAutomation",
     skills: ["React", "TypeScript", "Vite", "Tailwind CSS", "Python", "Selenium", "Git", "Linux"],
   },
 ] satisfies readonly SkillCategory[];

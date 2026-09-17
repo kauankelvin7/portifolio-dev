@@ -14,7 +14,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ projectId, title, description, category, tags, image, link }: ProjectCardProps) {
   return (
-    <article className="group surface-card h-full overflow-hidden transition-transform duration-200 hover:-translate-y-1">
+    <article className="project-card surface-card motion-reveal group h-full overflow-hidden">
       <Link
         href={link}
         target="_blank"
@@ -22,28 +22,29 @@ export function ProjectCard({ projectId, title, description, category, tags, ima
         className="flex h-full flex-col"
         aria-label={`${title} — ${description}`}
       >
-        <div className="relative min-h-56 overflow-hidden border-b border-[var(--border-soft)] bg-[var(--surface-strong)] md:min-h-64">
+        <div className="project-media md:min-h-64">
           {image ? (
-            <Image
-              src={image}
-              alt=""
-              fill
-              className="object-cover opacity-85 transition duration-300 group-hover:scale-[1.02] group-hover:opacity-100"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+            <>
+              <Image
+                src={image}
+                alt=""
+                fill
+                className="project-media__image"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="project-media__overlay" aria-hidden="true" />
+            </>
           ) : (
-            <div className="absolute inset-0 flex items-end p-6">
-              <div className="font-display text-[clamp(3.5rem,9vw,7rem)] leading-none tracking-[-0.06em] text-white/5">
-                {String(projectId).padStart(2, "0")}
-              </div>
+            <div className="project-fallback" aria-hidden="true">
+              <div className="project-fallback__number">{String(projectId).padStart(2, "0")}</div>
             </div>
           )}
 
-          <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
-            <span className="rounded-full border border-white/10 bg-black/55 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/75">
+          <div className="absolute inset-x-0 top-0 z-10 flex items-start justify-between p-5">
+            <span className="rounded-full border border-white/10 bg-[rgba(9,13,9,0.72)] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/75 backdrop-blur-sm">
               {category}
             </span>
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/55 text-white transition-colors group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-[rgba(9,13,9,0.72)] text-white transition-colors group-hover:border-[var(--accent-line)] group-hover:text-[var(--accent)]">
               <ArrowUpRight size={17} aria-hidden="true" />
             </span>
           </div>
@@ -55,7 +56,7 @@ export function ProjectCard({ projectId, title, description, category, tags, ima
 
           <div className="mt-7 flex flex-wrap gap-2 border-t border-[var(--border-soft)] pt-5">
             {tags.slice(0, 6).map((tag) => (
-              <span key={tag} className="rounded-full bg-white/[0.035] px-3 py-1.5 text-[11px] text-[var(--text-soft)]">
+              <span key={tag} className="rounded-full border border-[var(--border-soft)] bg-[var(--accent-soft)] px-3 py-1.5 text-[11px] text-[var(--text-soft)]">
                 {tag}
               </span>
             ))}

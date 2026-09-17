@@ -11,6 +11,7 @@ export const projects: readonly PortfolioProject[] = [
     id: 1,
     translationKey: "leve",
     tags: ["React", "TypeScript", "Firebase", "Express", "PWA", "Playwright"],
+    image: "https://raw.githubusercontent.com/kauankelvin7/Leve/main/docs/screenshots/desktop.png",
     link: "https://github.com/kauankelvin7/Leve",
   },
   {
