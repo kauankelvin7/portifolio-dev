@@ -1,76 +1,49 @@
-'use client';
-
-import dynamic from 'next/dynamic';
-import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { ArrowDownRight, Github } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { Header } from '@/components/layout/Header';
 import { AboutModern } from '@/components/sections/AboutModern';
 import { Projects } from '@/components/sections/Projects';
 import { Process } from '@/components/sections/Process';
 import { Skills } from '@/components/sections/Skills';
 import ContactFooter from '@/components/sections/ContactFooter';
-import LazyLoad from '@/components/layout/LazyLoad';
-import { useTransition } from '@/app/context/TransitionContext';
-import CanvasLoader from '@/components/ui/CanvasLoader';
 
-const Scene = dynamic(() => import('@/components/3d/Scene'), {
-  ssr: false,
-  loading: () => <CanvasLoaderTranslate />,
-});
+const heroStack = [
+  ['01', 'Java / Spring Boot'],
+  ['02', 'REST APIs / PostgreSQL'],
+  ['03', 'Python / Automação'],
+  ['04', 'React / TypeScript'],
+];
 
-function CanvasLoaderTranslate() {
-  const t = useTranslations('UI');
-  return <CanvasLoader label={t('system_booting')} />;
-}
-
-export default function Home() {
-  const t = useTranslations('Hero');
-  const { startTransition } = useTransition();
-
-  const handleCtaClick = async (event: React.MouseEvent, href: string) => {
-    event.preventDefault();
-    await startTransition(href);
-  };
+export default async function Home() {
+  const t = await getTranslations('Hero');
 
   return (
-    <div className="relative min-h-full w-full bg-[var(--background)] text-[var(--text)]">
+    <div className="min-h-screen w-full bg-[var(--background)] text-[var(--text)]">
       <Header />
 
-      <section id="home" className="relative min-h-[calc(100dvh-68px)] overflow-hidden border-b border-[var(--border-soft)]">
-        <div className="absolute inset-0 opacity-80" aria-hidden="true">
-          <LazyLoad>
-            <Scene />
-          </LazyLoad>
-        </div>
+      <section id="home" className="hero-section">
+        <div className="hero-grid" aria-hidden="true" />
+        <div className="hero-glow" aria-hidden="true" />
 
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,11,9,0.97)_0%,rgba(12,11,9,0.86)_45%,rgba(12,11,9,0.34)_75%,rgba(12,11,9,0.12)_100%)]" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,11,9,0.14),rgba(12,11,9,0.65))]" aria-hidden="true" />
-
-        <div className="container-shell relative z-10 flex min-h-[calc(100dvh-68px)] items-end py-16 md:items-center md:py-24">
+        <div className="container-shell relative z-10 grid min-h-[calc(100svh-72px)] items-center gap-14 py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:py-20">
           <div className="max-w-4xl">
-            <div className="mb-8 flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.08em] text-[var(--text-muted)]">
-              <span className="rounded-full border border-[var(--border)] bg-black/20 px-3 py-2 backdrop-blur-sm">
-                {t('role1')}
-              </span>
+            <div className="mb-7 flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.08em] text-[var(--text-muted)]">
+              <span className="status-pill">{t('role1')}</span>
               <span className="hidden h-px w-8 bg-[var(--border)] sm:block" />
               <span>{t('role2')}</span>
             </div>
 
-            <h1 className="max-w-[11ch] font-display text-[clamp(4.2rem,13vw,10rem)] leading-[0.82] tracking-[-0.065em] text-white">
-              {t('name1')} <span className="text-[var(--accent)]">{t('name2')}</span>
+            <h1 className="hero-title">
+              {t('name1')} <span>{t('name2')}</span>
             </h1>
 
-            <p className="mt-8 max-w-2xl text-base leading-7 text-[var(--text-soft)] md:text-lg">
+            <p className="mt-7 max-w-2xl text-base leading-7 text-[var(--text-soft)] md:text-lg md:leading-8">
               {t('status')}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="#work"
-                onClick={(event) => handleCtaClick(event, '#work')}
-                className="button-primary"
-              >
+              <Link href="#work" className="button-primary">
                 {t('cta_primary')}
                 <ArrowDownRight size={17} aria-hidden="true" />
               </Link>
@@ -91,9 +64,39 @@ export default function Home() {
               </a>
             </div>
 
-            <p className="mt-10 max-w-xl text-sm leading-6 text-[var(--text-muted)]">
-              {t('availability')}
-            </p>
+            <div className="mt-10 flex items-center gap-3 text-sm leading-6 text-[var(--text-muted)]">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-[var(--accent)] shadow-[0_0_18px_rgba(232,97,42,0.55)]" />
+              <span>{t('availability')}</span>
+            </div>
+          </div>
+
+          <div className="hero-console" aria-label="Tecnologias em foco">
+            <div className="hero-console__topbar">
+              <div className="flex items-center gap-2" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </div>
+              <span>kauan.dev / focus</span>
+            </div>
+
+            <div className="hero-console__body">
+              <div className="hero-console__mark" aria-hidden="true">K</div>
+              <div className="relative z-10 space-y-2">
+                {heroStack.map(([index, stack]) => (
+                  <div key={index} className="hero-console__row">
+                    <span>{index}</span>
+                    <strong>{stack}</strong>
+                  </div>
+                ))}
+              </div>
+
+              <div className="relative z-10 mt-10 grid grid-cols-3 gap-3 border-t border-[var(--border-soft)] pt-5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)] sm:text-xs">
+                <span>Back-end</span>
+                <span>Automation</span>
+                <span>Web</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
