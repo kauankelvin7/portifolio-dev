@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 type Locale = "pt" | "en" | "es";
 
@@ -22,6 +22,7 @@ export function LanguageToggle() {
   const [isOpen, setIsOpen] = useState(false);
   const [requestedLocale, setRequestedLocale] = useState<Locale | null>(null);
   const locale = useLocale() as Locale;
+  const tA11y = useTranslations("A11y");
   const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -55,8 +56,8 @@ export function LanguageToggle() {
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 text-xs font-semibold text-[var(--text-soft)] transition-colors hover:border-[#575148] hover:text-white"
-        aria-label="Selecionar idioma"
+        className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 text-xs font-semibold text-[var(--text-soft)] transition-colors hover:border-[var(--accent-line)] hover:text-white"
+        aria-label={tA11y("language_selector")}
         aria-expanded={isOpen}
       >
         {currentLanguage.code}
@@ -74,7 +75,7 @@ export function LanguageToggle() {
                 role="option"
                 aria-selected={active}
                 onClick={() => selectLanguage(language.locale)}
-                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-[var(--text-soft)] transition-colors hover:bg-white/5 hover:text-white"
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-[var(--text-soft)] transition-colors hover:bg-[var(--accent-soft)] hover:text-white"
               >
                 <span>{language.name}</span>
                 {active && <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true" />}
