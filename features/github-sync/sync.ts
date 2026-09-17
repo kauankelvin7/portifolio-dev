@@ -146,7 +146,7 @@ export async function syncGitHubPortfolio(): Promise<GitHubPortfolioPayload> {
   try {
     const repos = await githubFetch<GitHubRepo[]>(`/users/${githubSyncConfig.username}/repos?type=owner&sort=updated&direction=desc&per_page=100`);
     const valid = repos.filter(eligible);
-    const stackCandidates = [...valid].sort((a, b) => score(b) - score(a)).slice(0, 10);
+    const stackCandidates = [...valid].sort((a, b) => score(b) - score(a)).slice(0, 8);
     const autoCandidates = valid
       .filter((repo) => !githubSyncConfig.curatedRepositories.has(repo.name))
       .sort((a, b) => score(b) - score(a))
