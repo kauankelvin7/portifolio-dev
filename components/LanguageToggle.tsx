@@ -40,7 +40,6 @@ export function LanguageToggle() {
     if (!requestedLocale || requestedLocale === locale) return;
 
     document.cookie = `NEXT_LOCALE=${requestedLocale};path=/;max-age=31536000;samesite=lax`;
-    setRequestedLocale(null);
     router.refresh();
   }, [locale, requestedLocale, router]);
 
