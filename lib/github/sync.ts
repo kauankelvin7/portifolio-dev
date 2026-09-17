@@ -210,46 +210,53 @@ export async function syncGitHubPortfolio(): Promise<GitHubPortfolioPayload> {
     );
 
     const eligible = repos.filter(isEligibleRepository);
-    const ranked = [...eligible]
+    const stackCandidates = [...eligible]
       .sort((a, b) => scoreRepository(b) - scoreRepository(a))
-      .slice(0, Math.max(githubSyncConfig.maxAutoProjects, 12));
+      .slice(0, 16);
+
+    const autoCandidates = eligible
+      .filter((repo) => !githubSyncConfig.curatedRepositories.has(repo.name))
+      .sort((a, b) => scoreRepository(b) - scoreRepository(a))
+      .slice(0, githubSyncConfig.maxAutoProjects);
+
+    const reposToInspect = [...new Map(
+      [...stackCandidates, ...autoCandidates].map((repo) => [repo.full_name, repo]),
+    ).values()];
 
     const languageEntries = await Promise.all(
-      ranked.map(async (repo) => [repo.full_name, await getLanguages(repo)] as const),
+      reposToInspect.map(async (repo) => [repo.full_name, await getLanguages(repo)] as const),
     );
     const languageMap = new Map(languageEntries);
 
-    const projects: SyncedProject[] = ranked
-      .slice(0, githubSyncConfig.maxAutoProjects)
-      .map((repo) => {
-        const languages = languageMap.get(repo.full_name) ?? [];
-        const topicStacks = (repo.topics ?? [])
-          .map(normalizeStack)
-          .filter((value): value is string => Boolean(value));
+    const projects: SyncedProject[] = autoCandidates.map((repo) => {
+      const languages = languageMap.get(repo.full_name) ?? [];
+      const topicStacks = (repo.topics ?? [])
+        .map(normalizeStack)
+        .filter((value): value is string => Boolean(value));
 
-        const tags = [...new Set([
-          ...languages.map((language) => normalizeStack(language) ?? language),
-          ...topicStacks,
-        ])].slice(0, 6);
+      const tags = [...new Set([
+        ...languages.map((language) => normalizeStack(language) ?? language),
+        ...topicStacks,
+      ])].slice(0, 6);
 
-        return {
-          id: String(repo.id),
-          name: repo.name,
-          fullName: repo.full_name,
-          title: repo.name.replace(/[-_]+/g, " "),
-          description: repo.description,
-          url: repo.html_url,
-          homepage: repo.homepage,
-          language: repo.language,
-          tags,
-          topics: repo.topics ?? [],
-          stars: repo.stargazers_count,
-          forks: repo.forks_count,
-          updatedAt: repo.updated_at,
-          pushedAt: repo.pushed_at,
-          score: scoreRepository(repo),
-        };
-      });
+      return {
+        id: String(repo.id),
+        name: repo.name,
+        fullName: repo.full_name,
+        title: repo.name.replace(/[-_]+/g, " "),
+        description: repo.description,
+        url: repo.html_url,
+        homepage: repo.homepage,
+        language: repo.language,
+        tags,
+        topics: repo.topics ?? [],
+        stars: repo.stargazers_count,
+        forks: repo.forks_count,
+        updatedAt: repo.updated_at,
+        pushedAt: repo.pushed_at,
+        score: scoreRepository(repo),
+      };
+    });
 
     const contributions = await getOpenSourceContributions().catch(() => []);
 
@@ -257,7 +264,7 @@ export async function syncGitHubPortfolio(): Promise<GitHubPortfolioPayload> {
       username: githubSyncConfig.username,
       generatedAt: new Date().toISOString(),
       projects,
-      stacks: buildStacks(ranked, languageMap),
+      stacks: buildStacks(stackCandidates, languageMap),
       contributions,
       stats: {
         publicRepositories: repos.filter((repo) => !repo.private).length,
