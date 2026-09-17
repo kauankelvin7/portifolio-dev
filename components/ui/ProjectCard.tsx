@@ -1,21 +1,18 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { useTranslations } from "next-intl";
 
 interface ProjectProps {
   projectId: string;
-  translateKey: string;
+  title: string;
+  description: string;
+  category: string;
   tags: string[];
   image?: string;
   link: string;
 }
 
-export function ProjectCard({ projectId, translateKey, tags, image, link }: ProjectProps) {
-  const t = useTranslations("ProjectsSection");
-
+export function ProjectCard({ projectId, title, description, category, tags, image, link }: ProjectProps) {
   return (
     <article className="group surface-card h-full overflow-hidden transition-transform duration-200 hover:-translate-y-1">
       <Link
@@ -23,7 +20,7 @@ export function ProjectCard({ projectId, translateKey, tags, image, link }: Proj
         target="_blank"
         rel="noopener noreferrer"
         className="flex h-full flex-col"
-        aria-label={`${t(`${translateKey}.title`)} — ${t(`${translateKey}.description`)}`}
+        aria-label={`${title} — ${description}`}
       >
         <div className="relative min-h-56 overflow-hidden border-b border-[var(--border-soft)] bg-[var(--surface-strong)] md:min-h-64">
           {image ? (
@@ -31,7 +28,7 @@ export function ProjectCard({ projectId, translateKey, tags, image, link }: Proj
               src={image}
               alt=""
               fill
-              className="object-cover opacity-80 transition duration-500 group-hover:scale-[1.025] group-hover:opacity-100"
+              className="object-cover opacity-85 transition duration-300 group-hover:scale-[1.02] group-hover:opacity-100"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           ) : (
@@ -43,10 +40,10 @@ export function ProjectCard({ projectId, translateKey, tags, image, link }: Proj
           )}
 
           <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
-            <span className="rounded-full border border-white/10 bg-black/40 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/70 backdrop-blur-sm">
-              {t(`${translateKey}.category`)}
+            <span className="rounded-full border border-white/10 bg-black/55 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/75">
+              {category}
             </span>
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-sm transition group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/55 text-white transition-colors group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]">
               <ArrowUpRight size={17} aria-hidden="true" />
             </span>
           </div>
@@ -54,10 +51,10 @@ export function ProjectCard({ projectId, translateKey, tags, image, link }: Proj
 
         <div className="flex flex-1 flex-col p-6 md:p-7">
           <h3 className="font-display text-2xl leading-tight tracking-[-0.025em] text-white">
-            {t(`${translateKey}.title`)}
+            {title}
           </h3>
           <p className="mt-4 text-sm leading-6 text-[var(--text-muted)]">
-            {t(`${translateKey}.description`)}
+            {description}
           </p>
 
           <div className="mt-7 flex flex-wrap gap-2 border-t border-[var(--border-soft)] pt-5">
