@@ -8,10 +8,12 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import { siteConfig } from "@/config/site";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
+const NAV_SECTION_IDS = ["home", "about", "work", "stack", "contact"] as const;
+
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("Nav");
-  const activeSection = useActiveSection(["home", "about", "work", "stack", "contact"]);
+  const activeSection = useActiveSection(NAV_SECTION_IDS);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
