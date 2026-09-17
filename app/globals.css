@@ -164,6 +164,25 @@ canvas {
   border-color: #595249;
 }
 
+.stack-marquee-track {
+  animation: stack-scroll 34s linear infinite;
+  will-change: transform;
+}
+
+.stack-marquee:hover .stack-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes stack-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 html.lenis,
 html.lenis body {
   height: auto;
@@ -187,5 +206,13 @@ html.lenis body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .stack-marquee {
+    overflow-x: auto;
+  }
+
+  .stack-marquee-track {
+    animation: none !important;
   }
 }
