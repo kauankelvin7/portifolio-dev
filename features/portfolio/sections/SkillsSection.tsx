@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { certificates, skillCategories } from "@/features/portfolio/content/skills";
 import { syncGitHubPortfolio } from "@/features/github-sync/sync";
+import { StackMark } from "@/features/portfolio/components/StackMark";
 
 const stackCopy = {
   pt: {
@@ -50,9 +51,13 @@ export async function SkillsSection() {
         <div className="stack-marquee mt-12 overflow-hidden border-y border-[var(--border-soft)] py-5 motion-reveal">
           <div className="stack-marquee-track flex w-max items-center gap-3 pr-3">
             {marqueeSkills.map((skill, index) => (
-              <div key={`${skill}-${index}`} className="flex min-w-max items-center gap-3 rounded-full border border-[var(--border)] bg-[var(--background)] px-4 py-2.5" aria-hidden={index >= skills.length}>
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--accent-soft)] font-mono text-[10px] font-bold uppercase text-[var(--accent)]">
-                  {skill.replace(/[^a-zA-Z0-9]/g, "").slice(0, 2)}
+              <div
+                key={`${skill}-${index}`}
+                className="stack-chip flex min-w-max items-center gap-3 rounded-full border px-3 py-2.5 pr-4"
+                aria-hidden={index >= skills.length}
+              >
+                <span className="stack-logo-shell">
+                  <StackMark name={skill} />
                 </span>
                 <span className="text-sm font-medium text-[var(--text-soft)]">{skill}</span>
               </div>
