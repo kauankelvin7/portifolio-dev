@@ -1,13 +1,30 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { certificates, skillCategories } from "@/features/portfolio/content/skills";
 import { syncGitHubPortfolio } from "@/features/github-sync/sync";
 
+const stackCopy = {
+  pt: {
+    live: "A ordem é recalculada a partir das linguagens, tópicos e arquivos de configuração dos meus repositórios públicos. Ela mostra recorrência de uso, não porcentagem de domínio.",
+    fallback: "Stack mantida a partir da seleção curada enquanto a sincronização do GitHub está indisponível.",
+  },
+  en: {
+    live: "The order is recalculated from languages, topics and configuration files across my public repositories. It reflects recurring use, not a proficiency percentage.",
+    fallback: "The curated stack remains visible while GitHub synchronization is unavailable.",
+  },
+  es: {
+    live: "El orden se recalcula a partir de lenguajes, temas y archivos de configuración de mis repositorios públicos. Refleja uso recurrente, no un porcentaje de dominio.",
+    fallback: "La selección curada se mantiene visible mientras la sincronización con GitHub no está disponible.",
+  },
+} as const;
+
 export async function SkillsSection() {
-  const [t, github] = await Promise.all([
+  const [t, locale, github] = await Promise.all([
     getTranslations("Skills"),
+    getLocale(),
     syncGitHubPortfolio(),
   ]);
+  const copy = stackCopy[locale as keyof typeof stackCopy] ?? stackCopy.pt;
 
   const fallbackSkills = [...new Set(skillCategories.flatMap((category) => category.skills))];
   const syncedSkills = github.stacks.map((stack) => stack.name);
@@ -25,9 +42,7 @@ export async function SkillsSection() {
           </div>
           <div className="motion-reveal lg:justify-self-end">
             <p className="max-w-xl text-sm leading-6 text-[var(--text-muted)]">
-              {github.degraded
-                ? "Stack mantida a partir da seleção curada enquanto a sincronização do GitHub está indisponível."
-                : "A ordem é recalculada a partir das linguagens e tópicos dos meus repositórios públicos. Ela mostra recorrência de uso, não porcentagem de domínio."}
+              {github.degraded ? copy.fallback : copy.live}
             </p>
           </div>
         </div>
@@ -65,6 +80,24 @@ export async function SkillsSection() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        .stack-marquee-track {
+          animation: stack-scroll 34s linear infinite;
+          will-change: transform;
+        }
+        .stack-marquee:hover .stack-marquee-track {
+          animation-play-state: paused;
+        }
+        @keyframes stack-scroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .stack-marquee { overflow-x: auto; }
+          .stack-marquee-track { animation: none; }
+        }
+      `}</style>
     </section>
   );
 }
