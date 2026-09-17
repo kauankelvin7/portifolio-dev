@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
 type Locale = "pt" | "en" | "es";
 
@@ -11,7 +12,7 @@ type Language = {
   name: string;
 };
 
-const languages: Language[] = [
+const languages: readonly Language[] = [
   { locale: "pt", code: "PT", name: "Português" },
   { locale: "en", code: "EN", name: "English" },
   { locale: "es", code: "ES", name: "Español" },
@@ -19,18 +20,9 @@ const languages: Language[] = [
 
 export function LanguageToggle() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLocale, setActiveLocale] = useState<Locale>("pt");
+  const locale = useLocale() as Locale;
   const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const match = document.cookie.match(/(^| )NEXT_LOCALE=([^;]+)/);
-    const savedLocale = match?.[2] as Locale | undefined;
-
-    if (savedLocale && languages.some((language) => language.locale === savedLocale)) {
-      setActiveLocale(savedLocale);
-    }
-  }, []);
 
   useEffect(() => {
     const closeOnOutsideClick = (event: MouseEvent) => {
@@ -43,21 +35,22 @@ export function LanguageToggle() {
     return () => document.removeEventListener("mousedown", closeOnOutsideClick);
   }, []);
 
-  const selectLanguage = (locale: Locale) => {
-    setActiveLocale(locale);
+  const selectLanguage = (nextLocale: Locale) => {
     setIsOpen(false);
-    document.cookie = `NEXT_LOCALE=${locale};path=/;max-age=31536000;samesite=lax`;
+    if (nextLocale === locale) return;
+
+    document.cookie = `NEXT_LOCALE=${nextLocale};path=/;max-age=31536000;samesite=lax`;
     router.refresh();
   };
 
-  const currentLanguage = languages.find((language) => language.locale === activeLocale) ?? languages[0];
+  const currentLanguage = languages.find((language) => language.locale === locale) ?? languages[0];
 
   return (
     <div ref={dropdownRef} className="relative">
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 text-xs font-semibold text-[var(--text-soft)] transition hover:border-[#575148] hover:text-white"
+        className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 text-xs font-semibold text-[var(--text-soft)] transition-colors hover:border-[#575148] hover:text-white"
         aria-label="Selecionar idioma"
         aria-expanded={isOpen}
       >
@@ -68,8 +61,7 @@ export function LanguageToggle() {
       {isOpen && (
         <div className="absolute right-0 top-[calc(100%+8px)] z-50 min-w-36 rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-1 shadow-2xl" role="listbox">
           {languages.map((language) => {
-            const active = language.locale === activeLocale;
-
+            const active = language.locale === locale;
             return (
               <button
                 key={language.locale}
@@ -77,7 +69,7 @@ export function LanguageToggle() {
                 role="option"
                 aria-selected={active}
                 onClick={() => selectLanguage(language.locale)}
-                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-[var(--text-soft)] transition hover:bg-white/5 hover:text-white"
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-[var(--text-soft)] transition-colors hover:bg-white/5 hover:text-white"
               >
                 <span>{language.name}</span>
                 {active && <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true" />}
