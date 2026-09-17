@@ -12,8 +12,8 @@ export const skillCategories = [
 export const certificates = [
   {
     id: 1,
-    name: "Introduction to Cybersecurity",
-    issuer: "Cisco Networking Academy",
+    name: "Engenharia de Software",
+    issuer: "FIAP",
     image: "/certificates/engenharia_de_software_fiap.jpg",
     status: "unlocked"
   },
