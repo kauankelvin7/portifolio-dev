@@ -4,6 +4,13 @@ export const githubSyncConfig = {
   maxAutoProjects: 8,
   maxStacks: 14,
   maxContributions: 8,
+  curatedRepositories: new Set([
+    "Leve",
+    "Automacao-Clinica-Odontologica",
+    "Omni",
+    "Cinesia",
+    "Jogo-de-Xadrez",
+  ]),
   ignoredRepositories: new Set([
     "portifolio-dev",
     "portifolio_developer",
