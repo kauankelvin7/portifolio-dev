@@ -1,9 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">Kauan Kelvin</title>
-  <desc id="desc">Monograma K com órbita.</desc>
-  <rect width="96" height="96" rx="28" fill="#0b120b"/>
-  <rect x="1.5" y="1.5" width="93" height="93" rx="26.5" fill="none" stroke="#2b382b" stroke-width="3"/>
-  <ellipse cx="48" cy="48" rx="40" ry="16" fill="none" stroke="#9fbe8e" stroke-opacity=".48" stroke-width="2" transform="rotate(-27 48 48)"/>
-  <path d="M31 26v44M33 48l29-23M33 48l30 24" fill="none" stroke="#d5e5cd" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="77" cy="25" r="4" fill="#bdd8ae"/>
+  <desc id="desc">Monograma geométrico K.</desc>
+  <path d="M12 8v48M14 32 39 9M14 32l26 23" fill="none" stroke="#d5e5cd" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter"/>
+  <rect x="47" y="10" width="6" height="6" fill="#9fbe8e"/>
 </svg>
