@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -35,9 +34,9 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="container-shell site-header__inner">
-        <Link href="#home" className="site-brand" aria-label={`${siteConfig.name} — início`}>
-          <Image src="/brand/mark.svg" width={26} height={26} alt="" aria-hidden="true" priority />
-          <span>{siteConfig.name}</span>
+        <Link href="#home" className="site-brand site-brand--v5" aria-label={`${siteConfig.name} — início`}>
+          <span className="site-brand__sig" aria-hidden="true">K.</span>
+          <span className="site-brand__name">{siteConfig.name}</span>
         </Link>
 
         <nav className="site-nav" aria-label={tA11y("main_navigation")}>
