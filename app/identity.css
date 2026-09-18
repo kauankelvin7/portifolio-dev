@@ -2804,3 +2804,83 @@ body {
     opacity: 1 !important;
   }
 }
+
+
+/* =========================================================
+   PROJECT SCREENSHOTS — preserve the complete UI
+   ========================================================= */
+
+.project-v4__media {
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.018), transparent 42%),
+    #0d110d;
+}
+
+.project-v4--featured .project-v4__media {
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+
+.project-v4--wide .project-v4__media,
+.project-v4--compact .project-v4__media,
+.project-v4--tall .project-v4__media {
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+
+.project-v4__image {
+  object-fit: contain !important;
+  object-position: center center !important;
+  padding: clamp(10px, 1.5vw, 20px);
+  background: transparent;
+  filter: saturate(.9) contrast(1.02);
+  transform: none !important;
+  transition: filter 220ms ease, opacity 220ms ease !important;
+}
+
+.project-v4:hover .project-v4__image {
+  object-fit: contain !important;
+  transform: none !important;
+  filter: saturate(1) contrast(1.01);
+}
+
+.project-v4__media::before {
+  content: "";
+  position: absolute;
+  inset: clamp(10px, 1.5vw, 20px);
+  z-index: 0;
+  border: 1px solid rgba(147,171,135,.07);
+  pointer-events: none;
+}
+
+.project-v4__image,
+.project-v4__abstract {
+  z-index: 1;
+}
+
+.project-v4__index {
+  z-index: 4;
+}
+
+@media (max-width: 680px) {
+  .project-v4__media,
+  .project-v4--featured .project-v4__media,
+  .project-v4--wide .project-v4__media,
+  .project-v4--compact .project-v4__media,
+  .project-v4--tall .project-v4__media {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .project-v4__image {
+    padding: 8px;
+  }
+
+  .project-v4__media::before {
+    inset: 8px;
+  }
+}
