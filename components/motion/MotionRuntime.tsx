@@ -19,6 +19,7 @@ const staggerGroups = [
   ".github-v4__timeline",
   ".journey-v3__list",
   ".credentials-v4__list",
+  "[data-stagger-group]",
 ];
 
 export function MotionRuntime() {
@@ -32,6 +33,7 @@ export function MotionRuntime() {
       document.querySelectorAll<HTMLElement>(groupSelector).forEach((group) => {
         Array.from(group.children).forEach((child, index) => {
           if (!(child instanceof HTMLElement)) return;
+          if (group.hasAttribute("data-stagger-group") && !child.hasAttribute("data-stagger-item")) return;
           child.classList.add("motion-reveal");
           child.style.setProperty("--motion-delay", `${Math.min(index * 70, 350)}ms`);
         });
@@ -41,10 +43,10 @@ export function MotionRuntime() {
     revealElements.forEach((element) => element.classList.add("motion-reveal"));
     root.classList.add("motion-ready");
 
+    const targets = Array.from(document.querySelectorAll<HTMLElement>(".motion-reveal"));
+
     if (reduced) {
-      document.querySelectorAll<HTMLElement>(".motion-reveal").forEach((element) => {
-        element.classList.add("is-visible");
-      });
+      targets.forEach((element) => element.classList.add("is-visible"));
       return;
     }
 
@@ -63,7 +65,7 @@ export function MotionRuntime() {
       },
     );
 
-    document.querySelectorAll<HTMLElement>(".motion-reveal").forEach((element) => observer.observe(element));
+    targets.forEach((element) => observer.observe(element));
 
     return () => {
       observer.disconnect();
