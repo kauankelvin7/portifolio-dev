@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import "./globals.css";
 import "./identity.css";
 
-const spaceGrotesk = Space_Grotesk({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-geist",
   display: "swap",
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
-  weight: ["400", "500", "600"],
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
@@ -46,8 +45,8 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
-      <body className="font-body bg-[var(--background)] text-[var(--text)]">
+    <html lang={locale} className={`${geist.variable} ${geistMono.variable}`}>
+      <body className="bg-[var(--background)] text-[var(--text)]">
         <NextIntlClientProvider messages={messages} locale={locale}>
           <main className="min-h-screen w-full overflow-x-clip bg-[var(--background)]">
             {children}

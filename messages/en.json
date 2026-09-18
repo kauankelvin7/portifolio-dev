@@ -1,20 +1,213 @@
 {
-  "Metadata": {"title":"Kauan Kelvin — Software Engineering, Back-end & Automation","description":"Kauan Kelvin's portfolio: Software Engineering student building projects with Java, Spring Boot, React, Python, automation and web applications."},
-  "Nav": {"home":"Home","about":"About","projects":"Projects","stack":"Stack","contact":"Contact"},
-  "A11y": {"main_navigation":"Main navigation","mobile_navigation":"Mobile navigation","open_menu":"Open menu","close_menu":"Close menu","language_selector":"Select language","focus_technologies":"Technologies in focus","profile_photo":"Kauan Kelvin's GitHub profile photo"},
-  "Hero": {"role1":"Software Engineering","role2":"Back-end · Automation · Web","design":"ENGINEERING &","performance":"PRODUCT.","name1":"KAUAN","name2":"KELVIN","status":"Looking for an internship or junior opportunity in technology","availability":"Software Engineering student · open to opportunities","cta_primary":"View projects","cta_secondary":"View résumé","focus_backend":"Back-end","focus_automation":"Automation","focus_web":"Web"},
-  "About": {"title":"About me","badge":"Software Engineering student with hands-on technology experience","p1":"I'm a Software Engineering student and currently work in an administrative role where I also support IT systems, equipment and process improvements. Working close to real operational problems led me to build automations and applications for everyday tasks.","p2":"My current focus is back-end development, APIs, Java and Spring Boot, while React, TypeScript and Python are part of my toolkit when the problem calls for a complete solution.","quote":"I like to understand the problem first and use technology to make what used to be difficult simpler.","stats":{"semester":"Education","age":"Experience","code":"Projects","curiosity":"Learning"},"download":"View résumé"},
-  "AboutModern": {"title1":"ENGINEERING","title2":"IN PRACTICE","present":"Today","p1":"My Software Engineering studies are backed by projects where I have worked on architecture, persistence, authentication, APIs, testing and user experience — not just screens.","p2":"I also bring what I learn from administrative processes and IT support into software: observe the real workflow, find friction and automate what makes sense.","bullet1":"Java, Spring Boot and REST APIs","bullet2":"Python and process automation","bullet3":"React, TypeScript and web applications","philosophy_label":"How I work","philosophy_text":"Understand the problem, build something maintainable and prove that it works.","profile_label":"Technical profile","profile_caption":"My real profile photo with direct access to public repositories, projects and contributions.","profile_link":"Open GitHub"},
-  "AboutCyber": {"title1":"BACK-END","title2":"& AUTOMATION","backend_title":"TECHNICAL FOCUS","backend_p1":"I have been focusing my studies on Java, Spring Boot, APIs and data modeling.","backend_p2":"Python is also part of my work when automation is the right answer.","bullet1":"REST APIs with Java / Spring Boot","bullet2":"SQL, PostgreSQL, Firebase and data modeling","bullet3":"RPA and automation with Python","system_status_label":"Current direction","system_status_text":"BACK-END · AUTOMATION · SOFTWARE ENGINEERING"},
-  "Projects": {"title":"Projects","subtitle":"that show my work","description":"A selection of projects where I had to make architecture decisions, implement real features and document what was built.","more":"Want to see more?","github_button":"Open my GitHub"},
-  "Process": {"item1":{"title":"2024 — present","description":"Software Engineering degree at UniCesumar.","detail1":"Architecture","detail2":"Back-end","detail3":"Software Engineering"},"item2":{"title":"2024 — present","description":"Administrative Assistant at NOVA Medicina e Segurança do Trabalho, also supporting systems, equipment and technology-driven process improvements.","detail1":"Processes","detail2":"IT support","detail3":"Automation"},"item3":{"title":"Personal projects and real client work","description":"Web apps, automation and back-end projects used to turn software engineering study into practice.","detail1":"Java","detail2":"Python","detail3":"React"}},
-  "Skills": {"title":"Technologies","subtitle":"I use","certificates_title":"Additional education","syncing":"Still learning","verified":"Completed","locked":"In progress","resource_locked":"In progress","categories":{"backendData":"Back-end & data","webAutomation":"Web & automation"}},
-  "Companies": {"stat1":"Software Engineering","stat2":"Public code projects","stat3":"Open-source contribution"},
-  "Contact": {"title1":"LET'S","title2":"TALK?","description":"I'm interested in internships, junior roles and projects where I can contribute with development, automation or process improvement.","location":"Brasília / GO · remote or on-site","footer1":"Kauan Kelvin portfolio","footer2":"©2026"},
-  "UI": {"work":"Projects","view_project":"Open project","project_featured":"Featured project","project_case":"Project details","loading_scene":"Loading visual...","system_booting":"Loading experience...","interactivity_hint":"Hold and move to explore","interactivity_mobile":"Drag to explore","aria_view_project":"Open project {title}"},
-  "Ticker": {"items":"JAVA · SPRING BOOT · TYPESCRIPT · REACT · PYTHON · SELENIUM · FIREBASE · POSTGRESQL · GIT · LINUX"},
-  "AboutSection": {"eyebrow":"About"},
-  "ProjectsSection": {"eyebrow":"Selected projects","leve":{"title":"LEVE","description":"Personal planner PWA with authentication, command API, revision control, explicit conflicts and offline outbox support.","category":"React · TypeScript · Firebase · Express"},"dental":{"title":"DENTAL AUTOMATION","description":"Python and Selenium RPA for filling forms, attaching files and generating execution logs in a real clinic workflow.","category":"Python · Selenium · Openpyxl"},"omni":{"title":"OMNI","description":"Clinic management system with Java/Spring Boot API, PostgreSQL, React/TypeScript frontend and Python automations.","category":"Java · Spring Boot · PostgreSQL · React"},"cinesia":{"title":"CINESIA","description":"Physical Therapy study platform with PWA, Firebase, spaced repetition, quizzes and AI-assisted features.","category":"React · Firebase · PWA · Gemini"},"rustdesk":{"title":"RUSTDESK — OPEN-SOURCE CONTRIBUTION","description":"Accepted contribution adding Brazilian Portuguese Android Fastlane metadata to RustDesk.","category":"Open Source · GitHub · Localization"},"xadrez":{"title":"CHESS GAME","description":"Java project used to practice object-oriented programming, domain rules and code organization.","category":"Java · OOP"}},
-  "ProcessSection": {"eyebrow":"How I have been growing","title1":"LEARNING","title2":"BY BUILDING","description":"I use personal projects, real demands and open-source contribution to turn study into practice.","item1":"Architecture and back-end — Java, Spring Boot, APIs, authentication and data","item2":"Automation — Python, Selenium, file processing and integrations","item3":"Web product — React, TypeScript, Firebase, PWA and accessibility","item4":"Quality — Git, documentation, testing, review and open source"},
-  "ContactSection": {"title":"GET IN TOUCH.","subtitle":"If you're looking for someone early in their career who already puts engineering into practice, tell me about the opportunity.","cta":"Send a message","name_label":"Name","email_label":"Email","message_label":"Message","email_link_label":"Send email","name_placeholder":"Your name","email_placeholder":"Your email","project_placeholder":"Tell me about the opportunity or project","submit_button":"Send message","sending":"Sending...","success":"Message sent. Thanks for reaching out — I'll reply as soon as I can.","send_another":"Send another message","social":"Find me online","availability":"Open to internships and junior roles","back_to_top":"Back to top"}
+  "Metadata": {
+    "title": "Kauan Kelvin — Software Engineering, Back-end & Automation",
+    "description": "Kauan Kelvin's portfolio: Software Engineering student building projects with Java, Spring Boot, React, Python, automation and web applications."
+  },
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "stack": "Stack",
+    "contact": "Contact"
+  },
+  "A11y": {
+    "main_navigation": "Main navigation",
+    "mobile_navigation": "Mobile navigation",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "language_selector": "Select language",
+    "focus_technologies": "Technologies in focus",
+    "profile_photo": "Kauan Kelvin's GitHub profile photo"
+  },
+  "Hero": {
+    "role1": "Software Engineering",
+    "role2": "Back-end · Automation · Web",
+    "design": "ENGINEERING &",
+    "performance": "PRODUCT.",
+    "name1": "KAUAN",
+    "name2": "KELVIN",
+    "status": "I study Software Engineering and turn real problems into APIs, automation and web products I can explain, test and maintain.",
+    "availability": "Open to internships and junior technology roles.",
+    "cta_primary": "View projects",
+    "cta_secondary": "View résumé",
+    "focus_backend": "Back-end",
+    "focus_automation": "Automation",
+    "focus_web": "Web"
+  },
+  "About": {
+    "title": "About me",
+    "badge": "Software Engineering student with hands-on technology experience",
+    "p1": "I'm a Software Engineering student and currently work in an administrative role where I also support IT systems, equipment and process improvements. Working close to real operational problems led me to build automations and applications for everyday tasks.",
+    "p2": "My current focus is back-end development, APIs, Java and Spring Boot, while React, TypeScript and Python are part of my toolkit when the problem calls for a complete solution.",
+    "quote": "I like to understand the problem first and use technology to make what used to be difficult simpler.",
+    "stats": {
+      "semester": "Education",
+      "age": "Experience",
+      "code": "Projects",
+      "curiosity": "Learning"
+    },
+    "download": "View résumé"
+  },
+  "AboutModern": {
+    "title1": "Engineering",
+    "title2": "in practice",
+    "present": "About me",
+    "p1": "My Software Engineering studies are backed by projects where I have worked on architecture, persistence, authentication, APIs, testing and user experience — not just screens.",
+    "p2": "I also bring what I learn from administrative processes and IT support into software: observe the real workflow, find friction and automate what makes sense.",
+    "bullet1": "Java, Spring Boot and REST APIs",
+    "bullet2": "Python and process automation",
+    "bullet3": "React, TypeScript and web applications",
+    "philosophy_label": "How I work",
+    "philosophy_text": "Understand the problem, build something maintainable and prove that it works.",
+    "profile_label": "Technical profile",
+    "profile_caption": "My real profile photo with direct access to public repositories, projects and contributions.",
+    "profile_link": "Open GitHub"
+  },
+  "AboutCyber": {
+    "title1": "BACK-END",
+    "title2": "& AUTOMATION",
+    "backend_title": "TECHNICAL FOCUS",
+    "backend_p1": "I have been focusing my studies on Java, Spring Boot, APIs and data modeling.",
+    "backend_p2": "Python is also part of my work when automation is the right answer.",
+    "bullet1": "REST APIs with Java / Spring Boot",
+    "bullet2": "SQL, PostgreSQL, Firebase and data modeling",
+    "bullet3": "RPA and automation with Python",
+    "system_status_label": "Current direction",
+    "system_status_text": "BACK-END · AUTOMATION · SOFTWARE ENGINEERING"
+  },
+  "Projects": {
+    "title": "Projects",
+    "subtitle": "with context",
+    "description": "Each case shows a problem, the technical decisions and what was actually built — without pretending every repository has the same weight.",
+    "more": "Want to see more?",
+    "github_button": "Open my GitHub"
+  },
+  "Process": {
+    "item1": {
+      "title": "2024 — present",
+      "description": "Software Engineering degree at UniCesumar.",
+      "detail1": "Architecture",
+      "detail2": "Back-end",
+      "detail3": "Software Engineering"
+    },
+    "item2": {
+      "title": "2024 — present",
+      "description": "Administrative Assistant at NOVA Medicina e Segurança do Trabalho, also supporting systems, equipment and technology-driven process improvements.",
+      "detail1": "Processes",
+      "detail2": "IT support",
+      "detail3": "Automation"
+    },
+    "item3": {
+      "title": "Personal projects and real client work",
+      "description": "Web apps, automation and back-end projects used to turn software engineering study into practice.",
+      "detail1": "Java",
+      "detail2": "Python",
+      "detail3": "React"
+    }
+  },
+  "Skills": {
+    "title": "Technologies",
+    "subtitle": "I use",
+    "certificates_title": "Additional education",
+    "syncing": "Still learning",
+    "verified": "Completed",
+    "locked": "In progress",
+    "resource_locked": "In progress",
+    "categories": {
+      "backendData": "Back-end & data",
+      "webAutomation": "Web & automation"
+    }
+  },
+  "Companies": {
+    "stat1": "Software Engineering",
+    "stat2": "Public code projects",
+    "stat3": "Open-source contribution"
+  },
+  "Contact": {
+    "title1": "LET'S",
+    "title2": "TALK?",
+    "description": "I'm interested in internships, junior roles and projects where I can contribute with development, automation or process improvement.",
+    "location": "Brasília / GO · remote or on-site",
+    "footer1": "Kauan Kelvin portfolio",
+    "footer2": "©2026"
+  },
+  "UI": {
+    "work": "Projects",
+    "view_project": "Open project",
+    "project_featured": "Featured project",
+    "project_case": "Project details",
+    "loading_scene": "Loading visual...",
+    "system_booting": "Loading experience...",
+    "interactivity_hint": "Hold and move to explore",
+    "interactivity_mobile": "Drag to explore",
+    "aria_view_project": "Open project {title}"
+  },
+  "Ticker": {
+    "items": "JAVA · SPRING BOOT · TYPESCRIPT · REACT · PYTHON · SELENIUM · FIREBASE · POSTGRESQL · GIT · LINUX"
+  },
+  "AboutSection": {
+    "eyebrow": "About"
+  },
+  "ProjectsSection": {
+    "eyebrow": "Selected work",
+    "leve": {
+      "title": "LEVE",
+      "description": "Personal planner PWA with authentication, command API, revision control, explicit conflicts and offline outbox support.",
+      "category": "React · TypeScript · Firebase · Express"
+    },
+    "dental": {
+      "title": "DENTAL AUTOMATION",
+      "description": "Python and Selenium RPA for filling forms, attaching files and generating execution logs in a real clinic workflow.",
+      "category": "Python · Selenium · Openpyxl"
+    },
+    "omni": {
+      "title": "OMNI",
+      "description": "Clinic management system with Java/Spring Boot API, PostgreSQL, React/TypeScript frontend and Python automations.",
+      "category": "Java · Spring Boot · PostgreSQL · React"
+    },
+    "cinesia": {
+      "title": "CINESIA",
+      "description": "Physical Therapy study platform with PWA, Firebase, spaced repetition, quizzes and AI-assisted features.",
+      "category": "React · Firebase · PWA · Gemini"
+    },
+    "rustdesk": {
+      "title": "RUSTDESK — OPEN-SOURCE CONTRIBUTION",
+      "description": "Accepted contribution adding Brazilian Portuguese Android Fastlane metadata to RustDesk.",
+      "category": "Open Source · GitHub · Localization"
+    },
+    "xadrez": {
+      "title": "CHESS GAME",
+      "description": "Java project used to practice object-oriented programming, domain rules and code organization.",
+      "category": "Java · OOP"
+    }
+  },
+  "ProcessSection": {
+    "eyebrow": "How I have been growing",
+    "title1": "Learning",
+    "title2": "by building",
+    "description": "I use personal projects, real demands and open-source contribution to turn study into practice.",
+    "item1": "Architecture and back-end — Java, Spring Boot, APIs, authentication and data",
+    "item2": "Automation — Python, Selenium, file processing and integrations",
+    "item3": "Web product — React, TypeScript, Firebase, PWA and accessibility",
+    "item4": "Quality — Git, documentation, testing, review and open source"
+  },
+  "ContactSection": {
+    "title": "Let's talk.",
+    "subtitle": "If you're looking for someone early in their career who already puts engineering into practice, tell me about the opportunity.",
+    "cta": "Send a message",
+    "name_label": "Name",
+    "email_label": "Email",
+    "message_label": "Message",
+    "email_link_label": "Send email",
+    "name_placeholder": "Your name",
+    "email_placeholder": "Your email",
+    "project_placeholder": "Tell me about the opportunity or project",
+    "submit_button": "Send message",
+    "sending": "Sending...",
+    "success": "Message sent. Thanks for reaching out — I'll reply as soon as I can.",
+    "send_another": "Send another message",
+    "social": "Find me online",
+    "availability": "Open to internships and junior roles",
+    "back_to_top": "Back to top"
+  }
 }

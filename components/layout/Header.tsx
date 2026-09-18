@@ -33,61 +33,50 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border-soft)] bg-[var(--header-bg)] backdrop-blur-xl">
-      <div className="container-shell flex min-h-[72px] items-center justify-between gap-5">
-        <Link href="#home" className="brand-lockup" aria-label={`${siteConfig.name} — início`}>
-          <span className="brand-mark-shell">
-            <Image src="/brand/mark.svg" width={36} height={36} alt="" aria-hidden="true" priority />
-          </span>
-          <span className="brand-lockup__copy">
-            <span className="brand-lockup__name">{siteConfig.name}</span>
-            <span className="brand-lockup__role">software engineering</span>
-          </span>
+    <header className="site-header">
+      <div className="container-shell site-header__inner">
+        <Link href="#home" className="site-brand" aria-label={`${siteConfig.name} — início`}>
+          <Image src="/brand/mark.svg" width={26} height={26} alt="" aria-hidden="true" priority />
+          <span>{siteConfig.name}</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label={tA11y("main_navigation")}>
+        <nav className="site-nav" aria-label={tA11y("main_navigation")}>
           {navLinks.map((link) => {
             const active = activeSection === link.id || (link.id === "home" && !activeSection);
             return (
-              <Link
-                key={link.id}
-                href={link.href}
-                className={`relative py-2 text-xs font-semibold transition-colors ${active ? "text-white" : "text-[var(--text-muted)] hover:text-white"}`}
-              >
+              <Link key={link.id} href={link.href} className={`site-nav__link ${active ? "is-active" : ""}`}>
                 {link.label}
-                <span
-                  aria-hidden="true"
-                  className={`absolute inset-x-0 -bottom-0.5 mx-auto h-px bg-[var(--accent)] transition-all duration-200 ${active ? "w-full opacity-100" : "w-0 opacity-0"}`}
-                />
               </Link>
             );
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="site-header__actions">
           <LanguageToggle />
           <button
             type="button"
             onClick={() => setIsOpen((open) => !open)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] text-[var(--text-soft)] transition-colors hover:border-[var(--accent-line)] hover:text-white md:hidden"
+            className="site-menu-button"
             aria-label={isOpen ? tA11y("close_menu") : tA11y("open_menu")}
             aria-expanded={isOpen}
           >
-            {isOpen ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
+            {isOpen ? <X size={17} aria-hidden="true" /> : <Menu size={17} aria-hidden="true" />}
           </button>
         </div>
       </div>
 
       {isOpen && (
-        <div className="fixed inset-x-0 top-[72px] z-40 min-h-[calc(100svh-72px)] border-t border-[var(--border-soft)] bg-[var(--background)] px-5 py-10 md:hidden">
-          <nav className="container-shell flex flex-col" aria-label={tA11y("mobile_navigation")}>
-            {navLinks.map((link) => (
+        <div className="site-mobile-menu">
+          <nav className="container-shell" aria-label={tA11y("mobile_navigation")}>
+            {navLinks.map((link, index) => (
               <Link
                 key={link.id}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="border-b border-[var(--border-soft)] py-5 font-display text-3xl tracking-[-0.04em] text-white transition-colors hover:text-[var(--accent)]"
+                className="site-mobile-menu__link"
+                style={{ transitionDelay: `${index * 35}ms` }}
               >
+                <span>0{index + 1}</span>
                 {link.label}
               </Link>
             ))}
