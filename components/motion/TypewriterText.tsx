@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect, useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 
 interface TypewriterTextProps {
   text: string;
@@ -9,46 +7,43 @@ interface TypewriterTextProps {
   speed?: number;
 }
 
+type MotionStyle = CSSProperties & {
+  "--char-index"?: number;
+  "--type-start"?: string;
+  "--type-step"?: string;
+  "--type-end"?: string;
+};
+
 export function TypewriterText({
   text,
   className,
   startDelay = 220,
   speed = 26,
 }: TypewriterTextProps) {
-  const [visibleCount, setVisibleCount] = useState(0);
-  const chars = useMemo(() => Array.from(text), [text]);
-
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduced) {
-      setVisibleCount(chars.length);
-      return;
-    }
-
-    setVisibleCount(0);
-    let intervalId: number | undefined;
-    const timeoutId = window.setTimeout(() => {
-      intervalId = window.setInterval(() => {
-        setVisibleCount((current) => {
-          if (current >= chars.length) {
-            if (intervalId) window.clearInterval(intervalId);
-            return chars.length;
-          }
-          return current + 1;
-        });
-      }, speed);
-    }, startDelay);
-
-    return () => {
-      window.clearTimeout(timeoutId);
-      if (intervalId) window.clearInterval(intervalId);
-    };
-  }, [chars, speed, startDelay]);
+  const chars = Array.from(text);
+  const endDelay = startDelay + chars.length * speed;
 
   return (
-    <span className={className} aria-label={text}>
-      <span aria-hidden="true">{chars.slice(0, visibleCount).join("")}</span>
+    <span
+      className={className}
+      aria-label={text}
+      style={{
+        "--type-start": `${startDelay}ms`,
+        "--type-step": `${speed}ms`,
+        "--type-end": `${endDelay}ms`,
+      } as MotionStyle}
+    >
+      <span aria-hidden="true">
+        {chars.map((char, index) => (
+          <span
+            key={`${char}-${index}`}
+            className="typewriter-char"
+            style={{ "--char-index": index } as MotionStyle}
+          >
+            {char}
+          </span>
+        ))}
+      </span>
       <span className="typewriter-caret" aria-hidden="true" />
     </span>
   );
