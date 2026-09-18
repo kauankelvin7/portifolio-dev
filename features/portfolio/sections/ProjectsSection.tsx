@@ -8,21 +8,22 @@ export async function ProjectsSection() {
   const t = await getTranslations("Projects");
   const tp = await getTranslations("ProjectsSection");
   const [featured, ...secondary] = projects;
+  const variants = ["wide", "compact", "tall", "compact", "wide"] as const;
 
   return (
-    <section id="work" className="editorial-section editorial-section--alt">
+    <section id="work" className="editorial-section projects-v4-section">
       <div className="container-shell">
         <div className="section-intro">
           <span className="section-index">02</span>
           <span className="section-kicker">{tp("eyebrow")}</span>
         </div>
 
-        <div className="projects-v3__heading">
+        <div className="projects-v4__heading">
           <h2 className="editorial-heading">{t("title")} <span>{t("subtitle")}</span></h2>
           <p>{t("description")}</p>
         </div>
 
-        <div className="projects-v3__featured">
+        <div className="projects-v4__featured">
           <ProjectCard
             projectId={featured.id}
             title={tp(`${featured.translationKey}.title`)}
@@ -35,8 +36,8 @@ export async function ProjectsSection() {
           />
         </div>
 
-        <div className="projects-v3__grid">
-          {secondary.map((project) => (
+        <div className="projects-v4__mosaic">
+          {secondary.map((project, index) => (
             <ProjectCard
               key={project.id}
               projectId={project.id}
@@ -46,11 +47,12 @@ export async function ProjectsSection() {
               tags={project.tags}
               image={project.image}
               link={project.link}
+              variant={variants[index] ?? "compact"}
             />
           ))}
         </div>
 
-        <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" className="projects-v3__github editorial-link">
+        <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" className="projects-v4__github editorial-link">
           {t("github_button")}
           <ArrowUpRight size={14} aria-hidden="true" />
         </a>

@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, GitBranch, GitPullRequest } from "lucide-react";
 import { getLocale } from "next-intl/server";
 import { syncGitHubPortfolio } from "./sync";
 
@@ -6,35 +6,33 @@ const copy = {
   pt: {
     eyebrow: "GitHub sync",
     title: "Atividade que entra sozinha",
-    description: "O portfólio lê repositórios elegíveis, tecnologias recorrentes e contribuições open source do meu GitHub público.",
-    repos: "Repositórios",
-    contributions: "Open source",
-    emptyRepos: "Nenhum repositório novo elegível por enquanto.",
-    emptyContributions: "Nenhuma nova contribuição externa detectada por enquanto.",
+    description: "Repositórios elegíveis e contribuições open source entram aqui a partir do meu GitHub público.",
+    repo: "Repositório",
+    merged: "Merged",
+    empty: "Nenhuma atividade nova detectada por enquanto.",
   },
   en: {
     eyebrow: "GitHub sync",
     title: "Activity that updates itself",
-    description: "The portfolio reads eligible repositories, recurring technologies and open-source contributions from my public GitHub.",
-    repos: "Repositories",
-    contributions: "Open source",
-    emptyRepos: "No new eligible repository right now.",
-    emptyContributions: "No new external contribution detected right now.",
+    description: "Eligible repositories and open-source contributions appear here from my public GitHub.",
+    repo: "Repository",
+    merged: "Merged",
+    empty: "No new activity detected right now.",
   },
   es: {
     eyebrow: "GitHub sync",
     title: "Actividad que se actualiza sola",
-    description: "El portafolio lee repositorios elegibles, tecnologías recurrentes y contribuciones open source desde mi GitHub público.",
-    repos: "Repositorios",
-    contributions: "Open source",
-    emptyRepos: "No hay repositorios nuevos elegibles por ahora.",
-    emptyContributions: "No se detectaron nuevas contribuciones externas por ahora.",
+    description: "Los repositorios elegibles y las contribuciones open source aparecen aquí desde mi GitHub público.",
+    repo: "Repositorio",
+    merged: "Merged",
+    empty: "No se detectó actividad nueva por ahora.",
   },
 } as const;
 
-function formatMonth(value: string, locale: string) {
+function formatDate(value: string, locale: string) {
   try {
     return new Intl.DateTimeFormat(locale === "pt" ? "pt-BR" : locale === "es" ? "es-ES" : "en-US", {
+      day: "2-digit",
       month: "short",
       year: "numeric",
     }).format(new Date(value));
@@ -49,52 +47,67 @@ export async function GitHubSyncSection() {
 
   if (data.degraded && data.projects.length === 0 && data.contributions.length === 0) return null;
 
+  const entries = [
+    ...data.projects.slice(0, 4).map((project) => ({
+      id: `repo-${project.id}`,
+      type: "repo" as const,
+      title: project.title,
+      subtitle: project.description || project.tags.slice(0, 3).join(" / "),
+      url: project.url,
+      date: project.updatedAt,
+    })),
+    ...data.contributions.slice(0, 4).map((item) => ({
+      id: `pr-${item.id}`,
+      type: "pr" as const,
+      title: item.repository,
+      subtitle: `PR #${item.number} · ${item.title}`,
+      url: item.url,
+      date: item.mergedAt,
+    })),
+  ]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 6);
+
   return (
-    <section className="editorial-section github-log" aria-labelledby="github-sync-heading">
+    <section className="editorial-section github-v4" aria-labelledby="github-sync-heading">
       <div className="container-shell">
         <div className="section-intro">
           <span className="section-index">03</span>
           <span className="section-kicker">{t.eyebrow}</span>
         </div>
 
-        <div className="github-log__heading">
+        <div className="github-v4__heading">
           <h2 id="github-sync-heading" className="editorial-heading">{t.title}</h2>
           <p>{t.description}</p>
         </div>
 
-        <div className="github-log__columns">
-          <div>
-            <div className="github-log__label">{t.repos}</div>
-            <div className="github-log__list">
-              {data.projects.length ? data.projects.slice(0, 5).map((project) => (
-                <a key={project.id} href={project.url} target="_blank" rel="noreferrer" className="github-log__row">
-                  <span className="github-log__date">{formatMonth(project.updatedAt, locale)}</span>
-                  <span className="github-log__main">
-                    <strong>{project.title}</strong>
-                    <span>{project.description || project.tags.slice(0, 3).join(" / ")}</span>
-                  </span>
-                  <ArrowUpRight size={15} aria-hidden="true" />
-                </a>
-              )) : <p className="github-log__empty">{t.emptyRepos}</p>}
-            </div>
-          </div>
+        {entries.length ? (
+          <div className="github-v4__timeline reveal-stagger">
+            {entries.map((entry, index) => (
+              <a key={entry.id} href={entry.url} target="_blank" rel="noreferrer" className="github-v4__event">
+                <div className="github-v4__rail" aria-hidden="true">
+                  <span className="github-v4__dot" />
+                  {index !== entries.length - 1 && <span className="github-v4__line" />}
+                </div>
 
-          <div>
-            <div className="github-log__label">{t.contributions}</div>
-            <div className="github-log__list">
-              {data.contributions.length ? data.contributions.slice(0, 5).map((item) => (
-                <a key={item.id} href={item.url} target="_blank" rel="noreferrer" className="github-log__row">
-                  <span className="github-log__date">{formatMonth(item.mergedAt, locale)}</span>
-                  <span className="github-log__main">
-                    <strong>{item.repository}</strong>
-                    <span>PR #{item.number} · {item.title}</span>
-                  </span>
-                  <ArrowUpRight size={15} aria-hidden="true" />
-                </a>
-              )) : <p className="github-log__empty">{t.emptyContributions}</p>}
-            </div>
+                <div className="github-v4__date">{formatDate(entry.date, locale)}</div>
+
+                <div className="github-v4__body">
+                  <div className="github-v4__type">
+                    {entry.type === "pr" ? <GitPullRequest size={13} aria-hidden="true" /> : <GitBranch size={13} aria-hidden="true" />}
+                    <span>{entry.type === "pr" ? t.merged : t.repo}</span>
+                  </div>
+                  <h3>{entry.title}</h3>
+                  <p>{entry.subtitle}</p>
+                </div>
+
+                <ArrowUpRight className="github-v4__arrow" size={16} aria-hidden="true" />
+              </a>
+            ))}
           </div>
-        </div>
+        ) : (
+          <p className="github-v4__empty">{t.empty}</p>
+        )}
       </div>
     </section>
   );
