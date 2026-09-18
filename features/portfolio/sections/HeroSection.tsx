@@ -1,76 +1,62 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDownRight, Github } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { siteConfig } from "@/config/site";
 
 export async function HeroSection() {
   const t = await getTranslations("Hero");
-  const tA11y = await getTranslations("A11y");
 
   return (
-    <section id="home" className="hero-section">
-      <div className="hero-grid" aria-hidden="true" />
-      <div className="hero-glow" aria-hidden="true" />
-
-      <div className="container-shell relative z-10 grid min-h-[calc(100svh-72px)] items-center gap-14 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:py-20">
-        <div className="max-w-4xl">
-          <div className="hero-enter mb-7 flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.08em] text-[var(--text-muted)]">
-            <span className="status-pill">{t("role1")}</span>
-            <span className="hidden h-px w-8 bg-[var(--border)] sm:block" />
+    <section id="home" className="hero-v3">
+      <div className="container-shell hero-v3__grid">
+        <div className="hero-v3__copy">
+          <p className="hero-stagger hero-stagger--1 hero-v3__eyebrow">
+            <span>{t("role1")}</span>
+            <span aria-hidden="true">/</span>
             <span>{t("role2")}</span>
-          </div>
-
-          <h1 className="hero-title hero-enter hero-enter--2">
-            {t("name1")} <span>{t("name2")}</span>
-          </h1>
-
-          <p className="hero-enter hero-enter--3 mt-7 max-w-2xl text-base leading-7 text-[var(--text-soft)] md:text-lg md:leading-8">
-            {t("status")}
           </p>
 
-          <div className="hero-enter hero-enter--4 mt-8 flex flex-wrap gap-3">
-            <Link href="#work" className="button-primary">
+          <h1 className="hero-stagger hero-stagger--2 hero-v3__title">
+            {t("name1")}<br />{t("name2")}<span className="hero-v3__dot">.</span>
+          </h1>
+
+          <p className="hero-stagger hero-stagger--3 hero-v3__lead">{t("status")}</p>
+
+          <div className="hero-stagger hero-stagger--4 hero-v3__actions">
+            <Link href="#work" className="editorial-button">
               {t("cta_primary")}
-              <ArrowDownRight size={17} aria-hidden="true" />
+              <ArrowDown size={15} aria-hidden="true" />
             </Link>
-            <a href={siteConfig.links.resume} target="_blank" rel="noopener noreferrer" className="button-secondary">
-              {t("cta_secondary")}
-            </a>
-            <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" className="button-secondary" aria-label={`GitHub de ${siteConfig.name}`}>
-              <Github size={17} aria-hidden="true" />
+            <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" className="editorial-link">
               GitHub
+              <ArrowUpRight size={14} aria-hidden="true" />
             </a>
           </div>
 
-          <div className="hero-enter hero-enter--5 mt-10 flex items-center gap-3 text-sm leading-6 text-[var(--text-muted)]">
-            <span className="availability-dot h-2 w-2 shrink-0 rounded-full bg-[var(--accent)]" />
-            <span>{t("availability")}</span>
-          </div>
+          <p className="hero-stagger hero-stagger--5 hero-v3__availability">{t("availability")}</p>
         </div>
 
-        <div className="hero-orbit-stage hero-enter hero-enter--6" aria-label={tA11y("focus_technologies")}>
-          <Image
-            src="/brand/orbit-symbol.svg"
-            width={520}
-            height={520}
-            alt=""
-            aria-hidden="true"
-            className="hero-orbit-symbol"
-            priority
-          />
-          <span className="hero-orbit-label hero-orbit-label--one">Java / Spring</span>
-          <span className="hero-orbit-label hero-orbit-label--two">Python / RPA</span>
-          <span className="hero-orbit-label hero-orbit-label--three">APIs / Dados</span>
-          <span className="hero-orbit-label hero-orbit-label--four">Open Source</span>
-          <div className="hero-orbit-caption" aria-hidden="true">
-            engineering · automation · product
+        <aside className="hero-stagger hero-stagger--3 hero-index" aria-label="Technical focus">
+          <div className="hero-index__brand" aria-hidden="true">
+            <Image src="/brand/mark.svg" width={42} height={42} alt="" />
+            <span>KK / 26</span>
           </div>
-        </div>
-      </div>
 
-      <div className="container-shell pb-8" aria-hidden="true">
-        <div className="identity-divider" />
+          <div className="hero-index__list">
+            {siteConfig.focus.map(([index, stack]) => (
+              <div key={index} className="hero-index__row">
+                <span>{index}</span>
+                <strong>{stack}</strong>
+              </div>
+            ))}
+          </div>
+
+          <div className="hero-index__footer">
+            <span>Brasília / GO</span>
+            <span>Software engineering</span>
+          </div>
+        </aside>
       </div>
     </section>
   );
