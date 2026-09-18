@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useActionState, useEffect, useRef } from "react";
@@ -19,28 +20,34 @@ export default function ContactSection() {
 
   return (
     <div>
-      <section id="contact" className="editorial-section contact-v3">
+      <section id="contact" className="editorial-section contact-v4">
         <div className="container-shell">
           <div className="section-intro">
             <span className="section-index">06</span>
             <span className="section-kicker">{t("location")}</span>
           </div>
 
-          <div className="contact-v3__grid">
-            <div className="contact-v3__intro reveal-stagger">
-              <h2>{tSection("title")}</h2>
+          <div className="contact-v4__statement reveal-stagger">
+            <h2>{tSection("title")}</h2>
+            <div className="contact-v4__mark" aria-hidden="true">
+              <Image src="/brand/mark.svg" width={78} height={78} alt="" />
+            </div>
+          </div>
+
+          <div className="contact-v4__grid">
+            <div className="contact-v4__intro reveal-stagger">
               <p>{tSection("subtitle")}</p>
 
-              <div className="contact-v3__links">
+              <div className="contact-v4__links">
                 <a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={13} /></a>
                 <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight size={13} /></a>
                 <a href={`mailto:${siteConfig.email}`}>E-mail <ArrowUpRight size={13} /></a>
               </div>
 
-              <span className="contact-v3__availability">{tSection("availability")}</span>
+              <span className="contact-v4__availability">{tSection("availability")}</span>
             </div>
 
-            <form ref={formRef} action={formAction} className="contact-v3__form reveal-stagger">
+            <form ref={formRef} action={formAction} className="contact-v4__form reveal-stagger">
               <input type="hidden" name="locale" value={locale} />
 
               <label className="sr-only" aria-hidden="true">
@@ -48,32 +55,32 @@ export default function ContactSection() {
                 <input name="website" tabIndex={-1} autoComplete="off" />
               </label>
 
-              <label className="contact-v3__field">
+              <label className="contact-v4__field">
                 <span>{tSection("name_label")}</span>
                 <input name="name" required minLength={2} maxLength={80} autoComplete="name" placeholder={tSection("name_placeholder")} disabled={isPending} />
                 {state?.errors?.name?.[0] && <small>{state.errors.name[0]}</small>}
               </label>
 
-              <label className="contact-v3__field">
+              <label className="contact-v4__field">
                 <span>{tSection("email_label")}</span>
                 <input name="email" type="email" required maxLength={254} autoComplete="email" placeholder={tSection("email_placeholder")} disabled={isPending} />
                 {state?.errors?.email?.[0] && <small>{state.errors.email[0]}</small>}
               </label>
 
-              <label className="contact-v3__field">
+              <label className="contact-v4__field">
                 <span>{tSection("message_label")}</span>
                 <textarea name="message" rows={5} required minLength={10} maxLength={3000} placeholder={tSection("project_placeholder")} disabled={isPending} />
                 {state?.errors?.message?.[0] && <small>{state.errors.message[0]}</small>}
               </label>
 
               {state?.message && (
-                <div className="contact-v3__status" role="status" aria-live="polite">
+                <div className="contact-v4__status" role="status" aria-live="polite">
                   {state.success && <CheckCircle2 size={16} aria-hidden="true" />}
                   <span>{state.message}</span>
                 </div>
               )}
 
-              <button type="submit" disabled={isPending} className="editorial-button contact-v3__submit">
+              <button type="submit" disabled={isPending} className="editorial-button contact-v4__submit">
                 {isPending ? tSection("sending") : tSection("submit_button")}
                 <ArrowUpRight size={14} aria-hidden="true" />
               </button>
