@@ -2786,3 +2786,21 @@ body {
     animation: none !important;
   }
 }
+
+
+.typewriter-char {
+  opacity: 0;
+  animation: typewriter-char-in 1ms steps(1,end) forwards;
+  animation-delay: calc(var(--type-start) + (var(--char-index) * var(--type-step)));
+}
+
+@keyframes typewriter-char-in {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-char {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
