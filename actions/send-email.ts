@@ -1,7 +1,7 @@
 'use server'
 
 import { Resend } from 'resend'
-import { z } from 'zod'
+import { createContactFormSchema, hasHumanFillTime } from '@/features/contact/contact-schema'
 
 export type FormState = {
   success: boolean
@@ -53,16 +53,15 @@ export async function sendEmail(_prevState: FormState | null, formData: FormData
   const locale = getLocale(formData.get('locale'))
   const t = copy[locale]
 
-  // Honeypot: bots commonly fill fields that humans never see.
-  if (String(formData.get('website') ?? '').trim()) {
+  // Bots commonly fill the trap field or submit before a person could finish the form.
+  if (
+    String(formData.get('website') ?? '').trim() ||
+    !hasHumanFillTime(formData.get('formStartedAt'))
+  ) {
     return { success: true, message: t.success }
   }
 
-  const contactFormSchema = z.object({
-    name: z.string().trim().min(2, t.name).max(80, t.tooLong).refine((value) => !/[\r\n]/.test(value), t.name),
-    email: z.string().trim().max(254, t.tooLong).email(t.email),
-    message: z.string().trim().min(10, t.message).max(3000, t.tooLong),
-  })
+  const contactFormSchema = createContactFormSchema(t)
 
   const result = contactFormSchema.safeParse({
     name: formData.get('name'),
@@ -75,19 +74,21 @@ export async function sendEmail(_prevState: FormState | null, formData: FormData
   }
 
   const apiKey = process.env.RESEND_API_KEY
-  if (!apiKey) {
-    console.error('RESEND_API_KEY is not configured.')
+  const from = process.env.RESEND_FROM_EMAIL
+  const to = process.env.CONTACT_TO_EMAIL
+  if (!apiKey || !from || !to) {
+    console.error('Contact email environment is not fully configured.')
     return { success: false, message: t.unavailable }
   }
 
   try {
     const resend = new Resend(apiKey)
     const { error } = await resend.emails.send({
-      from: 'Portfolio <onboarding@resend.dev>',
-      to: 'kelvinkauan722@gmail.com',
+      from,
+      to,
       subject: `Contato pelo portfólio — ${result.data.name}`,
       text: `Nome: ${result.data.name}\nEmail: ${result.data.email}\n\nMensagem:\n${result.data.message}`,
-      headers: { 'Reply-To': result.data.email }
+      replyTo: result.data.email,
     })
 
     if (error) {

@@ -11,6 +11,7 @@ export const githubSyncConfig = {
     "Cinesia",
     "Jogo-de-Xadrez",
   ]),
+  featuredContributionNumbers: new Set([16135, 16162]),
   ignoredRepositories: new Set(["portifolio-dev", "portifolio_developer"]),
   ignoredTopics: new Set(["portfolio-ignore", "archive", "template", "learning-only"]),
   preferredTopics: new Set([

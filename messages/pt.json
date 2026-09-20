@@ -8,7 +8,9 @@
     "about": "Sobre",
     "projects": "Projetos",
     "stack": "Stack",
-    "contact": "Contato"
+    "contact": "Contato",
+    "journey": "Trajetória",
+    "resume": "Currículo"
   },
   "A11y": {
     "main_navigation": "Navegação principal",
@@ -127,7 +129,7 @@
     "title1": "VAMOS",
     "title2": "CONVERSAR?",
     "description": "Tenho interesse em estágio, posição júnior e projetos em que eu possa contribuir com desenvolvimento, automação ou melhoria de processos.",
-    "location": "Brasília / GO · remoto ou presencial",
+    "location": "Entorno do DF, GO · remoto ou presencial",
     "footer1": "Portfólio de Kauan Kelvin",
     "footer2": "©2026"
   },
@@ -151,22 +153,26 @@
   "ProjectsSection": {
     "eyebrow": "Trabalho selecionado",
     "leve": {
-      "title": "LEVE",
-      "description": "Agenda pessoal PWA com autenticação, API de comandos, controle de revisão, conflitos explícitos e suporte offline com outbox.",
+      "title": "Leve",
+      "image_alt": "Tela do Leve com agenda pessoal e tarefas organizadas.",
+      "description": "Agenda pessoal PWA em que toda escrita passa por uma API de comandos, com revisões, conflitos explícitos e outbox offline.",
       "category": "React · TypeScript · Firebase · Express"
     },
     "dental": {
-      "title": "AUTOMAÇÃO ODONTOLÓGICA",
+      "title": "Automação odontológica",
+      "image_alt": "Visual 3D da automação odontológica.",
       "description": "RPA em Python e Selenium para preencher guias, vincular anexos e gerar logs de execução em um fluxo usado por uma clínica real.",
       "category": "Python · Selenium · Openpyxl"
     },
     "omni": {
-      "title": "OMNI",
-      "description": "Sistema de gestão para clínicas com API Java/Spring Boot, PostgreSQL, frontend React/TypeScript e automações auxiliares em Python.",
+      "title": "Omni",
+      "image_alt": "Tela do Omni com gestão de clínicas.",
+      "description": "Sistema multi-tenant para gestão de clínicas, com API Java/Spring Boot, PostgreSQL, frontend React/TypeScript e bots em Python.",
       "category": "Java · Spring Boot · PostgreSQL · React"
     },
     "cinesia": {
-      "title": "CINESIA",
+      "title": "Cinesia",
+      "image_alt": "Tela do Cinesia com conteúdo de estudo.",
       "description": "Plataforma de estudos para Fisioterapia com PWA, Firebase, revisão espaçada, simulados e recursos assistidos por IA.",
       "category": "React · Firebase · PWA · Gemini"
     },
@@ -176,9 +182,130 @@
       "category": "Open Source · GitHub · Localização"
     },
     "xadrez": {
-      "title": "JOGO DE XADREZ",
+      "title": "Jogo de xadrez",
+      "image_alt": "Tabuleiro do jogo de xadrez em Java.",
       "description": "Projeto em Java usado para consolidar orientação a objetos, regras de domínio e organização de código.",
       "category": "Java · POO"
+    },
+    "case_study": "Ler estudo de caso",
+    "repository": "Repositório",
+    "demo": "Aplicação"
+  },
+  "CaseStudies": {
+    "common": {
+      "eyebrow": "Estudo de caso",
+      "back": "Voltar aos projetos",
+      "repository": "Ver repositório",
+      "demo": "Abrir aplicação",
+      "stack": "Tecnologias",
+      "problem": "Problema",
+      "decisions": "Decisões de engenharia",
+      "tradeoffs": "Trade-offs",
+      "next": "O que eu mudaria",
+      "evidence": "Evidências no repositório",
+      "sources": "Fontes verificáveis",
+      "source_note": "As afirmações desta página apontam para documentação e código públicos.",
+      "image_alt": "Captura do projeto {title}"
+    },
+    "leve": {
+      "meta_title": "Leve — estudo de caso | Kauan Kelvin",
+      "meta_description": "Decisões de engenharia do Leve: API de comandos, revisão explícita, conflitos e suporte offline.",
+      "title": "Leve",
+      "summary": "Uma agenda pessoal construída para não perder alterações quando a rede falha, uma requisição se repete ou duas sessões editam o mesmo dado.",
+      "problem_body": "Aplicações de agenda podem ocultar falhas de sincronização e sobrescrever mudanças concorrentes. O Leve trata preservar o dado do usuário como a restrição principal e torna estados pendentes e conflitos visíveis.",
+      "decisions": {
+        "commandApi": {
+          "title": "Um caminho único de escrita",
+          "body": "Toda mutação passa por POST /api/commands. A API concentra validação, autorização, idempotência por operationId e registro da operação."
+        },
+        "revision": {
+          "title": "Revisão esperada, sem last-write-wins",
+          "body": "Cada comando informa a revisão esperada. Quando o servidor encontra outra versão, recusa a escrita e devolve o estado concorrente para a interface preservar o conflito."
+        },
+        "offline": {
+          "title": "Offline explícito e reversível",
+          "body": "O modo offline é opt-in. Alterações sem conexão entram em uma outbox local e são sincronizadas na reconexão; a interface informa o que ainda está pendente."
+        },
+        "domain": {
+          "title": "Regras compartilhadas",
+          "body": "Cliente e servidor importam os mesmos schemas Zod do pacote de domínio, reduzindo validações divergentes entre as duas camadas."
+        }
+      },
+      "tradeoffs": {
+        "commandShape": {
+          "title": "Consistência por uma API menos convencional",
+          "body": "O endpoint único simplifica garantias transversais, mas troca rotas REST por recurso por comandos discriminados no payload."
+        },
+        "localData": {
+          "title": "Continuidade exige dado local",
+          "body": "A outbox preserva trabalho sem rede, mas o cache pode manter dados pessoais no aparelho. Por isso a ativação depende de uma escolha informada do usuário."
+        },
+        "freeTier": {
+          "title": "Arquitetura condicionada ao plano gratuito",
+          "body": "O projeto documenta paginação na limpeza, leases no agendador e controle de leituras do Firestore como escolhas necessárias para operar sem recursos pagos."
+        }
+      },
+      "next_body": "Eu transformaria em uma rotina de release registrada as verificações que o README ainda separa como manuais: push com o app fechado, leitor de tela externo e instalação em aparelho físico.",
+      "evidence": {
+        "tests": "O repositório documenta testes unitários, integração com emuladores e E2E com Playwright para duas abas, reconexão da outbox, conflitos e acessibilidade.",
+        "privacy": "A conta permite exportar dados em JSON versionado, excluir os dados e controlar o armazenamento offline por aparelho.",
+        "operation": "O README registra CI, runbooks e uma matriz que separa cobertura automatizada de verificações manuais."
+      },
+      "sources": {
+        "readme": "README — proposta, arquitetura e decisões",
+        "ci": "Workflow de CI",
+        "app": "Aplicação publicada"
+      }
+    },
+    "omni": {
+      "meta_title": "Omni — estudo de caso | Kauan Kelvin",
+      "meta_description": "Arquitetura do Omni: Java, Spring Boot, PostgreSQL, multi-tenancy, bots e operação distribuída.",
+      "title": "Omni",
+      "summary": "Um sistema de gestão e automação para clínicas que reúne pacientes, agendamentos, confirmações e operação de múltiplas clínicas.",
+      "problem_body": "O Omni centraliza pacientes e agendamentos e automatiza confirmações, mantendo dados de clínicas diferentes separados. A solução combina um painel web, uma API de domínio e bots de automação.",
+      "decisions": {
+        "layers": {
+          "title": "Camadas com responsabilidades distintas",
+          "body": "A API usa Java 17 e Spring Boot 3, o painel usa React e TypeScript, e as automações rodam em Python. PostgreSQL mantém os dados transacionais."
+        },
+        "tenant": {
+          "title": "Multi-tenancy por tenant_id",
+          "body": "O isolamento usa um discriminador tenant_id e filtros do Hibernate na camada de acesso a dados. Autenticação usa JWT com renovação automática no cliente."
+        },
+        "deployment": {
+          "title": "Serviços distribuídos",
+          "body": "O frontend é publicado na Vercel, o backend em container no Render e o PostgreSQL no Supabase com pool de conexões gerenciado."
+        },
+        "observability": {
+          "title": "Rastreabilidade por requisição",
+          "body": "O backend documenta logs com requestId, userId e tenantId, além de endpoint /health para acompanhar API e conexão com o banco."
+        }
+      },
+      "tradeoffs": {
+        "isolation": {
+          "title": "Isolamento concentrado na aplicação",
+          "body": "A documentação informa que o banco não usa RLS: a separação entre clínicas depende do tenant_id e dos filtros aplicados no código Java."
+        },
+        "coldStart": {
+          "title": "Plano gratuito e cold start",
+          "body": "O serviço gratuito do Render hiberna após inatividade. O frontend precisa comunicar o despertar da API e oferecer uma nova tentativa."
+        },
+        "operations": {
+          "title": "Mais serviços, mais operação",
+          "body": "Separar frontend, API, banco e bots permite escolher a ferramenta de cada camada, mas amplia configuração de segredos, monitoramento e procedimentos de recuperação."
+        }
+      },
+      "next_body": "Eu seguiria a recomendação do próprio guia de produção e moveria os bots para um worker de background dedicado. Também adicionaria uma segunda barreira de isolamento no banco para complementar os filtros de tenant da aplicação.",
+      "evidence": {
+        "health": "O guia de monitoramento descreve /health com estado da API e da conexão PostgreSQL.",
+        "security": "A documentação lista rate limiting nas rotas de autenticação e cabeçalhos de segurança configurados no Spring.",
+        "database": "O ambiente de produção usa PostgreSQL no Supabase por connection pool; o ambiente local é reproduzido com Docker Compose."
+      },
+      "sources": {
+        "readme": "README — funcionalidades e stack",
+        "production": "Guia de produção",
+        "monitoring": "Guia de monitoramento"
+      }
     }
   },
   "ProcessSection": {
@@ -209,5 +336,71 @@
     "social": "Onde me encontrar",
     "availability": "Aberto a estágio e posições júnior",
     "back_to_top": "Voltar ao topo"
+  },
+  "V5": {
+    "hero": {
+      "availability": "Disponível para estágio e posições júnior",
+      "title": "Desenvolvedor back-end em formação, com Java, Spring Boot e automação para problemas reais.",
+      "lead": "Construo APIs, produtos web e automações com foco em regras claras, dados consistentes e software que consigo explicar e manter.",
+      "role_label": "Foco",
+      "role": "Back-end e automação",
+      "stack_label": "Stack principal",
+      "location_label": "Local",
+      "remote": "remoto ou presencial",
+      "projects_cta": "Ver projetos",
+      "resume_cta": "Baixar currículo",
+      "portfolio3d_cta": "Explorar meu portfólio 3D",
+      "visual_alt": "Composição visual de um K construído em blocos, representando estrutura que vira produto.",
+      "visual_caption": "estrutura → produto"
+    },
+    "proofs": {
+      "kicker": "Leitura rápida",
+      "title": "Três fatos verificáveis",
+      "rustdesk_title": "Contribuição aceita no RustDesk",
+      "rustdesk_body": "Metadados pt-BR para Android via Fastlane, revisados no projeto open source.",
+      "rustdesk_link": "Abrir PR #16135",
+      "leve_title": "Sincronização pensada para falhar bem",
+      "leve_body": "O Leve documenta API de comandos, revisões, conflitos explícitos e outbox offline.",
+      "omni_title": "Back-end Java aplicado a um domínio real",
+      "omni_body": "O Omni combina Java 17, Spring Boot e PostgreSQL em um sistema multi-tenant para clínicas.",
+      "repository_link": "Ver evidência no repositório"
+    },
+    "projects": {
+      "kicker": "Trabalho selecionado",
+      "title": "Projetos e decisões técnicas",
+      "intro": "Cada projeto liga um problema concreto a uma escolha de engenharia e a uma evidência pública.",
+      "stack_label": "Tecnologias do projeto"
+    },
+    "contribution": {
+      "title": "Contribuições em destaque",
+      "body": "Duas contribuições públicas com revisão e decisões registradas no código.",
+      "pr_16135_title": "RustDesk #16135",
+      "pr_16135_body": "Metadados em português do Brasil para a distribuição Android via Fastlane.",
+      "pr_16135_link": "Abrir PR #16135",
+      "pr_16162_title": "RustDesk #16162",
+      "pr_16162_body": "Outra contribuição pública no RustDesk, com revisão registrada no repositório.",
+      "pr_16162_link": "Abrir PR #16162"
+    },
+    "stack": {
+      "kicker": "Ferramentas por função",
+      "title": "Back-end primeiro",
+      "intro": "A hierarquia reflete onde concentro minha formação e como escolho ferramentas para cada parte do problema.",
+      "backend": "Back-end e dados",
+      "frontend": "Interface e produto web",
+      "automation": "Automação",
+      "tools": "Qualidade e operação"
+    },
+    "journey": {
+      "kicker": "Trajetória",
+      "title": "Formação e trabalho",
+      "present": "presente",
+      "education_title": "Engenharia de Software",
+      "education_body": "Graduação na UniCesumar, com foco crescente em arquitetura, back-end, dados e qualidade de software.",
+      "work_title": "Área administrativa, suporte de TI e processos",
+      "work_body": "Atuação na NOVA Medicina e Segurança do Trabalho, apoiando sistemas, equipamentos e melhorias de fluxo com tecnologia.",
+      "languages_title": "Idiomas",
+      "languages": "Português nativo · Espanhol · Inglês em desenvolvimento",
+      "certificates_title": "Formação complementar"
+    }
   }
 }

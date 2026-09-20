@@ -1,0 +1,89 @@
+.fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  place-items: center;
+  overflow: hidden;
+  color: var(--accent, #8baa7d);
+  background:
+    radial-gradient(circle at 50% 45%, rgb(139 170 125 / 0.13), transparent 46%),
+    linear-gradient(145deg, rgb(139 170 125 / 0.045), transparent 55%);
+  transition: opacity 240ms ease;
+}
+
+.fallback::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-image:
+    linear-gradient(rgb(139 170 125 / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(139 170 125 / 0.055) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle at center, black 5%, transparent 72%);
+}
+
+.fallbackSvg {
+  width: min(84%, 32rem);
+  height: min(84%, 32rem);
+  overflow: visible;
+  filter: drop-shadow(0 18px 45px rgb(5 12 9 / 0.28));
+}
+
+.fallbackSmall .fallbackSvg {
+  width: min(72%, 15rem);
+  height: min(72%, 15rem);
+}
+
+.wire {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  vector-effect: non-scaling-stroke;
+}
+
+.wireFaint {
+  fill: none;
+  opacity: 0.34;
+  stroke: currentColor;
+  stroke-width: 0.75;
+  vector-effect: non-scaling-stroke;
+}
+
+.solid {
+  fill: currentColor;
+  opacity: 0.82;
+}
+
+.solidMuted {
+  fill: #273329;
+  stroke: currentColor;
+  stroke-width: 0.7;
+}
+
+.node {
+  fill: #151d18;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+.canvasLayer {
+  position: fixed !important;
+  inset: 0;
+  z-index: var(--z-canvas, 1);
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none;
+}
+
+:global(html[data-three-ready="true"]) .fallback {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fallback {
+    transition: none;
+  }
+}

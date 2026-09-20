@@ -38,3 +38,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local verification artifacts
+/tmp/
+/work/
+/scripts/merge-v5-messages.mjs
+/.npm-cache/
+/tmp-lighthouse.json

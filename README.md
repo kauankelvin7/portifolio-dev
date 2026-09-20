@@ -66,6 +66,20 @@ A marca `K` e o ícone do site são SVGs próprios. Assets padrão do template N
 
 As regras completas estão em [`docs/VISUAL-SYSTEM.md`](./docs/VISUAL-SYSTEM.md).
 
+## Registro visual da revisão
+
+As capturas abaixo foram geradas a partir da página local durante a revisão final da interface. Elas registram a hierarquia das áreas principais e servem como referência rápida para futuras alterações:
+
+| Área | Captura |
+| --- | --- |
+| Hero | [screenshots-hero.png](./public/screenshots-hero.png) |
+| Projetos e decisões técnicas | [screenshots-projects.png](./public/screenshots-projects.png) |
+| Stack e tecnologias | [screenshots-stack.png](./public/screenshots-stack.png) |
+| Atividade recente e contribuições | [screenshots-activity.png](./public/screenshots-activity.png) |
+| Contato | [screenshots-contact.png](./public/screenshots-contact.png) |
+
+Na revisão da atividade do GitHub, o grid foi corrigido para manter data, conteúdo e ação em colunas próprias. O bloco também recebe margem de rolagem para não ficar escondido pelo header fixo.
+
 ## Movimento, acessibilidade e performance
 
 O movimento é CSS-first e progressivo:
@@ -85,7 +99,8 @@ O projeto também considera:
 - imagens servidas com `next/image`;
 - fontes carregadas com `next/font`;
 - Server Components como padrão;
-- ausência de 3D, scroll hijacking e animação pesada no caminho crítico.
+- 3D progressivo em chunk separado, carregado após idle e sempre acompanhado por fallback estático completo;
+- ausência de scroll hijacking e animação pesada no caminho crítico.
 
 ## Internacionalização
 

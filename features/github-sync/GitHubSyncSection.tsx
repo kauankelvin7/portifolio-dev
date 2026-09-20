@@ -1,11 +1,12 @@
 import { ArrowUpRight, GitBranch, GitPullRequest } from "lucide-react";
 import { getLocale } from "next-intl/server";
 import { syncGitHubPortfolio } from "./sync";
+import { githubSyncConfig } from "./config";
 
 const copy = {
   pt: {
     eyebrow: "GitHub sync",
-    title: "Atividade que entra sozinha",
+    title: "Atividade recente e contribuições",
     description: "Repositórios elegíveis e contribuições open source entram aqui a partir do meu GitHub público.",
     repo: "Repositório",
     merged: "Merged",
@@ -13,7 +14,7 @@ const copy = {
   },
   en: {
     eyebrow: "GitHub sync",
-    title: "Activity that updates itself",
+    title: "Recent activity and contributions",
     description: "Eligible repositories and open-source contributions appear here from my public GitHub.",
     repo: "Repository",
     merged: "Merged",
@@ -21,7 +22,7 @@ const copy = {
   },
   es: {
     eyebrow: "GitHub sync",
-    title: "Actividad que se actualiza sola",
+    title: "Actividad reciente y contribuciones",
     description: "Los repositorios elegibles y las contribuciones open source aparecen aquí desde mi GitHub público.",
     repo: "Repositorio",
     merged: "Merged",
@@ -47,16 +48,26 @@ export async function GitHubSyncSection() {
 
   if (data.degraded && data.projects.length === 0 && data.contributions.length === 0) return null;
 
+  const eligibleProjects = data.projects.filter((project) =>
+    (project.description?.trim().length ?? 0) >= 30 || githubSyncConfig.curatedRepositories.has(project.name),
+  );
+  const featuredContributions = data.contributions.filter((item) =>
+    githubSyncConfig.featuredContributionNumbers.has(item.number),
+  );
+  const otherContributions = data.contributions.filter((item) =>
+    !githubSyncConfig.featuredContributionNumbers.has(item.number),
+  );
+
   const entries = [
-    ...data.projects.slice(0, 4).map((project) => ({
+    ...eligibleProjects.slice(0, 4).map((project) => ({
       id: `repo-${project.id}`,
       type: "repo" as const,
       title: project.title,
-      subtitle: project.description || project.tags.slice(0, 3).join(" / "),
+      subtitle: project.description?.trim() ?? "",
       url: project.url,
       date: project.updatedAt,
     })),
-    ...data.contributions.slice(0, 4).map((item) => ({
+    ...[...featuredContributions, ...otherContributions].slice(0, 4).map((item) => ({
       id: `pr-${item.id}`,
       type: "pr" as const,
       title: item.repository,
@@ -69,20 +80,18 @@ export async function GitHubSyncSection() {
     .slice(0, 6);
 
   return (
-    <section className="editorial-section github-v4" aria-labelledby="github-sync-heading">
+    <section className="github-v4 github-sync" aria-labelledby="github-sync-heading">
       <div className="container-shell">
-        <div className="section-intro">
-          <span className="section-index">03</span>
-          <span className="section-kicker">{t.eyebrow}</span>
-        </div>
-
-        <div className="github-v4__heading">
-          <h2 id="github-sync-heading" className="editorial-heading">{t.title}</h2>
-          <p>{t.description}</p>
+        <div className="section-heading github-v4__heading">
+          <div className="github-v4__heading-copy">
+            <p>{t.eyebrow}</p>
+            <h2 id="github-sync-heading">{t.title}</h2>
+          </div>
+          <span>{t.description}</span>
         </div>
 
         {entries.length ? (
-          <div className="github-v4__timeline reveal-stagger">
+          <div className="github-v4__timeline">
             {entries.map((entry, index) => (
               <a key={entry.id} href={entry.url} target="_blank" rel="noreferrer" className="github-v4__event">
                 <div className="github-v4__rail" aria-hidden="true">

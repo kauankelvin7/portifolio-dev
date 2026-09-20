@@ -31,7 +31,7 @@ Este projeto adota uma organização por responsabilidade, inspirada nos princí
 
 ## Performance
 
-O hero não depende de WebGL. As seções estáticas são renderizadas no servidor e usam `content-visibility` para reduzir trabalho de renderização fora da viewport. O JavaScript no cliente fica restrito ao menu, idioma e formulário.
+O conteúdo do hero não depende de WebGL. Texto, CTAs e composição estática são renderizados no servidor; um canvas único entra depois do idle, quando o hero está visível e o dispositivo permite. A mesma composição existe em SVG/CSS para redução de movimento, economia de dados, ausência de WebGL e aparelhos de baixa capacidade. As demais seções usam `content-visibility` e continuam server-first.
 
 As animações de apresentação e scroll são CSS-first. Elas são curtas, não alteram o fluxo da página e respeitam `prefers-reduced-motion`. Não existe scroll hijacking, loop gráfico pesado ou dependência de animação no caminho crítico.
 
@@ -45,4 +45,4 @@ A especificação da identidade está em [`VISUAL-SYSTEM.md`](./VISUAL-SYSTEM.md
 
 ## Critério para novas dependências
 
-Uma dependência só deve ser adicionada quando reduzir complexidade real ou habilitar uma necessidade que não seja razoável implementar com a plataforma. Bibliotecas de animação, scroll ou 3D não devem ser padrão neste projeto.
+Uma dependência só deve ser adicionada quando reduzir complexidade real ou habilitar uma necessidade que não seja razoável implementar com a plataforma. O 3D usa apenas `three`, `@react-three/fiber` e `@react-three/drei`; movimento de interface permanece em CSS e não justifica bibliotecas de scroll ou animação.
