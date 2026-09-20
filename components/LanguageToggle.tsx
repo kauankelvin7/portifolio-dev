@@ -43,7 +43,7 @@ export function LanguageToggle() {
         type="button"
         onClick={() => setIsOpen((open) => !open)}
         className="language-switch__trigger"
-        aria-label={tA11y("language_selector")}
+        aria-label={`${current.code} — ${tA11y("language_selector")}`}
         aria-expanded={isOpen}
       >
         <Globe2 size={14} aria-hidden="true" />

@@ -3,6 +3,8 @@ export interface PortfolioProject {
   translationKey: "leve" | "dental" | "omni" | "cinesia" | "rustdesk" | "xadrez";
   tags: readonly string[];
   link: string;
+  demo?: string;
+  caseStudy?: "/projects/leve" | "/projects/omni";
   image?: string;
 }
 
@@ -13,6 +15,8 @@ export const projects: readonly PortfolioProject[] = [
     tags: ["React", "TypeScript", "Firebase", "Express", "PWA", "Playwright"],
     image: "https://raw.githubusercontent.com/kauankelvin7/Leve/main/docs/screenshots/desktop.png",
     link: "https://github.com/kauankelvin7/Leve",
+    demo: "https://leve-agenda.vercel.app",
+    caseStudy: "/projects/leve",
   },
   {
     id: 2,
@@ -26,6 +30,8 @@ export const projects: readonly PortfolioProject[] = [
     tags: ["Java", "Spring Boot", "PostgreSQL", "React", "TypeScript", "Python"],
     image: "/images/projects/omni.png",
     link: "https://github.com/kauankelvin7/Omni",
+    demo: "https://omni-b2b.vercel.app",
+    caseStudy: "/projects/omni",
   },
   {
     id: 4,

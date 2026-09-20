@@ -1,97 +1,94 @@
-# Sistema visual
+# Sistema visual do portfólio v5
 
-A identidade do portfólio combina engenharia de software com uma assinatura visual própria: verde musgo, fundo quase preto, monograma `K` e uma órbita que representa sistemas, integração e evolução contínua. A intenção é evitar o visual genérico de dashboard, cyberpunk e templates de portfólio baseados apenas em cards.
+O sistema combina leitura rápida para recrutamento com uma camada autoral progressiva. A base é escura, editorial e disciplinada. A cena do hero concentra a expressão visual; conteúdo e ações permanecem em HTML renderizado no servidor.
+
+## Tokens
+
+Os tokens vivem em `app/globals.css` e são expostos ao Tailwind 4 por `@theme`.
+
+| Papel | Token | Valor base |
+| --- | --- | --- |
+| Fundo | `--surface-canvas` | `#0d120e` |
+| Superfície | `--surface-section` | `#141c16` |
+| Elevada | `--surface-raised` | `#1d281f` |
+| Borda | `--border-subtle` | `#344237` |
+| Texto principal | `--text-primary` | `#f1f3ec` |
+| Texto secundário | `--text-secondary` | `#c2cdb9` |
+| Texto discreto | `--text-muted` | `#919b8e` |
+| Acento | `--accent` | `#8baa7d` |
+| Foco | `--focus` | `#a8c49a` |
+| Sucesso | `--success` | `#77a885` |
+| Erro | `--error` | `#cf806f` |
+
+A escala de espaço segue passos de `4, 8, 12, 16, 24, 32, 48, 64, 96 e 128px`. Raios distinguem função: controles usam raio pequeno, cartões médios e painéis imersivos grandes. Elevação usa cor escura com baixa opacidade, nunca sombra cinza genérica.
 
 ## Tipografia
 
-- `Space Grotesk`: títulos, navegação, corpo e marca. A geometria mais técnica substitui `Archivo Black + Inter` e deixa o site mais coeso.
-- `IBM Plex Mono`: metadados, labels técnicos, microcopy e elementos de interface com caráter de engenharia.
-- as fontes são carregadas via `next/font`, sem `@import` externo.
+- **IBM Plex Sans**: corpo, interface, navegação e dados técnicos.
+- **Newsreader**: títulos editoriais e números de evidência.
 
-## Marca
+As fontes são carregadas por `next/font`. Títulos usam `clamp()` e formam blocos completos; não há o padrão repetitivo de colorir uma palavra isolada. Texto corrido limita a linha a aproximadamente 70–78 caracteres.
 
-A marca usa três elementos recorrentes:
+## Componentes
 
-1. monograma `K` geométrico;
-2. órbita inclinada, que funciona como assinatura visual;
-3. ponto orbital em verde claro, usado como detalhe de estado e continuidade.
+### Button
 
-Arquivos principais:
+Primário para a ação principal da seção; secundário para uma alternativa relevante. O texto descreve o resultado: “Baixar currículo”, “Ver repositório” ou “Enviar mensagem”. Estado pendente mantém largura e informa o progresso.
 
-- `public/brand/mark.svg`: marca compacta para header e contextos pequenos;
-- `public/brand/orbit-symbol.svg`: símbolo hero/decorativo em maior escala;
-- `app/icon.svg`: favicon e ícone do App Router seguindo a mesma geometria.
+### Card
 
-A marca não deve ser substituída por símbolos genéricos de código como `</>`.
+Agrupa informação relacionada quando a borda ajuda a leitura. Não é a unidade padrão de toda seção. Superfícies e raios variam com a hierarquia.
 
-## Paleta
+### Tag
 
-O verde continua funcionando como assinatura, mas a V2 amplia a faixa para permitir profundidade sem saturar a tela.
+Identifica tecnologia ou domínio; não comunica nível de domínio. Deve permanecer curta e sem iconografia ornamental.
 
-| Papel | Referência |
-| --- | --- |
-| Fundo | `#081008` / `#090d09` |
-| Superfície | `#0f150f` |
-| Borda | `#2b382b` |
-| Texto principal | `#f0f4ed` |
-| Texto secundário | `#bcc7b8` |
-| Musgo | `#9fbe8e` |
-| Musgo claro | `#bdd8ae` |
-| Sage | `#d5e5cd` |
+### SectionHeader
 
-Os tokens históricos continuam em `app/globals.css`; os ajustes de identidade V2 ficam concentrados em `app/identity.css` para facilitar manutenção e rollback.
+Usa título e descrição. Rótulos ou números só aparecem quando carregam informação real; não são decoração obrigatória.
 
-## Hero
+### ProjectCard
 
-O hero não usa mais o painel "console" como protagonista visual. A composição passa a ter:
+Expõe problema, decisão técnica, stack e destinos reais. Screenshot é evidência. Sem screenshot, usa diagrama derivado do README ou assume uma composição somente textual; letras e grades genéricas não são fallback.
 
-- monograma orbital em escala grande;
-- quatro labels técnicos posicionados ao redor da órbita;
-- grid discreto e glow apenas como suporte;
-- nome com peso e espaçamento mais editorial;
-- divisor de identidade próprio antes da próxima seção.
+### CaseStudy
 
-O símbolo não depende de WebGL, canvas ou bibliotecas de animação.
+Apresenta contexto, decisões, trade-offs, o que mudaria e fontes. Conteúdo não verificado vai para `docs/CONTENT-TODO.md`.
 
-## Header
+### Timeline
 
-O header usa um lockup de marca com:
+Ordena atividade pública do GitHub por data. O eixo e os marcadores codificam sequência temporal e não entram em listas sem tempo.
 
-- símbolo orbital compacto;
-- nome `Kauan Kelvin`;
-- descriptor `software engineering` em mono.
+### Field
 
-Em telas pequenas o descriptor some para preservar espaço.
+Rótulo sempre visível, ajuda curta quando necessária, erro associado ao controle e foco claro. Estados pendente, sucesso e erro são anunciados por `aria-live`.
 
-## Stack
+### Status
 
-A stack continua sincronizada com GitHub, mas deixa de mostrar apenas iniciais genéricas. Tecnologias reconhecidas recebem pequenas marcas vetoriais consistentes por meio de `StackMark.tsx`; tecnologias desconhecidas usam fallback tipográfico.
+Comunica disponibilidade, resultado do formulário e falhas recuperáveis com texto, cor e forma. Nunca depende apenas de cor.
 
-As marcas não representam nível de domínio. O ranking continua sendo calculado por recorrência nos repositórios.
+## Imagens e prova
 
-## Fotografia e screenshots
+- usar foto real e screenshots reais;
+- não inventar telas, métricas, clientes ou resultados;
+- Leve usa a captura versionada no repositório de origem;
+- projetos sem mídia permanecem textuais até existir evidência adequada;
+- diagramas só representam arquitetura confirmada no README.
 
-- usar apenas foto real do perfil e screenshots reais dos projetos;
-- não gerar rosto artificial;
-- quando não houver mídia boa, usar fallback editorial da identidade;
-- não usar mockups que façam parecer que um produto existe quando não existe.
+## 3D progressivo
+
+Existe um único canvas compartilhado. O hero forma o monograma `K` a partir de uma malha e blocos musgo; motivos de projeto usam views leves dentro do mesmo canvas. O conteúdo nunca depende dessa camada.
+
+O canvas carrega depois do idle, quando a área está visível, com `ssr: false`. O fallback SVG/CSS ocupa o mesmo espaço antes do carregamento e permanece definitivo quando há redução de movimento, economia de dados, ausência de WebGL ou baixa capacidade. DPR é limitado, a renderização pausa fora da viewport e não há pós-processamento ou sombras dinâmicas.
 
 ## Movimento
 
-- entrada curta do hero;
-- flutuação lenta e sutil do símbolo orbital;
-- hover discreto em cards e ações;
-- slider de stack pausa no hover;
-- `prefers-reduced-motion: reduce` remove animações não essenciais.
+- a sequência principal do hero dura cerca de dois segundos;
+- microinterações respondem a clique, foco, ponteiro ou visibilidade;
+- movimento de interface usa CSS e propriedades de composição;
+- não há scroll hijacking, loaders decorativos, Lenis, Framer Motion ou GSAP;
+- `prefers-reduced-motion` remove movimento não essencial e mantém o layout completo.
 
-## Critério de qualidade
+## Acessibilidade e contraste
 
-Uma nova peça visual deve reforçar pelo menos uma destas funções:
-
-1. identidade pessoal;
-2. entendimento do trabalho;
-3. prova de projeto ou competência;
-4. hierarquia e navegação;
-5. feedback de estado.
-
-Se for apenas decoração genérica, não entra.
+Texto e controles atendem WCAG 2.2 AA. Foco visível usa halo de `--focus`; alvos interativos têm pelo menos 44px; o canvas é oculto da árvore acessível e acompanhado por descrição textual. Conteúdo continua navegável por teclado e legível sem JavaScript.
