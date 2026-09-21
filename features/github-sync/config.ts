@@ -9,7 +9,7 @@ export const githubSyncConfig = {
     "Automacao-Clinica-Odontologica",
     "Omni",
     "Cinesia",
-    "Jogo-de-Xadrez",
+    "socplug-fix",
   ]),
   featuredContributionNumbers: new Set([16135, 16162]),
   ignoredRepositories: new Set(["portifolio-dev", "portifolio_developer"]),
