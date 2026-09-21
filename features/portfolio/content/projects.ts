@@ -1,6 +1,6 @@
 export interface PortfolioProject {
   id: number;
-  translationKey: "leve" | "dental" | "omni" | "cinesia" | "rustdesk" | "xadrez";
+  translationKey: "leve" | "dental" | "omni" | "cinesia" | "rustdesk" | "socplug";
   tags: readonly string[];
   link: string;
   demo?: string;
@@ -30,7 +30,7 @@ export const projects: readonly PortfolioProject[] = [
     tags: ["Java", "Spring Boot", "PostgreSQL", "React", "TypeScript", "Python"],
     image: "/images/projects/omni.png",
     link: "https://github.com/kauankelvin7/Omni",
-    demo: "https://omni-b2b.vercel.app",
+    demo: "https://omni-six-green.vercel.app",
     caseStudy: "/projects/omni",
   },
   {
@@ -43,14 +43,13 @@ export const projects: readonly PortfolioProject[] = [
   {
     id: 5,
     translationKey: "rustdesk",
-    tags: ["Open Source", "GitHub", "Fastlane", "pt-BR"],
-    link: "https://github.com/rustdesk/rustdesk/pull/16135",
+    tags: ["Open Source", "GitHub", "Fastlane", "pt-BR", "it-IT"],
+    link: "https://github.com/rustdesk/rustdesk/pulls?q=is%3Apr+author%3Akauankelvin7",
   },
   {
     id: 6,
-    translationKey: "xadrez",
-    tags: ["Java", "POO", "Domain Modeling"],
-    image: "/images/projects/xadrez.png",
-    link: "https://github.com/kauankelvin7/Jogo-de-Xadrez",
+    translationKey: "socplug",
+    tags: ["Windows", "Batch", "JNLP", "WebSocket", "Troubleshooting"],
+    link: "https://github.com/kauankelvin7/socplug-fix",
   },
 ];
