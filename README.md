@@ -16,8 +16,8 @@ Busco oportunidades de estágio ou nível júnior em tecnologia.
 - **Automação Odontológica** — RPA em Python e Selenium criado para automatizar um fluxo real de faturamento odontológico.
 - **Omni** — sistema para clínicas com Java 17, Spring Boot 3, PostgreSQL, React/TypeScript e automações em Python.
 - **Cinesia** — plataforma de estudos para Fisioterapia com React, Firebase, PWA, revisão espaçada e recursos assistidos por IA.
-- **RustDesk** — contribuição open source aceita no projeto oficial, adicionando metadados pt-BR para Android via Fastlane.
-- **Jogo de Xadrez** — projeto em Java para consolidar orientação a objetos, regras de domínio e organização de código.
+- **RustDesk** — duas contribuições de localização/metadata aceitas no projeto oficial: pt-BR (#16135) e it-IT (#16162) para Android via Fastlane.
+- **socplug-fix** — diagnóstico e automação para uma falha real envolvendo JNLP, Java Web Start, WebSocket, registro e firewall no Windows.
 
 ## Stack do portfólio
 
