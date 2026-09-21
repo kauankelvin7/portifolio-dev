@@ -20,14 +20,14 @@ export async function PortfolioHome() {
   const t = await getTranslations("V5");
   const projectT = await getTranslations("ProjectsSection");
   const featured = featuredKeys.map((key) => projects.find((project) => project.translationKey === key)!);
-  const chess = projects.find((project) => project.translationKey === "xadrez")!;
+  const diagnostic = projects.find((project) => project.translationKey === "socplug")!;
 
   const proofs = [
     {
       icon: GitPullRequest,
       title: t("proofs.rustdesk_title"),
       body: t("proofs.rustdesk_body"),
-      href: "https://github.com/rustdesk/rustdesk/pull/16135",
+      href: "https://github.com/rustdesk/rustdesk/pulls?q=is%3Apr+author%3Akauankelvin7",
       link: t("proofs.rustdesk_link"),
     },
     {
@@ -138,9 +138,12 @@ export async function PortfolioHome() {
           </div>
 
           <article className="project project--compact">
-            <Image src={chess.image!} alt={projectT("xadrez.image_alt")} width={360} height={220} />
-            <div><p className="project__category">{projectT("xadrez.category")}</p><h3>{projectT("xadrez.title")}</h3><p>{projectT("xadrez.description")}</p></div>
-            <a href={chess.link} target="_blank" rel="noreferrer">{projectT("repository")}<ArrowUpRight size={13} /></a>
+            <div className="project--compact__mark" aria-hidden="true">
+              <Code2 size={34} />
+              <span>JNLP → WSS</span>
+            </div>
+            <div><p className="project__category">{projectT("socplug.category")}</p><h3>{projectT("socplug.title")}</h3><p>{projectT("socplug.description")}</p></div>
+            <a href={diagnostic.link} target="_blank" rel="noreferrer">{projectT("repository")}<ArrowUpRight size={13} /></a>
           </article>
         </div>
       </section>
