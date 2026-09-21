@@ -46,7 +46,7 @@ export const caseStudies: Record<CaseStudySlug, CaseStudy> = {
     stack: ["Java 17", "Spring Boot 3", "PostgreSQL", "React 18", "TypeScript", "Python 3.12", "Docker"],
     image: "/images/projects/omni.png",
     links: [
-      { labelKey: "demo", href: "https://omni-b2b.vercel.app" },
+      { labelKey: "demo", href: "https://omni-six-green.vercel.app" },
       { labelKey: "repository", href: "https://github.com/kauankelvin7/Omni" },
     ],
     sources: [
