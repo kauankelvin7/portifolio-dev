@@ -123,7 +123,7 @@
   "Companies": {
     "stat1": "Software Engineering",
     "stat2": "Public code projects",
-    "stat3": "Open-source contribution"
+    "stat3": "Open-source contributions"
   },
   "Contact": {
     "title1": "LET'S",
@@ -178,18 +178,18 @@
     },
     "rustdesk": {
       "title": "RUSTDESK — OPEN-SOURCE CONTRIBUTION",
-      "description": "Accepted contribution adding Brazilian Portuguese Android Fastlane metadata to RustDesk.",
-      "category": "Open Source · GitHub · Localization"
-    },
-    "xadrez": {
-      "title": "Chess game",
-      "image_alt": "Chess board from the Java chess project.",
-      "description": "Java project used to practice object-oriented programming, domain rules and code organization.",
-      "category": "Java · OOP"
+      "description": "Two localization/metadata contributions accepted into RustDesk: pt-BR (#16135) and it-IT (#16162) for Android/Fastlane.",
+      "category": "Open Source · GitHub · Fastlane"
     },
     "case_study": "Read case study",
     "repository": "Repository",
-    "demo": "Live app"
+    "demo": "Live app",
+    "socplug": {
+      "title": "socplug-fix",
+      "image_alt": "Technical representation of SOCPlug diagnostics on Windows.",
+      "description": "Diagnosis and automation for a real failure involving JNLP, Java Web Start, WebSocket, Windows Registry and firewall rules.",
+      "category": "Windows · Batch · WebSocket · Troubleshooting"
+    }
   },
   "CaseStudies": {
     "common": {
@@ -356,9 +356,9 @@
     "proofs": {
       "kicker": "Ten-second read",
       "title": "Three verifiable facts",
-      "rustdesk_title": "Accepted RustDesk contribution",
-      "rustdesk_body": "Brazilian Portuguese Android metadata through Fastlane, reviewed in the open-source project.",
-      "rustdesk_link": "Open PR #16135",
+      "rustdesk_title": "Two accepted RustDesk contributions",
+      "rustdesk_body": "PRs #16135 (pt-BR) and #16162 (it-IT), both reviewed and merged into the official repository.",
+      "rustdesk_link": "View my RustDesk PRs",
       "leve_title": "Synchronization designed to fail safely",
       "leve_body": "Leve documents a command API, revisions, explicit conflicts and an offline outbox.",
       "omni_title": "Java back-end applied to a real domain",
@@ -378,7 +378,7 @@
       "pr_16135_body": "Brazilian Portuguese metadata for the Android distribution through Fastlane.",
       "pr_16135_link": "Open PR #16135",
       "pr_16162_title": "RustDesk #16162",
-      "pr_16162_body": "Another public RustDesk contribution with review recorded in the repository.",
+      "pr_16162_body": "Italian Android/Fastlane metadata accepted into the official repository.",
       "pr_16162_link": "Open PR #16162"
     },
     "stack": {
@@ -399,7 +399,7 @@
       "work_title": "Administration, IT support and processes",
       "work_body": "Work at NOVA Medicina e Segurança do Trabalho, supporting systems, equipment and workflow improvements with technology.",
       "languages_title": "Languages",
-      "languages": "Native Portuguese · Spanish · English in development",
+      "languages": "Native Portuguese · Intermediate Spanish · Intermediate English",
       "certificates_title": "Additional education"
     }
   }
