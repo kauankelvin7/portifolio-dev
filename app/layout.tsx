@@ -5,6 +5,7 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { siteConfig, type SiteLocale } from "@/config/site";
 import "./globals.css";
 import "./v5.css";
+import "./rebirth.css";
 
 const plex = IBM_Plex_Sans({
   subsets: ["latin"],

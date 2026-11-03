@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, CheckCircle2, Code2, Database, GitPullRequest, ServerCog } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { siteConfig } from "@/config/site";
 import { projects } from "@/features/portfolio/content/projects";
 import { certificates } from "@/features/portfolio/content/skills";
 import { ThreeFallback } from "@/features/portfolio/three-d";
+import { RebirthRadial } from "@/features/rebirth/Radial";
+import { RebirthFanDeck } from "@/features/rebirth/FanDeck";
 
 const sceneByProject = {
   leve: "leve",
@@ -19,6 +21,7 @@ const featuredKeys = ["omni", "leve", "cinesia", "dental"] as const;
 export async function PortfolioHome() {
   const t = await getTranslations("V5");
   const projectT = await getTranslations("ProjectsSection");
+  const locale = await getLocale();
   const featured = featuredKeys.map((key) => projects.find((project) => project.translationKey === key)!);
   const diagnostic = projects.find((project) => project.translationKey === "socplug")!;
 
@@ -53,6 +56,23 @@ export async function PortfolioHome() {
     { key: "tools", items: ["Git", "GitHub Actions", "Docker", "Linux", "Playwright"] },
   ] as const;
 
+  const bioquestCopy = {
+    pt: { category: "Estudo gamificado / Pixel 2D", description: "Um ambiente de estudo que transforma PDFs em questões, revisões e aventuras em pixel art, com progresso salvo no navegador.", action: "Explorar BioQuest" },
+    en: { category: "Gamified learning / Pixel 2D", description: "A study environment that turns PDFs into questions, revision and pixel-art adventures, with progress saved in the browser.", action: "Explore BioQuest" },
+    es: { category: "Estudio gamificado / Pixel 2D", description: "Un entorno de estudio que transforma PDF en preguntas, repasos y aventuras pixel art, con el progreso guardado en el navegador.", action: "Explorar BioQuest" },
+  }[locale as "pt" | "en" | "es"] ?? {
+    category: "Estudo gamificado / Pixel 2D",
+    description: "Um ambiente de estudo com questões e aventuras em pixel art.",
+    action: "Explorar BioQuest",
+  };
+  const fanCards = [
+    { title: projectT("leve.title"), category: projectT("leve.category"), image: "/rebirth/leve-live.png", href: "https://leve-agenda.vercel.app" },
+    { title: projectT("omni.title"), category: projectT("omni.category"), image: "/rebirth/omni-live.png", href: "https://omni-six-green.vercel.app" },
+    { title: projectT("cinesia.title"), category: projectT("cinesia.category"), image: "/rebirth/cinesia-live.png", href: "https://github.com/kauankelvin7/Cinesia" },
+    { title: "BioQuest", category: bioquestCopy.category, image: "/rebirth/bioquest-live-dashboard-focus.png", href: "https://bioquest-lime.vercel.app/" },
+    { title: projectT("dental.title"), category: projectT("dental.category"), image: "/rebirth/automacao-evidence.png", href: "https://github.com/kauankelvin7/Automacao-Clinica-Odontologica" },
+  ];
+
   return (
     <>
       <section id="home" className="hero">
@@ -77,8 +97,8 @@ export async function PortfolioHome() {
             </a>
           </div>
 
-          <div className="hero__visual" id="hero-three" data-three-scene="hero" role="img" aria-label={t("hero.visual_alt")}>
-            <ThreeFallback scene="hero" />
+          <div className="hero__visual" role="img" aria-label={t("hero.visual_alt")}>
+            <RebirthRadial />
             <div className="hero__visual-label" aria-hidden="true"><span>K</span><p>{t("hero.visual_caption")}</p></div>
           </div>
         </div>
@@ -111,6 +131,7 @@ export async function PortfolioHome() {
             <h2 id="projects-title">{t("projects.title")}</h2>
             <span>{t("projects.intro")}</span>
           </div>
+          <RebirthFanDeck cards={fanCards} />
           <div className="projects__grid">
             {featured.map((project) => {
               const scene = sceneByProject[project.translationKey as keyof typeof sceneByProject];
@@ -135,6 +156,21 @@ export async function PortfolioHome() {
                 </article>
               );
             })}
+            <article className="project project--bioquest">
+              <div className="project__media">
+                <Image src="/rebirth/bioquest-live-dashboard-focus.png" alt="BioQuest — ambiente de estudos gamificado" fill sizes="(max-width: 760px) 100vw, 50vw" className="project__image" />
+              </div>
+              <div className="project__body">
+                <p className="project__category">{bioquestCopy.category}</p>
+                <h3>BioQuest</h3>
+                <p>{bioquestCopy.description}</p>
+                <ul aria-label={t("projects.stack_label")}><li>Next.js</li><li>TypeScript</li><li>IndexedDB</li><li>PWA</li></ul>
+                <div className="project__links">
+                  <a href="https://bioquest-lime.vercel.app/" target="_blank" rel="noopener noreferrer">{bioquestCopy.action}<ArrowUpRight size={13} /></a>
+                  <a href="https://github.com/kauankelvin7/bioquest" target="_blank" rel="noopener noreferrer">{projectT("repository")}<ArrowUpRight size={13} /></a>
+                </div>
+              </div>
+            </article>
           </div>
 
           <article className="project project--compact">
