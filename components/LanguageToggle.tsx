@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronDown, Globe2 } from "lucide-react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
@@ -8,9 +9,9 @@ import { useLocale, useTranslations } from "next-intl";
 type Locale = "pt" | "en" | "es";
 
 const languages = [
-  { locale: "pt" as const, code: "PT", name: "Português" },
-  { locale: "en" as const, code: "EN", name: "English" },
-  { locale: "es" as const, code: "ES", name: "Español" },
+  { locale: "pt" as const, code: "PT", flag: "/rebirth/flags/br.svg", name: "Português" },
+  { locale: "en" as const, code: "EN", flag: "/rebirth/flags/us.svg", name: "English" },
+  { locale: "es" as const, code: "ES", flag: "/rebirth/flags/es.svg", name: "Español" },
 ];
 
 export function LanguageToggle() {
@@ -20,13 +21,23 @@ export function LanguageToggle() {
   const tA11y = useTranslations("A11y");
   const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const close = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) setIsOpen(false);
     };
+    const escape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setIsOpen(false);
+      triggerRef.current?.focus();
+    };
     document.addEventListener("mousedown", close);
-    return () => document.removeEventListener("mousedown", close);
+    document.addEventListener("keydown", escape);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("keydown", escape);
+    };
   }, []);
 
   useEffect(() => {
@@ -40,33 +51,35 @@ export function LanguageToggle() {
   return (
     <div ref={dropdownRef} className="language-switch">
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setIsOpen((open) => !open)}
         className="language-switch__trigger"
-        aria-label={`${current.code} — ${tA11y("language_selector")}`}
+        aria-label={`${current.name} — ${tA11y("language_selector")}`}
+        aria-haspopup="menu"
         aria-expanded={isOpen}
+        aria-controls="rebirth-language-menu"
       >
-        <Globe2 size={14} aria-hidden="true" />
-        <span>{current.code}</span>
-        <ChevronDown size={12} className={isOpen ? "rotate-180" : ""} aria-hidden="true" />
+        <Image src={current.flag} width={27} height={19} alt="" className="rebirth-flag" />
+        <ChevronDown size={13} aria-hidden="true" className={isOpen ? "rotate-180" : ""} />
       </button>
 
       {isOpen && (
-        <div className="language-switch__menu" role="listbox">
+        <div id="rebirth-language-menu" className="language-switch__menu" role="menu">
           {languages.map((language) => (
             <button
               key={language.locale}
               type="button"
-              role="option"
-              aria-selected={language.locale === locale}
+              role="menuitemradio"
+              aria-checked={language.locale === locale}
               onClick={() => {
                 setIsOpen(false);
                 if (language.locale !== locale) setRequestedLocale(language.locale);
               }}
               className="language-switch__option"
             >
+              <Image src={language.flag} width={27} height={19} alt="" className="rebirth-flag" />
               <span>{language.name}</span>
-              <span>{language.code}</span>
             </button>
           ))}
         </div>

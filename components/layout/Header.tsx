@@ -9,7 +9,7 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import { siteConfig } from "@/config/site";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
-const NAV_SECTION_IDS = ["home", "projects", "journey", "contact"] as const;
+const NAV_SECTION_IDS = ["home", "projects", "stack", "journey", "contact"] as const;
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,8 +46,8 @@ export function Header() {
   };
 
   const navLinks = [
-    { href: "#home", label: t("home"), id: "home" },
     { href: "#projects", label: t("projects"), id: "projects" },
+    { href: "#stack", label: "Stack", id: "stack" },
     { href: "#journey", label: t("journey"), id: "journey" },
     { href: "#contact", label: t("contact"), id: "contact" },
   ];

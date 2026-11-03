@@ -2,7 +2,6 @@ import { Header } from "@/components/layout/Header";
 import ContactSection from "@/features/contact/ContactSection";
 import { GitHubSyncSection } from "@/features/github-sync/GitHubSyncSection";
 import { PortfolioHome } from "@/features/portfolio/PortfolioHome";
-import { PortfolioThreeDLayer } from "@/features/portfolio/three-d";
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
         <GitHubSyncSection />
         <ContactSection />
       </main>
-      <PortfolioThreeDLayer />
     </div>
   );
 }
